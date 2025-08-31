@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 67ee6455d02b0724b809fcafd83e91e6
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207836
+  packageName: World Painter 2D
+  packageVersion: 1.1.0
+  assetPath: Assets/WorldPainter2D/Resources/config.json
+  uploadId: 572757

@@ -1,0 +1,257 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1716524988, guid: 43a5fa02365e7f543aff50c021fc3bb0, type: 3}
+  m_Name: bayou 1er plan 1
+  m_EditorClassIdentifier: 
+  scale: 2
+  offset: 0
+  grounds:
+    textureOrder: 0
+    layer: 0
+    materialInfos:
+    - sprite: {fileID: 21300000, guid: 7a0559c4cc21f9642984a85d25e078ac, type: 3}
+      rotation: 0
+      stretchType: 0
+      stretchValue: 0.5
+      scale: {x: 1, y: 1}
+      offset: {x: 0, y: 0}
+    - sprite: {fileID: 21300000, guid: 41a14cb5b67535b4c9f692a7a91da8c2, type: 3}
+      rotation: 0
+      stretchType: 0
+      stretchValue: 0.5
+      scale: {x: 1, y: 1}
+      offset: {x: 0, y: 0}
+    - sprite: {fileID: 21300000, guid: 3263ed760c9413b48bd40f1be50bdd53, type: 3}
+      rotation: 0
+      stretchType: 0
+      stretchValue: 0.5
+      scale: {x: 1, y: 1}
+      offset: {x: 0, y: 0}
+    - sprite: {fileID: 21300000, guid: 7f6235e16ca3adc46877dee10bbe4278, type: 3}
+      rotation: 0
+      stretchType: 0
+      stretchValue: 0.5
+      scale: {x: 1, y: 1}
+      offset: {x: 0, y: 0}
+    - sprite: {fileID: 21300000, guid: bb6f2e529e4f4da4a8c6c7217c771ed0, type: 3}
+      rotation: 0
+      stretchType: 0
+      stretchValue: 0.5
+      scale: {x: 1, y: 1}
+      offset: {x: 0, y: 0}
+    - sprite: {fileID: 21300000, guid: 49999398569a87f4b8ccad2d41231d1a, type: 3}
+      rotation: 0
+      stretchType: 0
+      stretchValue: 0.5
+      scale: {x: 1, y: 1}
+      offset: {x: 0, y: 0}
+    offset: -0.35
+  walls:
+    textureOrder: 0
+    layer: 0
+    materialInfos: []
+    offset: -0.33
+  wallsLeft:
+    textureOrder: 0
+    layer: 0
+    materialInfos: []
+    offset: 0
+  ceilings:
+    textureOrder: 0
+    layer: 0
+    materialInfos: []
+    offset: 0
+  fills:
+    textureOrder: 0
+    layer: 0
+    materialInfos:
+    - sprite: {fileID: 21300000, guid: 1ffc6ef423379904e9635048986a4e20, type: 3}
+      rotation: 0
+      stretchType: 0
+      stretchValue: 0.5
+      scale: {x: 1, y: 1}
+      offset: {x: 0, y: 0}
+    offset: 0
+  useCorners: 1
+  cornersFollowsPath: 0
+  cornerSprites:
+    cornerDisplayType: 0
+    morphCorners: 1
+    restrictCornerCreation: 0
+    morphCornersAngleMin: 30
+    morphCornersAngleMax: 150
+    inTopLeft:
+      spr: {fileID: 21300000, guid: 8a0d23bceee8d9542a2d2b614eb31ea0, type: 3}
+      offset: {x: -0.48, y: 0.01}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 21300000, guid: 8a0d23bceee8d9542a2d2b614eb31ea0, type: 3}
+        rotation: 7
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: -0.48, y: 0.01}
+    inTopRight:
+      spr: {fileID: 21300000, guid: 8a0d23bceee8d9542a2d2b614eb31ea0, type: 3}
+      offset: {x: 0.45, y: -0.02}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 21300000, guid: 8a0d23bceee8d9542a2d2b614eb31ea0, type: 3}
+        rotation: 1
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: 0.45, y: -0.02}
+    inBotLeft:
+      spr: {fileID: 21300000, guid: 38a8a0ad2a3c27c46aabf02fb66f0c14, type: 3}
+      offset: {x: -0.49, y: 0.068}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 21300000, guid: 38a8a0ad2a3c27c46aabf02fb66f0c14, type: 3}
+        rotation: 0
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: -0.49, y: 0.068}
+    inBotRight:
+      spr: {fileID: 21300000, guid: 38a8a0ad2a3c27c46aabf02fb66f0c14, type: 3}
+      offset: {x: 0.49, y: 0.068}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 21300000, guid: 38a8a0ad2a3c27c46aabf02fb66f0c14, type: 3}
+        rotation: 5
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: 0.49, y: 0.068}
+    exTopLeft:
+      spr: {fileID: 21300000, guid: 38a8a0ad2a3c27c46aabf02fb66f0c14, type: 3}
+      offset: {x: -0.49, y: 0.068}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 21300000, guid: 38a8a0ad2a3c27c46aabf02fb66f0c14, type: 3}
+        rotation: 0
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: -0.49, y: 0.068}
+    exTopRight:
+      spr: {fileID: 21300000, guid: 38a8a0ad2a3c27c46aabf02fb66f0c14, type: 3}
+      offset: {x: 0.49, y: 0.068}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 21300000, guid: 38a8a0ad2a3c27c46aabf02fb66f0c14, type: 3}
+        rotation: 5
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: 0.49, y: 0.068}
+    exBotLeft:
+      spr: {fileID: 21300000, guid: 8a0d23bceee8d9542a2d2b614eb31ea0, type: 3}
+      offset: {x: -0.48, y: 0.01}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 21300000, guid: 8a0d23bceee8d9542a2d2b614eb31ea0, type: 3}
+        rotation: 7
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: -0.48, y: 0.01}
+    exBotRight:
+      spr: {fileID: 21300000, guid: 8a0d23bceee8d9542a2d2b614eb31ea0, type: 3}
+      offset: {x: 0.45, y: -0.02}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 21300000, guid: 8a0d23bceee8d9542a2d2b614eb31ea0, type: 3}
+        rotation: 1
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: 0.45, y: -0.02}
+  sortingSettings:
+    renderOrderType: 2
+    groundLayer: 0
+    groundOrder: 100
+    groundZ: -2
+    wallLayer: 0
+    wallOrder: 97
+    wallZ: -0.1
+    leftWallLayer: 0
+    leftWallOrder: 2
+    leftWallZ: -0.1
+    ceilingLayer: 0
+    ceilingOrder: 98
+    ceilingZ: -0.2
+    fillLayer: 0
+    fillOrder: -175
+    fillZ: 0.5
+    cornersLayer: 0
+    cornerOrder: 99
+    cornerZ: -2
+  splitPaths: 1
+  material: {fileID: 2100000, guid: fa3cf68cf598318488aa3d4fac6c13d7, type: 2}
+  colliderSettings:
+    polygonCollider:
+      enabled: 0
+      material: {fileID: 0}
+      isTrigger: 0
+      usedByEffector: 0
+      usedByComposite: 0
+      radius: 0
+    edgeCollider:
+      enabled: 0
+      material: {fileID: 6200000, guid: 7dccecac06794224bb0f39e93292e378, type: 2}
+      isTrigger: 0
+      usedByEffector: 0
+      usedByComposite: 0
+      radius: 0
+    groundCollider:
+      enabled: 0
+      material: {fileID: 0}
+      isTrigger: 0
+      usedByEffector: 0
+      usedByComposite: 0
+      radius: 0
+    wallCollider:
+      enabled: 0
+      material: {fileID: 0}
+      isTrigger: 0
+      usedByEffector: 0
+      usedByComposite: 0
+      radius: 0
+    leftWallCollider:
+      enabled: 0
+      material: {fileID: 0}
+      isTrigger: 0
+      usedByEffector: 0
+      usedByComposite: 0
+      radius: 0
+    ceilingCollider:
+      enabled: 0
+      material: {fileID: 0}
+      isTrigger: 0
+      usedByEffector: 0
+      usedByComposite: 0
+      radius: 0
+    mirrorWallColliders: 1
+  objectLayer: 0
+  colorFill: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+  fillType: 0
+  mirrorWallSprites: 1

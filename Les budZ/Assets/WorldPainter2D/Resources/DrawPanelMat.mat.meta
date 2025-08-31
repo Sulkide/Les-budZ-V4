@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8b3237fd5bd8266479c5bbc6f068bf95
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207836
+  packageName: World Painter 2D
+  packageVersion: 1.1.0
+  assetPath: Assets/WorldPainter2D/Resources/DrawPanelMat.mat
+  uploadId: 572757

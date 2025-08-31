@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4196dbece55205c469f903a63dae631d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207836
+  packageName: World Painter 2D
+  packageVersion: 1.1.0
+  assetPath: Assets/WorldPainter2D/Resources/Circle.prefab
+  uploadId: 572757

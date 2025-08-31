@@ -1,0 +1,1417 @@
+fileFormatVersion: 2
+guid: c35245d5b5a2bd84fb075c280ac5bef5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8398599858663658245
+    second: fill bayou 1-3_0
+  - first:
+      213: 8284662699018590033
+    second: fill bayou 1-3_1
+  - first:
+      213: -9043976174725667787
+    second: fill bayou 1-3_2
+  - first:
+      213: -6322873616187020618
+    second: fill bayou 1-3_3
+  - first:
+      213: -4533797880944098503
+    second: fill bayou 1-3_4
+  - first:
+      213: -2834261339643725024
+    second: fill bayou 1-3_5
+  - first:
+      213: 6363922949760014783
+    second: fill bayou 1-3_6
+  - first:
+      213: -1630487482875111213
+    second: fill bayou 1-3_7
+  - first:
+      213: 7014721454530168334
+    second: fill bayou 1-3_8
+  - first:
+      213: 5670661697990107280
+    second: fill bayou 1-3_9
+  - first:
+      213: 7642677200251686545
+    second: fill bayou 1-3_10
+  - first:
+      213: 6116040660758763264
+    second: fill bayou 1-3_11
+  - first:
+      213: -189895582987445109
+    second: fill bayou 1-3_12
+  - first:
+      213: -4716339775027999313
+    second: fill bayou 1-3_13
+  - first:
+      213: 7032197745572955176
+    second: fill bayou 1-3_14
+  - first:
+      213: 4178802979604040763
+    second: fill bayou 1-3_15
+  - first:
+      213: 7017012504313565063
+    second: fill bayou 1-3_16
+  - first:
+      213: -2353164633204761509
+    second: fill bayou 1-3_17
+  - first:
+      213: 1982875136285000753
+    second: fill bayou 1-3_18
+  - first:
+      213: -1018103496336310221
+    second: fill bayou 1-3_19
+  - first:
+      213: 118905618033546587
+    second: fill bayou 1-3_20
+  - first:
+      213: -6536464085069465589
+    second: fill bayou 1-3_21
+  - first:
+      213: -6724809001347422125
+    second: fill bayou 1-3_22
+  - first:
+      213: 8302636723811868005
+    second: fill bayou 1-3_23
+  - first:
+      213: 6031140311835539538
+    second: fill bayou 1-3_24
+  - first:
+      213: -2595223801838750231
+    second: fill bayou 1-3_25
+  - first:
+      213: 770068315922606247
+    second: fill bayou 1-3_26
+  - first:
+      213: 7053114122209430307
+    second: fill bayou 1-3_27
+  - first:
+      213: 1115301473485167367
+    second: fill bayou 1-3_28
+  - first:
+      213: -68316782530427826
+    second: fill bayou 1-3_29
+  - first:
+      213: 1267315966337233899
+    second: fill bayou 1-3_30
+  - first:
+      213: -376395647348067077
+    second: fill bayou 1-3_31
+  - first:
+      213: 2819908880478552503
+    second: fill bayou 1-3_32
+  - first:
+      213: 6856066009968238628
+    second: fill bayou 1-3_33
+  - first:
+      213: 8428513640144989752
+    second: fill bayou 1-3_34
+  - first:
+      213: -7353000963336367505
+    second: fill bayou 1-3_35
+  - first:
+      213: -1329052919617901958
+    second: fill bayou 1-3_36
+  - first:
+      213: 2059861639015956830
+    second: fill bayou 1-3_37
+  - first:
+      213: 5554422270591252882
+    second: fill bayou 1-3_38
+  - first:
+      213: -9182561841388910490
+    second: fill bayou 1-3_39
+  - first:
+      213: 3418145352556431086
+    second: fill bayou 1-3_40
+  - first:
+      213: -706760572931285619
+    second: fill bayou 1-3_41
+  - first:
+      213: -5458714449989295796
+    second: fill bayou 1-3_42
+  - first:
+      213: 6013796813113355006
+    second: fill bayou 1-3_43
+  - first:
+      213: -1431760865206058549
+    second: fill bayou 1-3_44
+  - first:
+      213: -7373010903597495334
+    second: fill bayou 1-3_45
+  - first:
+      213: 7181505815184248135
+    second: fill bayou 1-3_46
+  - first:
+      213: 7578775018878855013
+    second: fill bayou 1-3_47
+  - first:
+      213: -6130050330807398770
+    second: fill bayou 1-3_48
+  - first:
+      213: 2359027565751796166
+    second: fill bayou 1-3_49
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fill bayou 1-3_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 15
+        width: 1079
+        height: 1065
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5031b42e212dd8470800000000000000
+      internalID: 8398599858663658245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 862
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1579eeaa4d809f270800000000000000
+      internalID: 8284662699018590033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 806
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 534616c06975d7280800000000000000
+      internalID: -9043976174725667787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 794
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6baab7332f3a048a0800000000000000
+      internalID: -6322873616187020618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_4
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 12
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93388ee29d6b411c0800000000000000
+      internalID: -4533797880944098503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_5
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 32
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02bb9e1045eaaa8d0800000000000000
+      internalID: -2834261339643725024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_6
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 26
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb9d66e8432315850800000000000000
+      internalID: 6363922949760014783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 21
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d81284e5485f59e0800000000000000
+      internalID: -1630487482875111213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_8
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 32
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e06059f4ffb495160800000000000000
+      internalID: 7014721454530168334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_9
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 30
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0902d1615cc32be40800000000000000
+      internalID: 5670661697990107280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_10
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 33
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e8af5cb6e301a60800000000000000
+      internalID: 7642677200251686545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_11
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 25
+        width: 36
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0071f58a39a80e450800000000000000
+      internalID: 6116040660758763264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_12
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 23
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8c1e9f29fa5d5df0800000000000000
+      internalID: -189895582987445109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_13
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 25
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fad096d76f13c8eb0800000000000000
+      internalID: -4716339775027999313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_14
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 33
+        width: 36
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 824cd276792679160800000000000000
+      internalID: 7032197745572955176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_15
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 35
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3c84a17b271ef930800000000000000
+      internalID: 4178802979604040763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_16
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 28
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78f8518e1bf616160800000000000000
+      internalID: 7017012504313565063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_17
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 16
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5c51d3db31e75fd0800000000000000
+      internalID: -2353164633204761509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_18
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 30
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 134c8344e66948b10800000000000000
+      internalID: 1982875136285000753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_19
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 29
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3308a44a348fed1f0800000000000000
+      internalID: -1018103496336310221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_20
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 18
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5510b4970076a100800000000000000
+      internalID: 118905618033546587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_21
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 26
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b08f55adb80d945a0800000000000000
+      internalID: -6536464085069465589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_22
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 0
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3586654c7ddaca2a0800000000000000
+      internalID: -6724809001347422125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_23
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 25
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56d5bed6c14e83370800000000000000
+      internalID: 8302636723811868005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_24
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 20
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 258fe75c82ae2b350800000000000000
+      internalID: 6031140311835539538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_25
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 23
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e533cac3b9ebfbd0800000000000000
+      internalID: -2595223801838750231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_26
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 25
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a8a957ad05dfaa00800000000000000
+      internalID: 770068315922606247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_27
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 26
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32b8596dce1b1e160800000000000000
+      internalID: 7053114122209430307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_28
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 11
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70b9d80f7c85a7f00800000000000000
+      internalID: 1115301473485167367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_29
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 21
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e44831d8f3a4d0ff0800000000000000
+      internalID: -68316782530427826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_30
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 26
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be336b72829669110800000000000000
+      internalID: 1267315966337233899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_31
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 2
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf4b0d82726c6caf0800000000000000
+      internalID: -376395647348067077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_32
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 22
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b1c4efaf24522720800000000000000
+      internalID: 2819908880478552503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_33
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 3
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42069c806b3a52f50800000000000000
+      internalID: 6856066009968238628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_34
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 7
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83e6061ef7818f470800000000000000
+      internalID: 8428513640144989752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_35
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 13
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f621b3be494e4f990800000000000000
+      internalID: -7353000963336367505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_36
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 18
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7aaa7649614e8de0800000000000000
+      internalID: -1329052919617901958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_37
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 10
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5100004f39169c10800000000000000
+      internalID: 2059861639015956830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_38
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 3
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2993c1360a5451d40800000000000000
+      internalID: 5554422270591252882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_39
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 10
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66805f318acf09080800000000000000
+      internalID: -9182561841388910490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_40
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 7
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee647c98611bf6f20800000000000000
+      internalID: 3418145352556431086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_41
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 15
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8ddd25e0051136f0800000000000000
+      internalID: -706760572931285619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_42
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 7
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c41a8161120ce34b0800000000000000
+      internalID: -5458714449989295796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_43
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 8
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efa6ffcc65c457350800000000000000
+      internalID: 6013796813113355006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_44
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 11
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc14612341d512ce0800000000000000
+      internalID: -1431760865206058549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_45
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 0
+        width: 25
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adb4df5a5adcda990800000000000000
+      internalID: -7373010903597495334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_46
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 0
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74d857a5d75d9a360800000000000000
+      internalID: 7181505815184248135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_47
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 2
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 567e0e0c9b73d2960800000000000000
+      internalID: 7578775018878855013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_48
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 1
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8e85f8d3bfadeaa0800000000000000
+      internalID: -6130050330807398770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fill bayou 1-3_49
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 0
+        width: 26
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c18df78213fcb020800000000000000
+      internalID: 2359027565751796166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      fill bayou 1-3_0: 8398599858663658245
+      fill bayou 1-3_1: 8284662699018590033
+      fill bayou 1-3_10: 7642677200251686545
+      fill bayou 1-3_11: 6116040660758763264
+      fill bayou 1-3_12: -189895582987445109
+      fill bayou 1-3_13: -4716339775027999313
+      fill bayou 1-3_14: 7032197745572955176
+      fill bayou 1-3_15: 4178802979604040763
+      fill bayou 1-3_16: 7017012504313565063
+      fill bayou 1-3_17: -2353164633204761509
+      fill bayou 1-3_18: 1982875136285000753
+      fill bayou 1-3_19: -1018103496336310221
+      fill bayou 1-3_2: -9043976174725667787
+      fill bayou 1-3_20: 118905618033546587
+      fill bayou 1-3_21: -6536464085069465589
+      fill bayou 1-3_22: -6724809001347422125
+      fill bayou 1-3_23: 8302636723811868005
+      fill bayou 1-3_24: 6031140311835539538
+      fill bayou 1-3_25: -2595223801838750231
+      fill bayou 1-3_26: 770068315922606247
+      fill bayou 1-3_27: 7053114122209430307
+      fill bayou 1-3_28: 1115301473485167367
+      fill bayou 1-3_29: -68316782530427826
+      fill bayou 1-3_3: -6322873616187020618
+      fill bayou 1-3_30: 1267315966337233899
+      fill bayou 1-3_31: -376395647348067077
+      fill bayou 1-3_32: 2819908880478552503
+      fill bayou 1-3_33: 6856066009968238628
+      fill bayou 1-3_34: 8428513640144989752
+      fill bayou 1-3_35: -7353000963336367505
+      fill bayou 1-3_36: -1329052919617901958
+      fill bayou 1-3_37: 2059861639015956830
+      fill bayou 1-3_38: 5554422270591252882
+      fill bayou 1-3_39: -9182561841388910490
+      fill bayou 1-3_4: -4533797880944098503
+      fill bayou 1-3_40: 3418145352556431086
+      fill bayou 1-3_41: -706760572931285619
+      fill bayou 1-3_42: -5458714449989295796
+      fill bayou 1-3_43: 6013796813113355006
+      fill bayou 1-3_44: -1431760865206058549
+      fill bayou 1-3_45: -7373010903597495334
+      fill bayou 1-3_46: 7181505815184248135
+      fill bayou 1-3_47: 7578775018878855013
+      fill bayou 1-3_48: -6130050330807398770
+      fill bayou 1-3_49: 2359027565751796166
+      fill bayou 1-3_5: -2834261339643725024
+      fill bayou 1-3_6: 6363922949760014783
+      fill bayou 1-3_7: -1630487482875111213
+      fill bayou 1-3_8: 7014721454530168334
+      fill bayou 1-3_9: 5670661697990107280
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

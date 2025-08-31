@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2072469013, guid: 43a5fa02365e7f543aff50c021fc3bb0, type: 3}
+  m_Name: Water2D Material
+  m_EditorClassIdentifier: 
+  render:
+    renderType: 0
+    depth: 2.5
+    pointsPerUnit: 30
+    meshSegmentType: 1
+    orderInLayer: 0
+    sortingLayer: 0
+    material: {fileID: 2100000, guid: 9195a38750ee83e4e861c33eb775538d, type: 2}
+    useTint: 0
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    textureInfo:
+      sprite: {fileID: 21300000, guid: be85177b5395d184193b34bf3c85acaf, type: 3}
+      rotation: 0
+      stretchType: 0
+      stretchValue: 0.5
+      scale: {x: 1, y: 1}
+      offset: {x: 0, y: 0}
+    createMaskMesh: 1
+    watermaskMaterial: {fileID: 2100000, guid: 30ee181ec00b63648a316785d229d972, type: 2}
+    watermaskOrderInLayer: -3
+    createSubtractiveMaskMesh: 1
+    subtractiveMaskDepth: 2
+    subtractiveMaskMaterial: {fileID: 2100000, guid: 1bd663e55aad90a42a13eccb5dac089d, type: 2}
+    subtractiveMaskOrderInLayer: -2
+    backgroundMaterial: {fileID: 2100000, guid: 5346ae2767aa7574ca7c403ded0cc74f, type: 2}
+    backgroundOrderInLayer: -1
+    autoOrderInLayerForMasks: 1
+  waves:
+    onEnter: 1
+    onExit: 1
+    slowdownOnEnterOrLeave: 1
+    fastCalculation: 0
+    mass: 1
+    spread: 0.05
+    springconstant: 0.02
+    damping: 0.03
+    forceMultiplier: 1
+    forceThreshold: 0
+    forceClampLow: 0
+    forceClampHigh: 1000
+    waveLimitTop: 0
+    waveLimitDistance: 1
+    restrictForceOnEdgesAbove: 0
+    restrictForceOnEdgesUnder: 0
+    lastAppearence: 0
+  collisions:
+    colliderType: 0
+    pointsPerCollider: 1
+    useColliderGroups: 0
+    collidersPerGroup: 30
+    groupObjectLayer: 0
+    groupObjectTag: Untagged
+    groupColliderMargin: 1
+  physics:
+    physicsEnabled: 1
+    stayOnEdge: 0
+    forceDirection: 1
+    forceMagnitude: 1
+    floatThreshold: 50
+    waterDensity: 0.125
+    forceDependsOnDistance: 1
+    forceProportionalToMass: 1

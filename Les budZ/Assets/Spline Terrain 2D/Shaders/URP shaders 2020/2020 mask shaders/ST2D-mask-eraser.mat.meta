@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3b538bc645b90f345b889c8c622ed666
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/Shaders/URP shaders 2020/2020 mask shaders/ST2D-mask-eraser.mat
+  uploadId: 441518

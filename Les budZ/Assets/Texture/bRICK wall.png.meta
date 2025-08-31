@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: e17b62363aee42e4487b970a37d4c093
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5214271092410135248
+    second: bRICK wall_0
+  - first:
+      213: -3222528294898225009
+    second: bRICK wall_1
+  - first:
+      213: -2095261845082071599
+    second: bRICK wall_2
+  - first:
+      213: -3548304088809111284
+    second: bRICK wall_3
+  - first:
+      213: -7836632442413039511
+    second: bRICK wall_4
+  - first:
+      213: 3649184795686174764
+    second: bRICK wall_5
+  - first:
+      213: 526280190823043847
+    second: bRICK wall_6
+  - first:
+      213: -5801581805630251335
+    second: bRICK wall_7
+  - first:
+      213: -1462563555572761076
+    second: bRICK wall_8
+  - first:
+      213: -6778254989614133560
+    second: bRICK wall_9
+  - first:
+      213: 5511036565786795662
+    second: bRICK wall_10
+  - first:
+      213: -2155298134687255774
+    second: bRICK wall_11
+  - first:
+      213: -7825325612966618086
+    second: bRICK wall_12
+  - first:
+      213: -7002931085616905592
+    second: bRICK wall_13
+  - first:
+      213: 2495266397006393043
+    second: bRICK wall_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bRICK wall_0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 421
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d2b1b1aeefcc5840800000000000000
+      internalID: 5214271092410135248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 379
+        width: 111
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8032f7e6974743d0800000000000000
+      internalID: -3222528294898225009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_2
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 451
+        width: 106
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dd147cf3722ce2e0800000000000000
+      internalID: -2095261845082071599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_3
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 323
+        width: 44
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c01877f1b34e1cec0800000000000000
+      internalID: -3548304088809111284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_4
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 296
+        width: 105
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9604baa5050be3390800000000000000
+      internalID: -7836632442413039511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_5
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 331
+        width: 60
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2081aacc3284a230800000000000000
+      internalID: 3649184795686174764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_6
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 269
+        width: 36
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70315529b09bd4700800000000000000
+      internalID: 526280190823043847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_7
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 161
+        width: 121
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9be1a0cf514ac7fa0800000000000000
+      internalID: -5801581805630251335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_8
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 142
+        width: 28
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0e37a8f13ee3bbe0800000000000000
+      internalID: -1462563555572761076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_9
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 100
+        width: 107
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cec70beffccee1a0800000000000000
+      internalID: -6778254989614133560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_10
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 74
+        width: 56
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8e19efce822b7c40800000000000000
+      internalID: 5511036565786795662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_11
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 90
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22377e804c7d612e0800000000000000
+      internalID: -2155298134687255774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_12
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 34
+        width: 120
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1cdb5bb0dbd66390800000000000000
+      internalID: -7825325612966618086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_13
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 17
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 882834fd74790de90800000000000000
+      internalID: -7002931085616905592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bRICK wall_14
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 0
+        width: 118
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dee88d4197f0a220800000000000000
+      internalID: 2495266397006393043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      bRICK wall_0: 5214271092410135248
+      bRICK wall_1: -3222528294898225009
+      bRICK wall_10: 5511036565786795662
+      bRICK wall_11: -2155298134687255774
+      bRICK wall_12: -7825325612966618086
+      bRICK wall_13: -7002931085616905592
+      bRICK wall_14: 2495266397006393043
+      bRICK wall_2: -2095261845082071599
+      bRICK wall_3: -3548304088809111284
+      bRICK wall_4: -7836632442413039511
+      bRICK wall_5: 3649184795686174764
+      bRICK wall_6: 526280190823043847
+      bRICK wall_7: -5801581805630251335
+      bRICK wall_8: -1462563555572761076
+      bRICK wall_9: -6778254989614133560
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

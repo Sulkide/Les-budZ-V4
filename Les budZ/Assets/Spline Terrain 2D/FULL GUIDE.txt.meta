@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 291ac3e56f31eb2428c0887c77acfec0
+timeCreated: 1531009504
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/FULL GUIDE.txt
+  uploadId: 441518

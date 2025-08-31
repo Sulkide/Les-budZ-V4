@@ -1,0 +1,42 @@
+{
+    "autoSave": true,
+    "canvasLayer": 0,
+    "canvasColor": [
+        0.0,
+        0.0,
+        0.0,
+        0.2980392277240753
+    ],
+    "gridColor": [
+        0.0,
+        1.0,
+        0.37647056579589846,
+        0.800000011920929
+    ],
+    "gridCenterColor": [
+        0.3423747420310974,
+        0.0,
+        0.7254902124404907,
+        0.800000011920929
+    ],
+    "brushMode": 0,
+    "gridRadius": 3.0,
+    "gridGranularity": 0.5,
+    "drawingLayer": 0,
+    "drawingMode": 0,
+    "colliderType": 1,
+    "shapeType": 1,
+    "shapeColor": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+    ],
+    "prefabName": "",
+    "prefabIsAsset": false,
+    "prefabPath": "",
+    "sortingLayer": 0,
+    "sortingLayerOrder": 0,
+    "objectDepth": 0.0,
+    "scrollWheelStrength": 0.10000000149011612
+}

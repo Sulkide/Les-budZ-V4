@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 8361ff3584a8a2e488ae21b3c835ce43
+timeCreated: 1462682372
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 259830
+  packageName: Importer for GIMP Image Files
+  packageVersion: 1.0.0
+  assetPath: Assets/Importer for GIMP Image Files/Scripts/Zlib/ZlibConstants.cs
+  uploadId: 614602

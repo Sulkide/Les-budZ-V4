@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1400212414, guid: 43a5fa02365e7f543aff50c021fc3bb0, type: 3}
+  m_Name: Kolibri2DSettings
+  m_EditorClassIdentifier: 
+  bezierSpline_quality:
+    mode: 0
+    level: 2
+    userSubdivisionsPerSegment: 1
+    fixedSubdivisionsPerSegment: 10
+    straigthSegmentMultiplier: 0.5
+    softCurveSegmentMultiplier: 2
+    hardCurveSegmentMultiplier: 3
+    smallSegmentMultiplier: 2
+    bigSegmentMultiplier: 2
+  bezierSpline_shapeTangentMode: 1
+  bezierSpline_snapMode: 0
+  arch_architectureMode: 0
+  bezierSpline_smoothness: 1
+  bezierSpline_splineAlwaysVisible: 1
+  bezierSpline_sceneHandleSize: 0.18
+  materials_createSplineWhenCreatingMaterial: 1
+  terrain2d_defaultMat: {fileID: 0}

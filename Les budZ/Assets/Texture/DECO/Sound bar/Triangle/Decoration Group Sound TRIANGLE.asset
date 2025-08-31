@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1760942864, guid: 43a5fa02365e7f543aff50c021fc3bb0, type: 3}
+  m_Name: Decoration Group Sound TRIANGLE
+  m_EditorClassIdentifier: 
+  disabledForEveryone: 0
+  groupData:
+    distributionType: 1
+    sequenceType: 0
+    relativeOffsetMin: -3
+    relativeOffsetMax: -3
+    absoluteOffsetMin: 0
+    absoluteOffsetMax: 0
+    scaleData:
+      scaleType: 0
+      scaleByListData:
+        scales:
+        - {x: -1, y: -1, z: -1}
+    minScale: 0.4
+    maxScale: 0.4
+    useProportionalScale: 1
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    useFixedRotation: 0
+    fixedRotationAngle: 90
+    emptyDistanceToEdges: 0
+    mirrorWallDecorations: 1
+    continuousDistributionSettings:
+      margin: 2.76
+      emptyDistanceToEdges: 1
+    randomDistributionSettings:
+      density: 0.5
+      emptyDistanceToEdges: 0
+    evenlyDistributionSettings:
+      distributionType: 1
+      distributedAmount: 10
+      emptyDistanceToEdges: 0
+    distanceDistributionSettings:
+      distance: 6.22
+      startAt: 0
+      coverage: 0
+      emptyDistanceToEdges: 0
+      distributionType: 1
+    amountLimitData:
+      amountLimitType: 0
+    renderOptions:
+      setGameObjectLayer: 0
+      setGameObjectTag: 0
+      renderOrderType: 1
+      sortLayers:
+        layer: 0
+        sortingLayerId: 0
+        orderInLayerMin: 0
+        orderInLayerMax: 0
+        useSortingGroupsForObjects: 1
+      sort3D:
+        depthDelta: 0
+        depthMin: 0
+        depthMax: 1
+      renderMaterial: {fileID: 0}
+      tintColor: {r: 1, g: 1, b: 1, a: 1}
+      useTint: 0
+  grounds:
+  - name: deco - SUB BASS L
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 3916835266818952038, guid: 1bff9319fd098e944a4f2baf3f2535a2, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: deco - BASS L
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 1964370900487677543, guid: 05b26aacbe38ce047929e59c7deb0281, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: 'deco - LOW MID L '
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 2584608891035528691, guid: 4ccd41072bad2df43bbca17f6cb651ed, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: deco - MID L
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 2674863868222476383, guid: 721d292c5420c0c44939daaa8a4eb906, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: deco - HIGH L
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 8177464413889338733, guid: 2d2a5928bc23fcf4e90c30017f9c73a1, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: deco - HIGH R
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 3125390077887403537, guid: 4f925ab410b8fd8428661c29c0c23f33, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: deco - MID R
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 336039083095261011, guid: 0b676fd8d9caf9846bec1d064ecceb25, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: deco - LOW MID R
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 56326992415818375, guid: 10fa067395ac8a54fbaa642e0b4643da, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: deco - BASS R
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 2521289875309863982, guid: 3e8c4f509d5c33745aee21e91d3111a4, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: deco - SUB BASS R
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 1789930803664548941, guid: 5ba528bf56207054d90ffd5c95082ff4, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  ceilings: []
+  walls: []
+  leftWalls: []
+  decorationsGroupsMode: 0

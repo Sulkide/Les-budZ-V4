@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a6f77e05639b91e4e98cea9d4464b74a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207836
+  packageName: World Painter 2D
+  packageVersion: 1.1.0
+  assetPath: Assets/WorldPainter2D/Resources/Rectangle.prefab
+  uploadId: 572757

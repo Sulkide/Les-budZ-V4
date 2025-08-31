@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7b6032bee0776084fb079bcaf717385d
+timeCreated: 1537910810
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/Demo/Scenes/Demo Assets showcase.unity
+  uploadId: 441518

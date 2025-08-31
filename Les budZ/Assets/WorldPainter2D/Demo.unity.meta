@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b387e605496836e4e8e51c395458e3db
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207836
+  packageName: World Painter 2D
+  packageVersion: 1.1.0
+  assetPath: Assets/WorldPainter2D/Demo.unity
+  uploadId: 572757

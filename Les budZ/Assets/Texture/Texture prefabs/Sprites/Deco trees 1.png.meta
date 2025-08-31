@@ -1,0 +1,1087 @@
+fileFormatVersion: 2
+guid: 2f3165dc81b9cf74c901a18133e0c753
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -932064181314559864
+    second: Deco trees_0
+  - first:
+      213: 899752209284692902
+    second: Deco trees_1
+  - first:
+      213: 8815553330558376518
+    second: Deco trees_2
+  - first:
+      213: -2341318848986276706
+    second: Deco trees_3
+  - first:
+      213: 4408064664530677246
+    second: Deco trees_4
+  - first:
+      213: 5248718629200915212
+    second: Deco trees_5
+  - first:
+      213: 3263777330086387829
+    second: Deco trees_6
+  - first:
+      213: -6771319065225465255
+    second: Deco trees_7
+  - first:
+      213: 2126265204954679183
+    second: Deco trees_8
+  - first:
+      213: -9220332516924871451
+    second: Deco trees_9
+  - first:
+      213: -6007209052631425485
+    second: Deco trees_10
+  - first:
+      213: -7284785545067642275
+    second: Deco trees_11
+  - first:
+      213: -5756261492484274574
+    second: Deco trees_12
+  - first:
+      213: 3681326650788733791
+    second: Deco trees_13
+  - first:
+      213: 7279012741062009388
+    second: Deco trees_14
+  - first:
+      213: -8100411947229177948
+    second: Deco trees_15
+  - first:
+      213: -961336943024446886
+    second: Deco trees_16
+  - first:
+      213: 3876800491612540639
+    second: Deco trees_17
+  - first:
+      213: 6072509687967106364
+    second: Deco trees_18
+  - first:
+      213: 6913820849601595430
+    second: Deco trees_19
+  - first:
+      213: -7837984617270353782
+    second: Deco trees_20
+  - first:
+      213: 703842950525977410
+    second: Deco trees_21
+  - first:
+      213: 6959018314118468061
+    second: Deco trees_22
+  - first:
+      213: -8359475816360661677
+    second: Deco trees_23
+  - first:
+      213: -6920925176106541875
+    second: Deco trees_24
+  - first:
+      213: 1094764894835712959
+    second: Deco trees_25
+  - first:
+      213: -3191435119032974340
+    second: Deco trees_26
+  - first:
+      213: -3232888213075536068
+    second: Deco trees_27
+  - first:
+      213: 2891418586222801983
+    second: Deco trees_28
+  - first:
+      213: 5731780674185323180
+    second: Deco trees_29
+  - first:
+      213: -5217459859934054080
+    second: Deco trees_30
+  - first:
+      213: -7199219762162955989
+    second: Deco trees_31
+  - first:
+      213: -1189649398328356421
+    second: Deco trees_32
+  - first:
+      213: 5952031553237284524
+    second: Deco trees_33
+  - first:
+      213: -602908690061607259
+    second: Deco trees_34
+  - first:
+      213: -6451911724798894498
+    second: Deco trees_35
+  - first:
+      213: 1790851520616173817
+    second: Deco trees_36
+  - first:
+      213: -7637775278884441741
+    second: Deco trees_37
+  - first:
+      213: 966145392267886226
+    second: Deco trees_38
+  - first:
+      213: 481965470326297313
+    second: Deco trees_39
+  - first:
+      213: -6112989992148880745
+    second: Deco trees_40
+  - first:
+      213: -3320486456976391605
+    second: Deco trees_41
+  - first:
+      213: 2577859809268662253
+    second: Deco trees_42
+  - first:
+      213: 4552667716323869618
+    second: Deco trees_43
+  - first:
+      213: 6885224431771751262
+    second: Deco trees_44
+  - first:
+      213: 1787187246343851127
+    second: Deco trees_45
+  - first:
+      213: 2699597979416237872
+    second: Deco trees_46
+  - first:
+      213: -2993414335226318095
+    second: Deco trees_47
+  - first:
+      213: 6461064927049603668
+    second: Deco trees_48
+  - first:
+      213: 3560206104146070658
+    second: Deco trees_49
+  - first:
+      213: -9183006190795715084
+    second: Deco trees_50
+  - first:
+      213: -742513901660361708
+    second: Deco trees_51
+  - first:
+      213: -7063957537107492918
+    second: Deco trees_52
+  - first:
+      213: 5624739828261683268
+    second: Deco trees_53
+  - first:
+      213: -2547433896221159999
+    second: Deco trees_54
+  - first:
+      213: 4522341058702916921
+    second: Deco trees_55
+  - first:
+      213: 54499021476175304
+    second: Deco trees_56
+  - first:
+      213: 7567892298193135398
+    second: Deco trees_57
+  - first:
+      213: 1293971838809274184
+    second: Deco trees_58
+  - first:
+      213: -2473176639707408469
+    second: Deco trees_59
+  - first:
+      213: -7185110327833869606
+    second: Deco trees_60
+  - first:
+      213: -1231545366487702919
+    second: Deco trees_61
+  - first:
+      213: -2124951070294956502
+    second: Deco trees_62
+  - first:
+      213: 6473495833340455765
+    second: Deco trees_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Deco trees_0
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 1972
+        width: 253
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88061ecb094a013f0800000000000000
+      internalID: -932064181314559864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_1
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 1972
+        width: 211
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ab79440edf8c7c00800000000000000
+      internalID: 899752209284692902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_2
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 1982
+        width: 142
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64a917e1c03275a70800000000000000
+      internalID: 8815553330558376518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_4
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 1964
+        width: 121
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efd6d4c15779c2d30800000000000000
+      internalID: 4408064664530677246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_5
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 1991
+        width: 97
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0bee7bc8c137d840800000000000000
+      internalID: 5248718629200915212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_10
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 1961
+        width: 113
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33e9466b13b12aca0800000000000000
+      internalID: -6007209052631425485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_13
+      rect:
+        serializedVersion: 2
+        x: 1583
+        y: 1988
+        width: 210
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f53e07a9513b61330800000000000000
+      internalID: 3681326650788733791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_14
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 1913
+        width: 274
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c222b8aa58f340560800000000000000
+      internalID: 7279012741062009388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_16
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 1709
+        width: 115
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a526199c425a8a2f0800000000000000
+      internalID: -961336943024446886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_17
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 1735
+        width: 97
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fde00a7c1892dc530800000000000000
+      internalID: 3876800491612540639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_18
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1749
+        width: 126
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c35c56e3363e54450800000000000000
+      internalID: 6072509687967106364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_19
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 1747
+        width: 136
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62841358e63d2ff50800000000000000
+      internalID: 6913820849601595430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_20
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 1726
+        width: 127
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a80ef9c9482e93390800000000000000
+      internalID: -7837984617270353782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_21
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 1751
+        width: 143
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24383c33f6d84c900800000000000000
+      internalID: 703842950525977410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_23
+      rect:
+        serializedVersion: 2
+        x: 1501
+        y: 1728
+        width: 105
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35daa51190d2dfb80800000000000000
+      internalID: -8359475816360661677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_24
+      rect:
+        serializedVersion: 2
+        x: 1704
+        y: 1729
+        width: 136
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcc9c11983fe3ff90800000000000000
+      internalID: -6920925176106541875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_25
+      rect:
+        serializedVersion: 2
+        x: 1943
+        y: 1753
+        width: 131
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb3204d1fd2613f00800000000000000
+      internalID: 1094764894835712959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_30
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 1249
+        width: 179
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04975c296ebd797b0800000000000000
+      internalID: -5217459859934054080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_31
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 1238
+        width: 190
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b290e48f4cb371c90800000000000000
+      internalID: -7199219762162955989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_40
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 1383
+        width: 131
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 792b27a7dfb4a2ba0800000000000000
+      internalID: -6112989992148880745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_50
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 616
+        width: 450
+        height: 503
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fd886be5886f8080800000000000000
+      internalID: -9183006190795715084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_51
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 613
+        width: 363
+        height: 529
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41caeba5a8f02b5f0800000000000000
+      internalID: -742513901660361708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_53
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 693
+        width: 358
+        height: 513
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 440878992171f0e40800000000000000
+      internalID: 5624739828261683268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_54
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 624
+        width: 370
+        height: 351
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cdc2f64e52b5acd0800000000000000
+      internalID: -2547433896221159999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_56
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 657
+        width: 248
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cd91bf329e91c000800000000000000
+      internalID: 54499021476175304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_61
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 44
+        width: 338
+        height: 513
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 972e8b1a30ca8eee0800000000000000
+      internalID: -1231545366487702919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_62
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 522
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a26abf19248a282e0800000000000000
+      internalID: -2124951070294956502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_63
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 27
+        width: 358
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55baa31992a76d950800000000000000
+      internalID: 6473495833340455765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_64
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 501
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26b4c883b9dad6a4b9bd3a9675be74a4
+      internalID: -894416855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_65
+      rect:
+        serializedVersion: 2
+        x: 1758
+        y: 10
+        width: 426
+        height: 504
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d03195935090974ab0aac35cc3486ad
+      internalID: 637831478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_70
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 11
+        width: 370
+        height: 351
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f17a4fd0b09444ba8888a6b5a817bc
+      internalID: -1571133449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco trees_73
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 14
+        width: 249
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc70cbd704c83e4280520a57179d5dd
+      internalID: -820363707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6630a7187bcfb9c4ebe7e7ed73d8c635
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Deco trees_0: -932064181314559864
+      Deco trees_1: 899752209284692902
+      Deco trees_10: -6007209052631425485
+      Deco trees_11: -7284785545067642275
+      Deco trees_12: -5756261492484274574
+      Deco trees_13: 3681326650788733791
+      Deco trees_14: 7279012741062009388
+      Deco trees_15: -8100411947229177948
+      Deco trees_16: -961336943024446886
+      Deco trees_17: 3876800491612540639
+      Deco trees_18: 6072509687967106364
+      Deco trees_19: 6913820849601595430
+      Deco trees_2: 8815553330558376518
+      Deco trees_20: -7837984617270353782
+      Deco trees_21: 703842950525977410
+      Deco trees_22: 6959018314118468061
+      Deco trees_23: -8359475816360661677
+      Deco trees_24: -6920925176106541875
+      Deco trees_25: 1094764894835712959
+      Deco trees_26: -3191435119032974340
+      Deco trees_27: -3232888213075536068
+      Deco trees_28: 2891418586222801983
+      Deco trees_29: 5731780674185323180
+      Deco trees_3: -2341318848986276706
+      Deco trees_30: -5217459859934054080
+      Deco trees_31: -7199219762162955989
+      Deco trees_32: -1189649398328356421
+      Deco trees_33: 5952031553237284524
+      Deco trees_34: -602908690061607259
+      Deco trees_35: -6451911724798894498
+      Deco trees_36: 1790851520616173817
+      Deco trees_37: -7637775278884441741
+      Deco trees_38: 966145392267886226
+      Deco trees_39: 481965470326297313
+      Deco trees_4: 4408064664530677246
+      Deco trees_40: -6112989992148880745
+      Deco trees_41: -3320486456976391605
+      Deco trees_42: 2577859809268662253
+      Deco trees_43: 4552667716323869618
+      Deco trees_44: 6885224431771751262
+      Deco trees_45: 1787187246343851127
+      Deco trees_46: 2699597979416237872
+      Deco trees_47: -2993414335226318095
+      Deco trees_48: 6461064927049603668
+      Deco trees_49: 3560206104146070658
+      Deco trees_5: 5248718629200915212
+      Deco trees_50: -9183006190795715084
+      Deco trees_51: -742513901660361708
+      Deco trees_52: -7063957537107492918
+      Deco trees_53: 5624739828261683268
+      Deco trees_54: -2547433896221159999
+      Deco trees_55: 4522341058702916921
+      Deco trees_56: 54499021476175304
+      Deco trees_57: 7567892298193135398
+      Deco trees_58: 1293971838809274184
+      Deco trees_59: -2473176639707408469
+      Deco trees_6: 3263777330086387829
+      Deco trees_60: -7185110327833869606
+      Deco trees_61: -1231545366487702919
+      Deco trees_62: -2124951070294956502
+      Deco trees_63: 6473495833340455765
+      Deco trees_64: -894416855
+      Deco trees_65: 637831478
+      Deco trees_66: -466624293
+      Deco trees_67: 1439607324
+      Deco trees_68: -1088812498
+      Deco trees_69: -320918452
+      Deco trees_7: -6771319065225465255
+      Deco trees_70: -1571133449
+      Deco trees_71: -1666020046
+      Deco trees_72: 868732887
+      Deco trees_73: -820363707
+      Deco trees_8: 2126265204954679183
+      Deco trees_9: -9220332516924871451
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: dbc8cf5f446a5304d9816ca7c6842d08
+timeCreated: 1462682372
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 259830
+  packageName: Importer for GIMP Image Files
+  packageVersion: 1.0.0
+  assetPath: Assets/Importer for GIMP Image Files/Scripts/Zlib/Inflate.cs
+  uploadId: 614602

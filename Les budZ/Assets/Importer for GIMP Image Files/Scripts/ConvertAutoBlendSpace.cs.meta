@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e81634b4c1937664fb9e3fff38c4e42d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 259830
+  packageName: Importer for GIMP Image Files
+  packageVersion: 1.0.0
+  assetPath: Assets/Importer for GIMP Image Files/Scripts/ConvertAutoBlendSpace.cs
+  uploadId: 614602

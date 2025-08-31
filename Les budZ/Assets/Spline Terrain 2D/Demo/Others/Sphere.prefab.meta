@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 52f31b185b977c84a9739d03d5ed91f2
+timeCreated: 1537457533
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/Demo/Others/Sphere.prefab
+  uploadId: 441518

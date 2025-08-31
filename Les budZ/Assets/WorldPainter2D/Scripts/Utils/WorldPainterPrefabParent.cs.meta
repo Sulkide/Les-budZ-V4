@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0ff185478dc7ce9488868b2fb4eb403a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207836
+  packageName: World Painter 2D
+  packageVersion: 1.1.0
+  assetPath: Assets/WorldPainter2D/Scripts/Utils/WorldPainterPrefabParent.cs
+  uploadId: 572757

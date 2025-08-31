@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 94c377f11c54c8d48b3503de75e09ec5
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 259830
+  packageName: Importer for GIMP Image Files
+  packageVersion: 1.0.0
+  assetPath: Assets/Importer for GIMP Image Files/Example Scene/Example Scene.unity
+  uploadId: 614602

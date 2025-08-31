@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bac789f306f20e348917163614b2c3eb
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 259830
+  packageName: Importer for GIMP Image Files
+  packageVersion: 1.0.0
+  assetPath: Assets/Importer for GIMP Image Files/Scripts/Importer for GIMP Image
+    Files.asmdef
+  uploadId: 614602

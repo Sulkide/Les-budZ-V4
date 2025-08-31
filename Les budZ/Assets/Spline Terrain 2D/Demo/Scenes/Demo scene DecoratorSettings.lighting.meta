@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3b14868915271d54cb5f6922fd98fa37
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/Demo/Scenes/Demo scene DecoratorSettings.lighting
+  uploadId: 441518

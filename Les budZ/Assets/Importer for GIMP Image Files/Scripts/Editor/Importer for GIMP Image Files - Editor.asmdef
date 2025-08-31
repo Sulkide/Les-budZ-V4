@@ -1,0 +1,25 @@
+{
+    "name": "Importer for GIMP Image Files - Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bac789f306f20e348917163614b2c3eb",
+        "GUID:2c573e6b271651846a79655161004c5b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.2d.sprite",
+            "expression": "1.0.0",
+            "define": "UNITY_2D_SPRITE_PACKAGE"
+        }
+    ],
+    "noEngineReferences": false
+}

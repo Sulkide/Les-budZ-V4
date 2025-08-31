@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c1552809630c2de498a6dfa42fd4e432
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/Shaders/URP shaders 2020/2020 mask shaders/ST2D-mask-invisibleTexture-Unlit-2020.shader
+  uploadId: 441518

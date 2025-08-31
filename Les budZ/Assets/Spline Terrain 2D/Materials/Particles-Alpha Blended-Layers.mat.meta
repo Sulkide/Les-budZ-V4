@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 9195a38750ee83e4e861c33eb775538d
+timeCreated: 1530896081
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/Materials/Particles-Alpha Blended-Layers.mat
+  uploadId: 441518

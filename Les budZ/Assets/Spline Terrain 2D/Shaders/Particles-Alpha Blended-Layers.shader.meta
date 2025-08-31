@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3459c7311a08cbf4f9bb228d540eb1a8
+timeCreated: 1530896072
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/Shaders/Particles-Alpha Blended-Layers.shader
+  uploadId: 441518

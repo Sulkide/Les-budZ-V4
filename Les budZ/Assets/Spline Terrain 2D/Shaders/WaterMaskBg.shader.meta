@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b9ffda6353665774f94760d89863b50b
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/Shaders/WaterMaskBg.shader
+  uploadId: 441518

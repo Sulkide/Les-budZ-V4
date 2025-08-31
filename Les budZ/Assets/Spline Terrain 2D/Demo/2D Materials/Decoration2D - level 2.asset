@@ -1,0 +1,228 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1149877505, guid: 43a5fa02365e7f543aff50c021fc3bb0, type: 3}
+  m_Name: Decoration2D - level 2
+  m_EditorClassIdentifier: 
+  globalOrderDependanceType: 1
+  globalManagementType: 2
+  renderOrderType: 3
+  global_range_auto:
+    range2D: {x: 0, y: 0, z: 1}
+    range3D: {x: 0, y: 1, z: 1}
+    depthDelta: 0
+  global_range_manual:
+    range2D: {x: 0, y: 0, z: 1}
+    range3D: {x: -1, y: 10, z: 11}
+    depthDelta: 0
+  global_range_default:
+    range2D: {x: 0, y: 0, z: 1}
+    range3D: {x: 0, y: 1, z: 1}
+    depthDelta: 0
+  global_range_2D_dependency:
+    range2D: {x: -9000, y: 10, z: 9011}
+    range3D: {x: 0, y: 0, z: 0}
+    depthDelta: 0
+  depthDelta3DManagementType: 1
+  globalGradientColor:
+    useTint: 1
+    gradient:
+      serializedVersion: 2
+      key0: {r: 0, g: 1, b: 0.9419038, a: 1}
+      key1: {r: 0, g: 1, b: 0.16091943, a: 1}
+      key2: {r: 0.93859005, g: 1, b: 0, a: 0}
+      key3: {r: 1, g: 0.09470569, b: 0, a: 0}
+      key4: {r: 1, g: 0, b: 0.82073116, a: 0}
+      key5: {r: 0, g: 0.14640594, b: 1, a: 0}
+      key6: {r: 0, g: 1, b: 0.94070315, a: 0}
+      key7: {r: 0.038573146, g: 1, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 8674
+      ctime2: 15420
+      ctime3: 24287
+      ctime4: 35081
+      ctime5: 46067
+      ctime6: 55512
+      ctime7: 65535
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 8
+      m_NumAlphaKeys: 2
+    material: {fileID: 2100000, guid: 9195a38750ee83e4e861c33eb775538d, type: 2}
+    tintGradientType: 2
+  groupHolders:
+    array:
+    - enabled: 1
+      unfolded: 0
+      hasDifferencesWithBaseGroupSettings: 0
+      groupSettingsDataSource: 0
+      overrideGroupData:
+        distributionType: 4
+        sequenceType: 1
+        relativeOffsetMin: 0
+        relativeOffsetMax: 0
+        absoluteOffsetMin: 0
+        absoluteOffsetMax: 0
+        scaleData:
+          scaleType: 0
+          scaleByListData:
+            scales:
+            - {x: 1, y: 1, z: 1}
+        minScale: 0.5
+        maxScale: 2
+        useProportionalScale: 1
+        vecMinScale: {x: 1, y: 1, z: 1}
+        vecMaxScale: {x: 1, y: 1, z: 1}
+        useFixedRotation: 0
+        fixedRotationAngle: 90
+        emptyDistanceToEdges: 0
+        mirrorWallDecorations: 1
+        continuousDistributionSettings:
+          margin: 0
+          emptyDistanceToEdges: 0
+        randomDistributionSettings:
+          density: 0.51714283
+          emptyDistanceToEdges: 0
+        evenlyDistributionSettings:
+          distributionType: 1
+          distributedAmount: 19
+          emptyDistanceToEdges: 0
+        distanceDistributionSettings:
+          distance: 1
+          startAt: 0
+          coverage: 0
+          emptyDistanceToEdges: 0
+          distributionType: 1
+        amountLimitData:
+          amountLimitType: 0
+        renderOptions:
+          setGameObjectLayer: 0
+          setGameObjectTag: 0
+          renderOrderType: 1
+          sortLayers:
+            layer: 0
+            sortingLayerId: 0
+            orderInLayerMin: 0
+            orderInLayerMax: 0
+            useSortingGroupsForObjects: 1
+          sort3D:
+            depthDelta: 0
+            depthMin: -1
+            depthMax: 5
+          renderMaterial: {fileID: 0}
+          tintColor: {r: 1, g: 1, b: 1, a: 1}
+          useTint: 0
+      range_manual:
+        range2D: {x: 0, y: 0, z: 1}
+        range3D: {x: -1, y: 5, z: 6}
+        depthDelta: 0
+      range_auto:
+        range2D: {x: 0, y: 0, z: 1}
+        range3D: {x: 0, y: 0.4775, z: 0.4775}
+        depthDelta: 0.022499999
+      range_default:
+        range2D: {x: 0, y: 0, z: 1}
+        range3D: {x: 0, y: 1, z: 1}
+        depthDelta: 0
+      range_2D_dependency:
+        range2D: {x: -4085, y: 829, z: 4915}
+        range3D: {x: -1, y: 5, z: 6}
+        depthDelta: 0
+      needsToRefreshTemporalData: 0
+      tintFromMaterial: {r: 0.8791793, g: 0.017688865, b: 0.84239054, a: 1}
+      group: {fileID: 11400000, guid: 1731709ae19057f43ab5a6591ae0ddec, type: 2}
+    - enabled: 1
+      unfolded: 0
+      hasDifferencesWithBaseGroupSettings: 0
+      groupSettingsDataSource: 0
+      overrideGroupData:
+        distributionType: 1
+        sequenceType: 1
+        relativeOffsetMin: 0
+        relativeOffsetMax: 0
+        absoluteOffsetMin: 0
+        absoluteOffsetMax: 0
+        scaleData:
+          scaleType: 0
+          scaleByListData:
+            scales:
+            - {x: 1, y: 1, z: 1}
+        minScale: 0.5
+        maxScale: 2
+        useProportionalScale: 1
+        vecMinScale: {x: 1, y: 1, z: 1}
+        vecMaxScale: {x: 1, y: 1, z: 1}
+        useFixedRotation: 0
+        fixedRotationAngle: 90
+        emptyDistanceToEdges: 0
+        mirrorWallDecorations: 1
+        continuousDistributionSettings:
+          margin: 0
+          emptyDistanceToEdges: 0
+        randomDistributionSettings:
+          density: 4.47
+          emptyDistanceToEdges: 0
+        evenlyDistributionSettings:
+          distributionType: 1
+          distributedAmount: 10
+          emptyDistanceToEdges: 0
+        distanceDistributionSettings:
+          distance: 1
+          startAt: 0
+          coverage: 0
+          emptyDistanceToEdges: 0
+          distributionType: 1
+        amountLimitData:
+          amountLimitType: 0
+        renderOptions:
+          setGameObjectLayer: 0
+          setGameObjectTag: 0
+          renderOrderType: 1
+          sortLayers:
+            layer: 0
+            sortingLayerId: 0
+            orderInLayerMin: 0
+            orderInLayerMax: 0
+            useSortingGroupsForObjects: 1
+          sort3D:
+            depthDelta: 0
+            depthMin: 0
+            depthMax: 10
+          renderMaterial: {fileID: 0}
+          tintColor: {r: 1, g: 1, b: 1, a: 1}
+          useTint: 0
+      range_manual:
+        range2D: {x: 0, y: 0, z: 1}
+        range3D: {x: 0, y: 10, z: 10}
+        depthDelta: 0
+      range_auto:
+        range2D: {x: 0, y: 0, z: 1}
+        range3D: {x: 0.5, y: 0.9775, z: 0.47750002}
+        depthDelta: 0.022499999
+      range_default:
+        range2D: {x: 0, y: 0, z: 1}
+        range3D: {x: 0, y: 1, z: 1}
+        depthDelta: 0
+      range_2D_dependency:
+        range2D: {x: -8180, y: 10, z: 8191}
+        range3D: {x: 0, y: 10, z: 10}
+        depthDelta: 0
+      needsToRefreshTemporalData: 0
+      tintFromMaterial: {r: 0.010549915, g: 1, b: 0.68341696, a: 1}
+      group: {fileID: 11400000, guid: a580ad24f57cc1a4999da836bd76480b, type: 2}

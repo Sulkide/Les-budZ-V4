@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 74521f229d26a5f468cac3ba5d559cb2
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 259830
+  packageName: Importer for GIMP Image Files
+  packageVersion: 1.0.0
+  assetPath: Assets/Importer for GIMP Image Files/Third-Party Notices.txt
+  uploadId: 614602

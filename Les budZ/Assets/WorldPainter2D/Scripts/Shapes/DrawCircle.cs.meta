@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 09aec8b01415f41418a8509d3aa4d452
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207836
+  packageName: World Painter 2D
+  packageVersion: 1.1.0
+  assetPath: Assets/WorldPainter2D/Scripts/Shapes/DrawCircle.cs
+  uploadId: 572757

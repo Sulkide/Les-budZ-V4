@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5d06795e351175c4f91d50faa7515800
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/Shaders/WaterMaskEraser.shader
+  uploadId: 441518

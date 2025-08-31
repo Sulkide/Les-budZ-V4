@@ -1,0 +1,230 @@
+Spline Terrain 2D
+
+2D Level design / Level Management Plugin package.
+
+Official website
+https://www.kolibri2d.com
+
+Youtube - videos and tutorials
+https://www.youtube.com/channel/UC8wXAnAbD-F5fi2aAydz9cA
+
+Facebook
+https://www.facebook.com/Kolibri2d-1663188937091175/
+
+. . . . . . . . . . . . . . .     GENERAL INFORMATION ABOUT THE CONTENT     . . . . . . . . . . . . . . . 
+
+COMPONENTS:
+
+	- BEZIER SPLINE
+		Defines a spline ("shape").
+	
+	- TERRAIN2D
+		Applies Terrain2D Materials to splines.
+		Controls local color Tint, material and toggles colliders creation (if defined in the material) for the current spline.
+	
+	- SPLINE DECORATOR
+		Applies Decoration Materials to splines.
+		Controls local color Tint and render materials for elements instantiated along the current spline.
+	
+	- QUICK DECORATOR
+		Same behavior than Spline decorator, but does not require a Decorator material. 
+		Intended for decorations that will not occur often, thus creating a material wouldn't be recommended 
+
+	- SPLINE WATER
+		Creates a mesh that reacts on contact with other physic objects.
+		Creates necessary Colliders to detect physics.
+		Simulates fluid surface and density, as well as adding forces during contact.
+		Warning: Settings wrong values to Surface settings can create errors on runtime, 
+		to avoid that, set a limit on your physics or visuals, and if happens, just Re-Build the mesh.
+		
+	- SPLINE TEXTURE
+		optional: Creates a mesh around a spline with a lot of render options
+		optional: instantiate any gameObject at the beggining of the Spline  
+		optional: instantiate any gameObject at the end of the Spline
+		Auto adjust scale, position and rotation of created objects to behave like a single smarter object
+
+	- SPLINE MODIFIER WITH CALLBACKS
+		Is an empty template for extending the code. Already setup for receiving callbacks when the spline is modified.
+		Just implement the "ImmediateCallback" and/or "OnUpdateCallback" functions. More specific info at Official website.	
+	
+
+DATA:
+	
+	Every data is a ScriptableObject.
+
+	- TERRAIN2D MATERIAL 
+		Contains the references to sprites, materials, physics materials, physics settings and graphics settings.
+		These settings can be applied to splines to create meshes and colliders.
+		This style can be replicated on any Spline.
+		By modifying the material automatically updates every spline that uses the material (if active/enabled).
+
+	- TERRAIN2D ARCHITECTURE ANGLES
+		Defines rules about which part of spline is considered Ground, or Wall, or Ceiling.
+		It modifies the output of the Materials.
+		
+	- DECORATION MATERIAL
+		A collection of Decoration Groups.
+		By modifying the material automatically updates every spline that uses the material (if active/enabled).
+		This style (or collection of styles) can be replicated on any Spline
+		
+	- DECORATION GROUP
+		Contains references to assets and rules about how each element should be multiple times instantiated along a spline
+		These settings can be applied to splines to instantiate thousands of Assets.
+		Works with any asset (sprites, prefabs, lights, cameras, etc) 
+
+
+SHADERS:
+
+	Particles-Alpha Blended-Layers.shader:
+		Is a copy from the standard "Particles/Alpha Blended" shader that allows Sorting Layers render. This shader is affected by Fog
+	Sprite-Diffuse-Layers.shader
+		Is a copy from the standard "Sprite/Diffuse" shader that allows Sorting Layerss render. This shader is affected by Lights
+
+	
+CREATING SPLINES:
+
+	The next video explains this CREATING SPLINE section, perhaps you preffer to watch it instead of reading.
+	https://www.youtube.com/watch?v=BP_GV7EiGsM	
+	
+	from Menu:            Tools / Kolibri2D / Spline (variants)
+	You can add manually components or you can select the variant from the menu.
+	
+	* To add points in scene, your Scene View MUST BE IN 2D-VIEW and EDIT POINTS MODE enabled
+	
+	1- Click on EDIT to edit the spline points in the scene
+	2- To create a point, click on scene when the guides are visible
+	3- To delete a point select the point(s) and press [SUPR] or [DELETE]
+		
+	ADVANCED:
+	
+		SPLINE CONTROLS:
+			- auto tangent - toggles between the traditional bezier control and the automatic control. You can notice that when a point moves...
+							also its tangent changes direction and length with it, searching for the most natural curve.
+
+			- Once you move manually the tangent points, it will remember your change, avoiding auto adjustments.
+			- The color in the Inspector changes when a value a is not the default so you can spot the difference easily.
+			- If you want to reset the values to default, you can drag values to 0 or use the mini button on the right side
+	
+		SMOOTHNESS:
+			Smooth is a property I created to modify the shape in an easy way.
+			This slider controls the length of every tangent point on the spline (except for those you specifically changed)
+		
+		SHAPE TAB:
+			
+			- When you select points, you can see its most basic properties in this tab.
+			- EDIT POINTS mode also can be toggled by pressing [SPACE BAR] or [ENTER] or [INTRO]
+			- auto Tangents on move auto-adjusts the  bezier control points (tangents) to create natural curves.
+			- Smoothness controls the GENERAL length of each tangent point. 
+				Moving the slider changes the appereance of the shape, making it totally squared or curved or anything between.
+			- Multiple points can be selected or unselected by pressing [SHIFT] or [CONTROL]
+				(works much nicer when auto-select-point is enabled)
+			- Moving points is also possible in 3D-VIEW, and editing values can be done also from inspector 
+			
+		POINTS TAB:
+		
+			- Displays ALL the information for each point.
+			- Allows you to set any value to every point in 1 click
+				(align to any axis, tangent modes, subdivisions, smoothness)
+			- When this tab is selected, all the tangents of the spline will be displayed on scene
+			- You can customize the view to display only the information taht you need, avoiding large inspectors.
+			- Also is another way to select points by index
+				
+		QUALITY TAB:
+		
+			Subidividing the spline is the easies way you can control the amount of meshes the terrain and textures will be subdivided.
+			Also defines the physics collider's geometries. Allowing you to set the vertex & polygon count you want.
+						
+			CONSTANT MODE:
+				
+				- Every segment of the Spline will be subdivided in the amount of subidivisions you select.
+			
+			AUTO MODE:
+				
+				- This mode tries to find the best subdivsion value for each segment of the 
+					spline, depending on the geometry of it.
+				- 3 default levels: LOW, MID, HI
+				
+				USER DEFINED QUALITY:
+				
+					- There are several value multipliers that you can customize. This values controls directly
+						the conditions to subdivide each segment based on its geometry.
+						Example:  	"Straight Segment Multiplier" = 0
+									This multiplier will take effect when a segment is a rect line from one segment to the other.
+									In this case we can stablish to create a single segment to keep the vertex count low. 
+					
+					- Modifying the values of these multipliers will also affect the LOW, MID & HIGH quality.
+				
+		DEFINING SPLINE GLOBAL VALUES:
+
+		SETTINGS
+	
+	In settings tab you can customize many things on the behavior and interface and also set the default values for new points or splines
+
+	- Customize the size of handles	- You can 
+	- Square or Linear Tangents 	- Changes the point handles in the scene view. Displaying a Square handle only for Linear tangents, making it easier to recognize.
+	- Points always visible 		- select if you preffer the points to be always visible or only durin EDIT MODE
+	- Auto select. 					- When AUTO SELECT it is enabled, the points are selected by positioning the mouse is on top of it, making the edition a bit faster
+	
+	
+	Most of the time you want the same quality and characteristics for your scenario.
+	
+	So The Default Tangent Mode, Smoothness and Quality selected in this tab, allows you to set those default characteristics.
+	The values you define this area, will be the default values for every new point or spline you create.
+	This does not affect anything that is already created, its just the starting values for next terrains.
+	These values are global and they can be changed by any spline.
+	
+CREATING MATERIALS:
+
+	TERRAIN2D
+	
+		from menu:          Tools / Kolibri2D / Create Data / Terrain2D Material
+		from Project Tab    Kolibri2D / Decoration Material
+		
+		Sprites used for terrain should set it's texture's WRAP MODE (on the texture inspector) to REPEAT  
+	
+		1- Drag your sprites into the correspondant slot (Ground, Wall, Ceiling of Fill)
+		2- Under the Colliders Section, you can toggle physics settings for the terrain
+
+		ADVANCED;
+			- You can add rotation to the slot for avoiding duplicated sprites
+			- Tile mode adaptative scales the mesh texture to always show complete sprites
+			- Additional corner sprites can be added (and toggled)
+			- By default corner sprites are shown as sprites, but can also be rendered as mesh using the selected shader
+			- General settings :
+			- width of the terrain sprites
+			- offset from the spline towards or away from the spline
+			- toggle Splith paths to join segments to each other by distorting the edges, or to keep independent edges 
+			- Material to use on the created terrains
+			- Set Layer and Order in Layer to avoid overlapping and Z-fighting glitches
+
+			
+	DECORATION MATERIAL
+	
+		from Menu:          Tools / Kolibri2D / Create Data / Decoration Material
+		from Project Tab    Kolibri2D / Decoration Material
+		
+		1- Create new group
+		2- Drag your assets in the corespondant slot ( Ground, Wall, Ceiling)
+
+		ADVANCED:
+			- select scale (or range of scales) that your instantiated assets will have
+			- select offset from the spline towards or away from the spline (offset is a PERCENT of the size of each object)
+			- select the positions settings ( Random or continuous ) 
+			- Continuous defines how much space, margin, should be between each object. (as a PERCENT of the size of each object) 
+			- Random positions defines a density.
+			- Set Layer and Order in Layer to avoid overlapping and Z-fighting glitches
+			- Set a maximum amount of allowed instantiated objects
+
+		
+MY SUGGESTIONS:
+
+	- Most of the SLIDERS just move between sugested values, but THIS DOES NOT represent the actual limits of the values.
+	- I recomend to keep Decoration group as independent as possible, only containing sprites or prefabs related to each other.
+		Dont create several similar groups, you can reuse them in other materials.
+		The more unique the content of each group is, the more you productivity you increase.
+	- I strongly suggest you to explore the full potential of Architecture angles, since it can multiply drastically the usage of each material
+		
+
+Developer
+Yeshua Padilla
+

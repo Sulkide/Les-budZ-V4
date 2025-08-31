@@ -1,0 +1,1104 @@
+fileFormatVersion: 2
+guid: 76cc2a6a2181bf641b4e07769f9863a1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4822737363418714362
+    second: sols2_0
+  - first:
+      213: 2010697875995795064
+    second: sols2_1
+  - first:
+      213: 2979872724989395717
+    second: sols2_2
+  - first:
+      213: -3161285555672380045
+    second: sols2_3
+  - first:
+      213: -663803629760763122
+    second: sols2_4
+  - first:
+      213: -8092414725812363125
+    second: sols2_5
+  - first:
+      213: 6180863148907725686
+    second: sols2_6
+  - first:
+      213: -7368128785422577260
+    second: sols2_7
+  - first:
+      213: 8917575113398055293
+    second: sols2_8
+  - first:
+      213: 4650506833691136256
+    second: sols2_9
+  - first:
+      213: 5142155559286960297
+    second: sols2_10
+  - first:
+      213: -2129314459115857593
+    second: sols2_11
+  - first:
+      213: -3840284568389010370
+    second: sols2_12
+  - first:
+      213: -1708228617736803714
+    second: sols2_13
+  - first:
+      213: 2889270420148661121
+    second: sols2_14
+  - first:
+      213: 6182410540181121321
+    second: sols2_15
+  - first:
+      213: 1467085269069543723
+    second: sols2_16
+  - first:
+      213: 6447731122849039288
+    second: sols2_17
+  - first:
+      213: -8250220363059061561
+    second: sols2_18
+  - first:
+      213: 5852804284831000915
+    second: sols2_19
+  - first:
+      213: -838351887715004069
+    second: sols2_20
+  - first:
+      213: -7111785424125603354
+    second: sols2_21
+  - first:
+      213: -4108548842712908081
+    second: sols2_22
+  - first:
+      213: 219979549173311098
+    second: sols2_23
+  - first:
+      213: 5638403526139284992
+    second: sols2_24
+  - first:
+      213: 7149139159902435891
+    second: sols2_25
+  - first:
+      213: 7321834864742167072
+    second: sols2_26
+  - first:
+      213: -2612233034320557303
+    second: sols2_27
+  - first:
+      213: -1796950120112235554
+    second: sols2_28
+  - first:
+      213: 6119444103014968567
+    second: sols2_29
+  - first:
+      213: -7170628823518347245
+    second: sols2_30
+  - first:
+      213: -9129533969961616369
+    second: sols2_31
+  - first:
+      213: 3450243863334286901
+    second: sols2_32
+  - first:
+      213: 1195431876560010919
+    second: sols2_33
+  - first:
+      213: -5047513479330719123
+    second: sols2_34
+  - first:
+      213: -5089683276623893377
+    second: sols2_35
+  - first:
+      213: -3296274967958119004
+    second: sols2_36
+  - first:
+      213: 4376889019083466609
+    second: sols2_37
+  - first:
+      213: 6939248449872017080
+    second: sols2_38
+  - first:
+      213: -5435425893679991602
+    second: sols2_39
+  - first:
+      213: -6994761925577105071
+    second: sols2_40
+  - first:
+      213: 3386843821590294068
+    second: sols2_41
+  - first:
+      213: -4860683979812259263
+    second: sols2_42
+  - first:
+      213: -8491681871570524245
+    second: sols2_43
+  - first:
+      213: 4392396040037997058
+    second: sols2_44
+  - first:
+      213: -2719616662265013124
+    second: sols2_45
+  - first:
+      213: -7204513995322253655
+    second: sols2_46
+  - first:
+      213: -4655050647186164139
+    second: sols2_47
+  - first:
+      213: 7097992069163168302
+    second: sols2_48
+  - first:
+      213: -3785592095336752911
+    second: sols2_49
+  - first:
+      213: 6743331214941576112
+    second: sols2_50
+  - first:
+      213: 6789153346161441006
+    second: sols2_51
+  - first:
+      213: 7997690714251016822
+    second: sols2_52
+  - first:
+      213: -2434324711151240142
+    second: sols2_53
+  - first:
+      213: 709966374236600427
+    second: sols2_54
+  - first:
+      213: 9181516228822638931
+    second: sols2_55
+  - first:
+      213: 1214214230754885894
+    second: sols2_56
+  - first:
+      213: 8948998652990415392
+    second: sols2_57
+  - first:
+      213: 2836052627324191957
+    second: sols2_58
+  - first:
+      213: 1993507720217359064
+    second: sols2_59
+  - first:
+      213: 2105494656498102094
+    second: sols2_60
+  - first:
+      213: 5958402237973434602
+    second: sols2_61
+  - first:
+      213: -2165635838188496659
+    second: sols2_62
+  - first:
+      213: -237893379951286525
+    second: sols2_63
+  - first:
+      213: -5973253720201663532
+    second: sols2_64
+  - first:
+      213: -8192287332938981358
+    second: sols2_65
+  - first:
+      213: 575356137325532926
+    second: sols2_66
+  - first:
+      213: -4050965780167646093
+    second: sols2_67
+  - first:
+      213: 1878670466755669784
+    second: sols2_68
+  - first:
+      213: 8520653167078780865
+    second: sols2_69
+  - first:
+      213: 3681805414183361414
+    second: sols2_70
+  - first:
+      213: 995384480244278255
+    second: sols2_71
+  - first:
+      213: 4776650656150281703
+    second: sols2_72
+  - first:
+      213: 4973477993256435280
+    second: sols2_73
+  - first:
+      213: 2240502033873942988
+    second: sols2_74
+  - first:
+      213: 4441096581286126519
+    second: sols2_75
+  - first:
+      213: 5115916576667815934
+    second: sols2_76
+  - first:
+      213: 5481027381754224292
+    second: sols2_77
+  - first:
+      213: 1699282913031988050
+    second: sols2_78
+  - first:
+      213: 6004221946150477698
+    second: sols2_79
+  - first:
+      213: 7620488458093263613
+    second: sols2_80
+  - first:
+      213: 3442075971254570181
+    second: sols2_81
+  - first:
+      213: 3791496242092173498
+    second: sols2_82
+  - first:
+      213: -1820817288450240493
+    second: sols2_83
+  - first:
+      213: -2344303142757268272
+    second: sols2_84
+  - first:
+      213: -8001694188265768932
+    second: sols2_85
+  - first:
+      213: -1337299522210630695
+    second: sols2_86
+  - first:
+      213: -1458550562869766354
+    second: sols2_87
+  - first:
+      213: -8006521941755030746
+    second: sols2_88
+  - first:
+      213: 1022240381686938593
+    second: sols2_89
+  - first:
+      213: -8864724989930777422
+    second: sols2_90
+  - first:
+      213: 2718989582787989918
+    second: sols2_91
+  - first:
+      213: 7726211053571948748
+    second: sols2_92
+  - first:
+      213: 2945078294708368290
+    second: sols2_93
+  - first:
+      213: 362198730650336269
+    second: sols2_94
+  - first:
+      213: -4247160646549071053
+    second: sols2_95
+  - first:
+      213: -2093033323984656058
+    second: sols2_96
+  - first:
+      213: -2313860433139487443
+    second: sols2_97
+  - first:
+      213: 1039411571317108268
+    second: sols2_98
+  - first:
+      213: 23888969809611536
+    second: sols2_99
+  - first:
+      213: 2795558189152367541
+    second: sols2_100
+  - first:
+      213: 2813112628316923043
+    second: sols2_101
+  - first:
+      213: 4334766165374408825
+    second: sols2_102
+  - first:
+      213: 4549133903003608277
+    second: sols2_103
+  - first:
+      213: -5616803262153152909
+    second: sols2_104
+  - first:
+      213: 611393951232474038
+    second: sols2_105
+  - first:
+      213: -4252880321253597960
+    second: sols2_106
+  - first:
+      213: -1791719182735972844
+    second: sols2_107
+  - first:
+      213: 506047799948422797
+    second: sols2_108
+  - first:
+      213: -6567318693988058354
+    second: sols2_109
+  - first:
+      213: 8715641079400266740
+    second: sols2_110
+  - first:
+      213: -2696305946909104494
+    second: sols2_111
+  - first:
+      213: -5342677857313747125
+    second: sols2_112
+  - first:
+      213: -8641438378073773876
+    second: sols2_113
+  - first:
+      213: -2109044350067419485
+    second: sols2_114
+  - first:
+      213: 2734925576884148047
+    second: sols2_115
+  - first:
+      213: 8065205444441825851
+    second: sols2_116
+  - first:
+      213: -3986850128322679173
+    second: sols2_117
+  - first:
+      213: 8113638932990870537
+    second: sols2_118
+  - first:
+      213: -1420979145017070748
+    second: sols2_119
+  - first:
+      213: -4482522251455640744
+    second: sols2_120
+  - first:
+      213: -5175015397182567481
+    second: sols2_121
+  - first:
+      213: -1197843212232679830
+    second: sols2_122
+  - first:
+      213: 4117246693740437476
+    second: sols2_123
+  - first:
+      213: 8575815962428820803
+    second: sols2_124
+  - first:
+      213: -1177177112335328444
+    second: sols2_125
+  - first:
+      213: -9133261225692827345
+    second: sols2_126
+  - first:
+      213: 289016183272116439
+    second: sols2_127
+  - first:
+      213: -6347645229765484117
+    second: sols2_128
+  - first:
+      213: 2755567882110275672
+    second: sols2_129
+  - first:
+      213: 7646945802666432471
+    second: sols2_130
+  - first:
+      213: 4803233350630412728
+    second: sols2_131
+  - first:
+      213: 8024283080192942554
+    second: sols2_132
+  - first:
+      213: -8455396827508339155
+    second: sols2_133
+  - first:
+      213: -6011251586225809644
+    second: sols2_134
+  - first:
+      213: -2293097681204487381
+    second: sols2_135
+  - first:
+      213: -7848849176257326327
+    second: sols2_136
+  - first:
+      213: -8896269751246961562
+    second: sols2_137
+  - first:
+      213: -4545388985369948800
+    second: sols2_138
+  - first:
+      213: -5960621916849792903
+    second: sols2_139
+  - first:
+      213: 4918533885205562171
+    second: sols2_140
+  - first:
+      213: -8989866192734762430
+    second: sols2_141
+  - first:
+      213: 406764169826663950
+    second: sols2_142
+  - first:
+      213: -2554238985065613803
+    second: sols2_143
+  - first:
+      213: -814481618305767269
+    second: sols2_144
+  - first:
+      213: 2713018457745200371
+    second: sols2_145
+  - first:
+      213: 8927557867041725030
+    second: sols2_146
+  - first:
+      213: 4838983778054336895
+    second: sols2_147
+  - first:
+      213: -2445639051789018139
+    second: sols2_148
+  - first:
+      213: -7749699822645251162
+    second: sols2_149
+  - first:
+      213: 5473884274945668123
+    second: sols2_150
+  - first:
+      213: -3050928155489036264
+    second: sols2_151
+  - first:
+      213: 8833704098393473088
+    second: sols2_152
+  - first:
+      213: 7955829597262153139
+    second: sols2_153
+  - first:
+      213: -6107842104630425874
+    second: sols2_154
+  - first:
+      213: 1718216711860833700
+    second: sols2_155
+  - first:
+      213: -1987190420019843083
+    second: sols2_156
+  - first:
+      213: 5333870324357894061
+    second: sols2_157
+  - first:
+      213: -3112915194933135069
+    second: sols2_158
+  - first:
+      213: 2896348980830928486
+    second: sols2_159
+  - first:
+      213: -305475651720418142
+    second: sols2_160
+  - first:
+      213: -1178451345274940917
+    second: sols2_161
+  - first:
+      213: -1700659574212580535
+    second: sols2_162
+  - first:
+      213: -6658575907129675095
+    second: sols2_163
+  - first:
+      213: -7724023631435250241
+    second: sols2_164
+  - first:
+      213: -2631144128250886694
+    second: sols2_165
+  - first:
+      213: 5346820613036173779
+    second: sols2_166
+  - first:
+      213: -8415716486444169703
+    second: sols2_167
+  - first:
+      213: 345585443377163232
+    second: sols2_168
+  - first:
+      213: 4765899563073710010
+    second: sols2_169
+  - first:
+      213: 4381922856289244774
+    second: sols2_170
+  - first:
+      213: 973553744203747544
+    second: sols2_171
+  - first:
+      213: 1851455782569582022
+    second: sols2_172
+  - first:
+      213: -3223693007963561510
+    second: sols2_173
+  - first:
+      213: -7940751115382836161
+    second: sols2_174
+  - first:
+      213: 3933509736155347939
+    second: sols2_175
+  - first:
+      213: 6437026591838320764
+    second: sols2_176
+  - first:
+      213: -8466362019036626530
+    second: sols2_177
+  - first:
+      213: 2388357156240835981
+    second: sols2_178
+  - first:
+      213: 1793883038869791344
+    second: sols2_179
+  - first:
+      213: -4749209394992461092
+    second: sols2_180
+  - first:
+      213: 895893317794082070
+    second: sols2_181
+  - first:
+      213: -2255916825485172913
+    second: sols2_182
+  - first:
+      213: -7798963869064690880
+    second: sols2_183
+  - first:
+      213: -2113704664306084078
+    second: sols2_184
+  - first:
+      213: -5280394504971647487
+    second: sols2_185
+  - first:
+      213: 5669435160346514637
+    second: sols2_186
+  - first:
+      213: -4761820234043180789
+    second: sols2_187
+  - first:
+      213: 6978927280683110739
+    second: sols2_188
+  - first:
+      213: -33466009012403269
+    second: sols2_189
+  - first:
+      213: 4013717893630257074
+    second: sols2_190
+  - first:
+      213: -6180780733822985036
+    second: sols2_191
+  - first:
+      213: 6131945626065124871
+    second: sols2_192
+  - first:
+      213: -2944689450824176554
+    second: sols2_193
+  - first:
+      213: -2351028866970532505
+    second: sols2_194
+  - first:
+      213: 6422175804577755961
+    second: sols2_195
+  - first:
+      213: -771885502208471276
+    second: sols2_196
+  - first:
+      213: 2794803506811838148
+    second: sols2_197
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sols2_0
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 3712
+        width: 488
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b50ec05c59b1c8d4c9e08e5e6cf1a1f3
+      internalID: 1439144128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_1
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 3755
+        width: 404
+        height: 286
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f73e7d42b99e314fb78975fe53af18a
+      internalID: 778442444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_3
+      rect:
+        serializedVersion: 2
+        x: 2545
+        y: 3612
+        width: 249
+        height: 297
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53cc4b509954b6641a41991f6acf4712
+      internalID: -2035022285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_4
+      rect:
+        serializedVersion: 2
+        x: 2952
+        y: 3536
+        width: 218
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a701abe82ebd95445894a30c7fe86811
+      internalID: 1366162278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_6
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 3594
+        width: 280
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47b025bf97346914fadeeb8a7aa9500d
+      internalID: -1003925895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_7
+      rect:
+        serializedVersion: 2
+        x: 2251
+        y: 3580
+        width: 247
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3c81e3c5d381414491684e83ecef25c
+      internalID: -1156690498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_11
+      rect:
+        serializedVersion: 2
+        x: 2148
+        y: 3770
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 792cb3d846fd21d4498c3cd33663b723
+      internalID: -953993528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_14
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 3428
+        width: 252
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c40c18b8cbdcdc944ad384be14f12b0d
+      internalID: 1668012341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_16
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 3336
+        width: 187
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b2ae41e6e4c9b499c44d8cb53fc824
+      internalID: -1364699846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1771
+        width: 711
+        height: 676
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d91f41d085fc1f641919aba6825b9605
+      internalID: -10789980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_21
+      rect:
+        serializedVersion: 2
+        x: 1726
+        y: 1776
+        width: 367
+        height: 759
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 249e372dd7b52004786f874fa47e13a7
+      internalID: -717287546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_31
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 324
+        width: 846
+        height: 1003
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd27effe3dd61c44baedc709bde38a99
+      internalID: -601831088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_35
+      rect:
+        serializedVersion: 2
+        x: 3189
+        y: 356
+        width: 672
+        height: 1023
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b279b892e2bf77428dfbf3c54ff88b7
+      internalID: 339767790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_36
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 480
+        width: 732
+        height: 699
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc523f2ee8e848a498a0bd283926d657
+      internalID: -1514537165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_39
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 316
+        width: 700
+        height: 945
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd0bebccea69ff84d8d65e12973d571b
+      internalID: 1118270525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sols2_40
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 318
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ced980f109534f24b8cdc4b799b9c6ab
+      internalID: -985202030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a3e2d290cf7773c4cb543df8c4294ef1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sols2_0: 1439144128
+      sols2_1: 778442444
+      sols2_10: 1296556736
+      sols2_11: -953993528
+      sols2_12: 2051947746
+      sols2_13: 995877643
+      sols2_14: 1668012341
+      sols2_15: -477986630
+      sols2_16: -1364699846
+      sols2_17: -940895010
+      sols2_18: -1369978660
+      sols2_19: -1928190285
+      sols2_2: 2117876324
+      sols2_20: -10789980
+      sols2_21: -717287546
+      sols2_22: -1495599134
+      sols2_23: 1460187975
+      sols2_24: 857653709
+      sols2_25: 2000045848
+      sols2_26: 2025373882
+      sols2_27: -577765264
+      sols2_28: 1202921680
+      sols2_29: 904973779
+      sols2_3: -2035022285
+      sols2_30: -1356820140
+      sols2_31: -601831088
+      sols2_32: 113611526
+      sols2_33: -735920883
+      sols2_34: 1697545514
+      sols2_35: 339767790
+      sols2_36: -1514537165
+      sols2_37: 1888773259
+      sols2_38: 77783094
+      sols2_39: 1118270525
+      sols2_4: 1366162278
+      sols2_40: -985202030
+      sols2_5: -586883419
+      sols2_6: -1003925895
+      sols2_7: -1156690498
+      sols2_8: -87683378
+      sols2_9: 1125019621
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

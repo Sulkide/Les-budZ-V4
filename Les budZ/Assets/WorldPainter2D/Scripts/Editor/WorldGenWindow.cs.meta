@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 340ff3907bab9f845ba725655e312571
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207836
+  packageName: World Painter 2D
+  packageVersion: 1.1.0
+  assetPath: Assets/WorldPainter2D/Scripts/Editor/WorldGenWindow.cs
+  uploadId: 572757

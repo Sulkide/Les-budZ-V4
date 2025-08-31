@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e7488ae600214ce44b04b6ae621f1b55
+timeCreated: 1531217995
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/Demo/Others/brick.prefab
+  uploadId: 441518

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 19993d262b39d98498c3d95b509af903
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207836
+  packageName: World Painter 2D
+  packageVersion: 1.1.0
+  assetPath: Assets/WorldPainter2D/Scripts/Utils/WorldPainterShapeParent.cs
+  uploadId: 572757

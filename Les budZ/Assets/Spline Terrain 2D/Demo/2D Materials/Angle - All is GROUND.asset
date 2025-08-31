@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1497928425, guid: 43a5fa02365e7f543aff50c021fc3bb0, type: 3}
+  m_Name: Angle - All is GROUND
+  m_EditorClassIdentifier: 
+  maxGroundAngle: 65
+  maxCeilingAngle: 46
+  replaceSegments: 1
+  replaceGroundWith: 0
+  replaceWallsWith: 0
+  replaceCeilingWith: 0

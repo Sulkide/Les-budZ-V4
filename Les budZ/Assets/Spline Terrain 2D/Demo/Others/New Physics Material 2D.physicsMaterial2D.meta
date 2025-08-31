@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e4dcdae4266a5244a8a2a2d43751403c
+timeCreated: 1537889627
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 6200000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/Demo/Others/New Physics Material 2D.physicsMaterial2D
+  uploadId: 441518

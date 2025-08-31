@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1760942864, guid: 43a5fa02365e7f543aff50c021fc3bb0, type: 3}
+  m_Name: CANNES 01
+  m_EditorClassIdentifier: 
+  disabledForEveryone: 0
+  groupData:
+    distributionType: 1
+    sequenceType: 1
+    relativeOffsetMin: 0.45
+    relativeOffsetMax: 0.5
+    absoluteOffsetMin: 0
+    absoluteOffsetMax: 0
+    scaleData:
+      scaleType: 0
+      scaleByListData:
+        scales:
+        - {x: 1, y: 1, z: 1}
+    minScale: 0.25
+    maxScale: 0.75
+    useProportionalScale: 1
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    useFixedRotation: 0
+    fixedRotationAngle: 90
+    emptyDistanceToEdges: 0
+    mirrorWallDecorations: 1
+    continuousDistributionSettings:
+      margin: 0
+      emptyDistanceToEdges: 0
+    randomDistributionSettings:
+      density: 0.5
+      emptyDistanceToEdges: 0
+    evenlyDistributionSettings:
+      distributionType: 1
+      distributedAmount: 10
+      emptyDistanceToEdges: 0
+    distanceDistributionSettings:
+      distance: 1
+      startAt: 0
+      coverage: 0
+      emptyDistanceToEdges: 0
+      distributionType: 1
+    amountLimitData:
+      amountLimitType: 0
+    renderOptions:
+      setGameObjectLayer: 0
+      setGameObjectTag: 0
+      renderOrderType: 0
+      sortLayers:
+        layer: 0
+        sortingLayerId: 0
+        orderInLayerMin: 0
+        orderInLayerMax: 0
+        useSortingGroupsForObjects: 1
+      sort3D:
+        depthDelta: 0
+        depthMin: 0
+        depthMax: 1
+      renderMaterial: {fileID: 0}
+      tintColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+      useTint: 0
+  grounds:
+  - name: deco - cannes_01_GIMP_0
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 8145665025503472614, guid: c5106692fb7af234cbf511d2bcc36900, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: deco - cannes_01_GIMP_1
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 5616388694958121335, guid: 0d612d126f44c714d80aa72429a63cc8, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  ceilings: []
+  walls: []
+  leftWalls: []
+  decorationsGroupsMode: 0

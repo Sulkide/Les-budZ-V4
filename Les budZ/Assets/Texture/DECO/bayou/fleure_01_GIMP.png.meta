@@ -1,0 +1,535 @@
+fileFormatVersion: 2
+guid: 460e2870b6f37ee4b9e517cf1ca10c3b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2534917824796698597
+    second: fleure_01_GIMP_0
+  - first:
+      213: -7725467370198844758
+    second: fleure_01_GIMP_1
+  - first:
+      213: -2687500673478302525
+    second: fleure_01_GIMP_2
+  - first:
+      213: 8650989401248967255
+    second: fleure_01_GIMP_3
+  - first:
+      213: 7289114221681037856
+    second: fleure_01_GIMP_4
+  - first:
+      213: 6142450439143337228
+    second: fleure_01_GIMP_5
+  - first:
+      213: 8589448404801207881
+    second: fleure_01_GIMP_6
+  - first:
+      213: -4898250338689507879
+    second: fleure_01_GIMP_7
+  - first:
+      213: -1235450130923918708
+    second: fleure_01_GIMP_8
+  - first:
+      213: 791556474969351759
+    second: fleure_01_GIMP_9
+  - first:
+      213: 477018886523911504
+    second: fleure_01_GIMP_10
+  - first:
+      213: 6293090502799863408
+    second: fleure_01_GIMP_11
+  - first:
+      213: 7109039037944849592
+    second: fleure_01_GIMP_12
+  - first:
+      213: -1702789003930144149
+    second: fleure_01_GIMP_13
+  - first:
+      213: -5769730494963894319
+    second: fleure_01_GIMP_14
+  - first:
+      213: -4415006568651647377
+    second: fleure_01_GIMP_15
+  - first:
+      213: -5678791564691166255
+    second: fleure_01_GIMP_16
+  - first:
+      213: -5663200028818847662
+    second: fleure_01_GIMP_17
+  - first:
+      213: 5714670251571849098
+    second: fleure_01_GIMP_18
+  - first:
+      213: 4644498699195384204
+    second: fleure_01_GIMP_19
+  - first:
+      213: 1472190263978857521
+    second: fleure_01_GIMP_20
+  - first:
+      213: 6039175500500856222
+    second: fleure_01_GIMP_21
+  - first:
+      213: 5323742488096542374
+    second: fleure_01_GIMP_22
+  - first:
+      213: -8695985061949601047
+    second: fleure_01_GIMP_23
+  - first:
+      213: 2486086324387427559
+    second: fleure_01_GIMP_24
+  - first:
+      213: 4069496547059563433
+    second: fleure_01_GIMP_25
+  - first:
+      213: 8889266018508164722
+    second: fleure_01_GIMP_26
+  - first:
+      213: -1716764380277534552
+    second: fleure_01_GIMP_27
+  - first:
+      213: -4121443547150628024
+    second: fleure_01_GIMP_28
+  - first:
+      213: -6192955008530064011
+    second: fleure_01_GIMP_29
+  - first:
+      213: 8880187617349114951
+    second: fleure_01_GIMP_30
+  - first:
+      213: 8190101444335279837
+    second: fleure_01_GIMP_31
+  - first:
+      213: 8315382027644444086
+    second: fleure_01_GIMP_32
+  - first:
+      213: 4378394843397734846
+    second: fleure_01_GIMP_33
+  - first:
+      213: -1019037382499332201
+    second: fleure_01_GIMP_34
+  - first:
+      213: -6432568160966679335
+    second: fleure_01_GIMP_35
+  - first:
+      213: -4730573751909388565
+    second: fleure_01_GIMP_36
+  - first:
+      213: -871384837006452032
+    second: fleure_01_GIMP_37
+  - first:
+      213: -2057951143419503026
+    second: fleure_01_GIMP_38
+  - first:
+      213: -792053443096900395
+    second: fleure_01_GIMP_39
+  - first:
+      213: 5671273456649249450
+    second: fleure_01_GIMP_40
+  - first:
+      213: -3482346559118534545
+    second: fleure_01_GIMP_41
+  - first:
+      213: -6301139221396327151
+    second: fleure_01_GIMP_42
+  - first:
+      213: 1626460065014354259
+    second: fleure_01_GIMP_43
+  - first:
+      213: -4722982148888514281
+    second: fleure_01_GIMP_44
+  - first:
+      213: 9209872300456592233
+    second: fleure_01_GIMP_45
+  - first:
+      213: 7223973261723715645
+    second: fleure_01_GIMP_46
+  - first:
+      213: 5513640750739152690
+    second: fleure_01_GIMP_47
+  - first:
+      213: -4649291358604534166
+    second: fleure_01_GIMP_48
+  - first:
+      213: 4227473874281605839
+    second: fleure_01_GIMP_49
+  - first:
+      213: -5361866129644818355
+    second: fleure_01_GIMP_50
+  - first:
+      213: 4582957319846479165
+    second: fleure_01_GIMP_51
+  - first:
+      213: 1377145878021325313
+    second: fleure_01_GIMP_52
+  - first:
+      213: -8863845219199426183
+    second: fleure_01_GIMP_53
+  - first:
+      213: 3000208147106289696
+    second: fleure_01_GIMP_54
+  - first:
+      213: 5392991417227338870
+    second: fleure_01_GIMP_55
+  - first:
+      213: -3729729569695008861
+    second: fleure_01_GIMP_56
+  - first:
+      213: 5717232166732881883
+    second: fleure_01_GIMP_57
+  - first:
+      213: 4914830005256602588
+    second: fleure_01_GIMP_58
+  - first:
+      213: -630173594345816388
+    second: fleure_01_GIMP_59
+  - first:
+      213: -1427912477609480234
+    second: fleure_01_GIMP_60
+  - first:
+      213: 4798421944971792503
+    second: fleure_01_GIMP_61
+  - first:
+      213: -2558328978969872761
+    second: fleure_01_GIMP_62
+  - first:
+      213: 8403680761132469443
+    second: fleure_01_GIMP_63
+  - first:
+      213: -3010565691083009524
+    second: fleure_01_GIMP_64
+  - first:
+      213: -8161984213155310731
+    second: fleure_01_GIMP_65
+  - first:
+      213: -8164501876653242852
+    second: fleure_01_GIMP_66
+  - first:
+      213: 608388843914506517
+    second: fleure_01_GIMP_67
+  - first:
+      213: -7147774394488697799
+    second: fleure_01_GIMP_68
+  - first:
+      213: 2325609007650963176
+    second: fleure_01_GIMP_69
+  - first:
+      213: -7923135326754396382
+    second: fleure_01_GIMP_70
+  - first:
+      213: -1336780906347905877
+    second: fleure_01_GIMP_71
+  - first:
+      213: 6212846815495331355
+    second: fleure_01_GIMP_72
+  - first:
+      213: -1672098340782102917
+    second: fleure_01_GIMP_73
+  - first:
+      213: 8762681259334530201
+    second: fleure_01_GIMP_74
+  - first:
+      213: 8542718197137375503
+    second: fleure_01_GIMP_75
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fleure_01_GIMP_0
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 1579
+        width: 285
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e720d1c456dd2320800000000000000
+      internalID: 2534917824796698597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fleure_01_GIMP_1
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 1422
+        width: 330
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaa3d6bab50a9c490800000000000000
+      internalID: -7725467370198844758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fleure_01_GIMP_2
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1485
+        width: 300
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c4e3bf506414bad0800000000000000
+      internalID: -2687500673478302525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fleure_01_GIMP_6
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 1509
+        width: 310
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94eb8b8b0d9d33770800000000000000
+      internalID: 8589448404801207881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fleure_01_GIMP_7
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 673
+        width: 310
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dd997dd44be50cb0800000000000000
+      internalID: -4898250338689507879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fleure_01_GIMP_9
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 649
+        width: 309
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f46653e8b6c2cfa00800000000000000
+      internalID: 791556474969351759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fleure_01_GIMP_12
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 586
+        width: 330
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b46617f65168a260800000000000000
+      internalID: 7109039037944849592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fleure_01_GIMP_13
+      rect:
+        serializedVersion: 2
+        x: 1583
+        y: 743
+        width: 285
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b627d453c6a7e58e0800000000000000
+      internalID: -1702789003930144149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 72f024dc033af9448a9525476ff8bad2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      fleure_01_GIMP_0: 2534917824796698597
+      fleure_01_GIMP_1: -7725467370198844758
+      fleure_01_GIMP_10: 477018886523911504
+      fleure_01_GIMP_11: 6293090502799863408
+      fleure_01_GIMP_12: 7109039037944849592
+      fleure_01_GIMP_13: -1702789003930144149
+      fleure_01_GIMP_2: -2687500673478302525
+      fleure_01_GIMP_3: 8650989401248967255
+      fleure_01_GIMP_4: 7289114221681037856
+      fleure_01_GIMP_5: 6142450439143337228
+      fleure_01_GIMP_6: 8589448404801207881
+      fleure_01_GIMP_7: -4898250338689507879
+      fleure_01_GIMP_8: -1235450130923918708
+      fleure_01_GIMP_9: 791556474969351759
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

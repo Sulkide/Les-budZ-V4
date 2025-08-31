@@ -1,0 +1,227 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1716524988, guid: 43a5fa02365e7f543aff50c021fc3bb0, type: 3}
+  m_Name: Terrain2D - Grass
+  m_EditorClassIdentifier: 
+  scale: 1
+  offset: 0
+  grounds:
+    textureOrder: 0
+    layer: 0
+    materialInfos:
+    - sprite: {fileID: 21300000, guid: 2a88b9b6a2b24384b97fe5d89945327e, type: 3}
+      rotation: 0
+      stretchType: 0
+      stretchValue: 0.5
+      scale: {x: 1, y: 1}
+      offset: {x: 0, y: 0}
+    offset: 0
+  walls:
+    textureOrder: 0
+    layer: 0
+    materialInfos: []
+    offset: 0
+  wallsLeft:
+    textureOrder: 0
+    layer: 0
+    materialInfos: []
+    offset: 0
+  ceilings:
+    textureOrder: 0
+    layer: 0
+    materialInfos: []
+    offset: 0
+  fills:
+    textureOrder: 0
+    layer: 0
+    materialInfos:
+    - sprite: {fileID: 21300000, guid: a4c559077e4e6ed40a0813e824306c06, type: 3}
+      rotation: 0
+      stretchType: 0
+      stretchValue: 0.5
+      scale: {x: 1, y: 1}
+      offset: {x: 0, y: 0}
+    offset: 0
+  useCorners: 1
+  cornersFollowsPath: 0
+  cornerSprites:
+    cornerDisplayType: 0
+    morphCorners: 1
+    restrictCornerCreation: 0
+    morphCornersAngleMin: 30
+    morphCornersAngleMax: 150
+    inTopLeft:
+      spr: {fileID: 0}
+      offset: {x: 0, y: 0}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 0}
+        rotation: 0
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+    inTopRight:
+      spr: {fileID: 0}
+      offset: {x: 0, y: 0}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 0}
+        rotation: 0
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+    inBotLeft:
+      spr: {fileID: 21300000, guid: d109398b6cafbb04c951169e4b4644ff, type: 3}
+      offset: {x: -0.5, y: 0}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 21300000, guid: d109398b6cafbb04c951169e4b4644ff, type: 3}
+        rotation: 0
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: -0.5, y: 0}
+    inBotRight:
+      spr: {fileID: 21300000, guid: ada76d6fff46b1440958adabea565fd4, type: 3}
+      offset: {x: 0.5, y: 0}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 21300000, guid: ada76d6fff46b1440958adabea565fd4, type: 3}
+        rotation: 0
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: 0.5, y: 0}
+    exTopLeft:
+      spr: {fileID: 21300000, guid: d109398b6cafbb04c951169e4b4644ff, type: 3}
+      offset: {x: -0.5, y: 0}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 21300000, guid: d109398b6cafbb04c951169e4b4644ff, type: 3}
+        rotation: 0
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: -0.5, y: 0}
+    exTopRight:
+      spr: {fileID: 21300000, guid: ada76d6fff46b1440958adabea565fd4, type: 3}
+      offset: {x: 0.5, y: 0}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 21300000, guid: ada76d6fff46b1440958adabea565fd4, type: 3}
+        rotation: 0
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: 0.5, y: 0}
+    exBotLeft:
+      spr: {fileID: 0}
+      offset: {x: 0, y: 0}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 0}
+        rotation: 0
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+    exBotRight:
+      spr: {fileID: 0}
+      offset: {x: 0, y: 0}
+      rotation: 0
+      isUsingV2: 1
+      textureInfo:
+        sprite: {fileID: 0}
+        rotation: 0
+        stretchType: 0
+        stretchValue: 0
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+  sortingSettings:
+    renderOrderType: 0
+    groundLayer: 0
+    groundOrder: 3
+    groundZ: 0
+    wallLayer: 0
+    wallOrder: 2
+    wallZ: -0.1
+    leftWallLayer: 0
+    leftWallOrder: 2
+    leftWallZ: -0.1
+    ceilingLayer: 0
+    ceilingOrder: 1
+    ceilingZ: 0
+    fillLayer: 0
+    fillOrder: 0
+    fillZ: 0.1
+    cornersLayer: 0
+    cornerOrder: 4
+    cornerZ: -0.2
+  splitPaths: 1
+  material: {fileID: 2100000, guid: 014124e8fc307aa4497bd1588ba68de4, type: 2}
+  colliderSettings:
+    polygonCollider:
+      enabled: 1
+      material: {fileID: 0}
+      isTrigger: 0
+      usedByEffector: 0
+      usedByComposite: 0
+      radius: 0
+    edgeCollider:
+      enabled: 1
+      material: {fileID: 0}
+      isTrigger: 0
+      usedByEffector: 0
+      usedByComposite: 0
+      radius: 0
+    groundCollider:
+      enabled: 0
+      material: {fileID: 0}
+      isTrigger: 0
+      usedByEffector: 0
+      usedByComposite: 0
+      radius: 0
+    wallCollider:
+      enabled: 0
+      material: {fileID: 0}
+      isTrigger: 0
+      usedByEffector: 0
+      usedByComposite: 0
+      radius: 0
+    leftWallCollider:
+      enabled: 0
+      material: {fileID: 0}
+      isTrigger: 0
+      usedByEffector: 0
+      usedByComposite: 0
+      radius: 0
+    ceilingCollider:
+      enabled: 0
+      material: {fileID: 0}
+      isTrigger: 0
+      usedByEffector: 0
+      usedByComposite: 0
+      radius: 0
+    mirrorWallColliders: 1
+  objectLayer: 0
+  colorFill: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  fillType: 0
+  mirrorWallSprites: 1

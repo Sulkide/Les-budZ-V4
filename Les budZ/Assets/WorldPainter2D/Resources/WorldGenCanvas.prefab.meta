@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a48ccb0c27f0ecf448ef6df62a3ef324
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207836
+  packageName: World Painter 2D
+  packageVersion: 1.1.0
+  assetPath: Assets/WorldPainter2D/Resources/WorldGenCanvas.prefab
+  uploadId: 572757

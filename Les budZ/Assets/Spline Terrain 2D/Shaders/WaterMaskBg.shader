@@ -1,0 +1,78 @@
+﻿Shader "Custom/WaterMaskBg" {		// READER -after writer
+
+// ORDER		:	write <= read
+// Render queue :	write < read
+
+	Properties
+	{
+		[PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
+		_Color("Tint", Color) = (1,1,1,1)
+		[MaterialToggle] PixelSnap("Pixel snap", Float) = 0
+		[HideInInspector] _RendererColor("RendererColor", Color) = (1,1,1,1)
+		[HideInInspector] _Flip("Flip", Vector) = (1,1,1,1)
+		[PerRendererData] _AlphaTex("External Alpha", 2D) = "white" {}
+		[PerRendererData] _EnableExternalAlpha("Enable External Alpha", Float) = 0
+		//[IntRange] _StencilReadMask("Stencil Mask ID", Range(0,255)) = 0
+		[IntRange] _StencilRef("Stencil Reference Value", Range(0,255)) = 0
+	}
+
+		SubShader
+		{
+			Stencil{
+				Ref[_StencilRef]
+				//ReadMask[_StencilReadMask]
+				Comp Equal
+			}
+
+			Tags
+		{
+			"Queue" = "Transparent"
+			"IgnoreProjector" = "True"
+			"RenderType" = "Transparent"
+			"PreviewType" = "Plane"
+			//"CanUseSpriteAtlas" = "True"
+		}
+
+			ZTest Off
+			Cull Off
+			Lighting Off
+			ZWrite Off
+			//ZWrite On
+			//Blend One OneMinusSrcAlpha
+			Blend SrcAlpha OneMinusSrcAlpha
+
+			CGPROGRAM
+	#pragma surface surf Lambert vertex:vert nofog nolightmap nodynlightmap keepalpha noinstancing
+	#pragma multi_compile _ PIXELSNAP_ON
+	#pragma multi_compile _ ETC1_EXTERNAL_ALPHA
+	#include "UnitySprites.cginc"
+
+			struct Input
+		{
+			float2 uv_MainTex;
+			fixed4 color;
+		};
+
+		void vert(inout appdata_full v, out Input o)
+		{
+			v.vertex.xy *= _Flip.xy;
+
+	#if defined(PIXELSNAP_ON)
+			v.vertex = UnityPixelSnap(v.vertex);
+	#endif
+
+			UNITY_INITIALIZE_OUTPUT(Input, o);
+			o.color = v.color * _Color * _RendererColor;
+		}
+
+		void surf(Input IN, inout SurfaceOutput o)
+		{
+			fixed4 c = SampleSpriteTexture(IN.uv_MainTex) * IN.color;
+			o.Albedo = c.rgb * c.a;
+			o.Alpha = c.a;
+		}
+		ENDCG
+		}
+
+			Fallback "Transparent/VertexLit"
+}

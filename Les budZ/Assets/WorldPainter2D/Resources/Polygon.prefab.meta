@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f9b133a2abaffb24e857792c4c2986b8
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207836
+  packageName: World Painter 2D
+  packageVersion: 1.1.0
+  assetPath: Assets/WorldPainter2D/Resources/Polygon.prefab
+  uploadId: 572757

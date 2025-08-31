@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 492b33aa7fd25674681b58295b8f6270
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122383
+  packageName: Spline Terrain 2D
+  packageVersion: 2.5.6
+  assetPath: Assets/Spline Terrain 2D/Shaders/URP shaders 2020/2020 mask shaders/ST2D-mask-invisibleTexture-Lit-2020.mat
+  uploadId: 441518

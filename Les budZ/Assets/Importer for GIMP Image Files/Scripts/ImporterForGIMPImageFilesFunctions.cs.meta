@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4dc81cd48863027429f1853a97295614
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 259830
+  packageName: Importer for GIMP Image Files
+  packageVersion: 1.0.0
+  assetPath: Assets/Importer for GIMP Image Files/Scripts/ImporterForGIMPImageFilesFunctions.cs
+  uploadId: 614602
