@@ -31,6 +31,10 @@ public class EdgeOutlineBuilder : MonoBehaviour
         }
     }
 
+    [Header("Auto-generate")]
+    [SerializeField] bool autoGenerateOnStart = true;       // génère au Start() en Play
+    [SerializeField] bool autoGenerateInEditMode = false;   // (optionnel) génère aussi en Éditeur
+
     // ====== SOURCE ======
     [Header("Source")]
     public MeshFilter sourceMeshFilter; // auto si null
@@ -48,7 +52,7 @@ public class EdgeOutlineBuilder : MonoBehaviour
     public GenerationMode generationMode = GenerationMode.OutlineMesh;
     public OutlineBuildMode buildMode = OutlineBuildMode.Quads;
     public Color outlineColor = Color.black;
-    [Min(0.0001f)] public float worldThickness = 0.01f;
+    [Min(0.0001f)] public float worldThickness = 0.05f;
     [Tooltip("Assigne un matériau asset pour éviter Shader.Find en build.")]
     public Material overrideMaterial;
 
@@ -87,6 +91,16 @@ public class EdgeOutlineBuilder : MonoBehaviour
     GameObject _outlineGO;
     MeshFilter _outlineMF;
     MeshRenderer _outlineMR;
+
+    private void Start()
+    {
+        if (autoGenerateOnStart && (Application.isPlaying || autoGenerateInEditMode))
+        {
+            // Assure la source puis génère.
+            TryAutoAssign();
+            GenerateOutline();
+        }
+    }
 
     void OnEnable() { TryAutoAssign(); }
     void OnValidate() { TryAutoAssign(); }

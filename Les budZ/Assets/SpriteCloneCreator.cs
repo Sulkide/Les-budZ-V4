@@ -76,10 +76,7 @@ public class SpriteCloneCreator : MonoBehaviour
         _cloneSR.color = col;
     }
 
-    private void OnDisable()
-    {
-        DestroyCloneImmediateIfAny();
-    }
+
 
     private void OnDestroy()
     {

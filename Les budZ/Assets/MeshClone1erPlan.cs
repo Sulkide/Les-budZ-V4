@@ -23,12 +23,16 @@ public class MeshClone1erPlan : MonoBehaviour
 
     private void Start()
     {
+        
+        
         // Duplique manuellement l'objet sans exécuter Start() du clone
         GameObject clone = Instantiate(gameObject);
         clone.name = gameObject.name + "_Clone";
         clone.transform.SetParent(transform);
         clone.transform.localPosition = positionOffset;
         clone.transform.localRotation = Quaternion.identity;
+
+
 
         // Supprime immédiatement ce script dans le clone
         DestroyImmediate(clone.GetComponent<MeshClone1erPlan>());
@@ -37,10 +41,18 @@ public class MeshClone1erPlan : MonoBehaviour
         // Override AVANT que les autres scripts ne s'exécutent
         ApplyOverrides(clone);
         
+        
+        
     }
 
     private void ApplyOverrides(GameObject target)
     {
+        
+        if (target.transform.Find("Decorations").gameObject != null)
+        {
+            Destroy(target.transform.Find("Decorations").gameObject);
+        }
+        
         Terrain2D terrain2D = target.GetComponent<Terrain2D>();
         if (terrain2D != null && terrain2D.materialHolders != null && terrain2D.materialHolders.Count > 0)
         {
@@ -66,6 +78,10 @@ public class MeshClone1erPlan : MonoBehaviour
         }
 
 
+        
+        
+
+        
         // Trouver et modifier l'objet "Polygon"
         Transform polygon = target.transform.Find("Terrain2D Sprites").transform.GetChild(0).GetChild(0).transform;
         if (polygon != null)
@@ -101,15 +117,21 @@ public class MeshClone1erPlan : MonoBehaviour
             Debug.Log("Polygon non trouvé dans le clone.");
         }
         
-        Transform decorations = target.transform.Find("Decorations");
-        if (decorations != null)
+
+        if (target.transform.Find("_Facade Background").gameObject != null)
         {
-            Destroy(decorations.gameObject);
+            Destroy(target.transform.Find("_Facade Background").gameObject);
         }
-        else
+        
+        if (target.transform.Find("PLACE HOLDER").gameObject != null)
         {
-            Debug.Log("decorations non trouvé dans le clone.");
+            Destroy(target.transform.Find("PLACE HOLDER").gameObject);
         }
+        
+
+
+     
+
         
     }
 }

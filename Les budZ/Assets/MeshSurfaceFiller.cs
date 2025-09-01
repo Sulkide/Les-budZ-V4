@@ -90,6 +90,10 @@ public class MeshSurfaceFiller : MonoBehaviour
     public GridMode gridMode = GridMode.ExactFactorization; // par défaut: zéro trou
     public LastRowAlign lastRowAlign = LastRowAlign.Left;
 
+    
+    [Header("Simplification Override")]
+    
+    
     // ====== OUTLINE BUILDER OVERRIDES ======
     //[Header("Outline (EdgeOutlineBuilder overrides)")]
     private bool generateOutlineAtEnd = false;
@@ -336,6 +340,9 @@ public class MeshSurfaceFiller : MonoBehaviour
         if (!mat) mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
         outMR.sharedMaterial = mat;
 
+        //ajout
+        outGO.AddComponent<VisibleFacadeExtractor>();
+        
         // 7) EDGE OUTLINE (optionnel)
         if (generateOutlineAtEnd)
         {
