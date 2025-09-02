@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disabledForEveryone: 0
   groupData:
-    distributionType: 1
+    distributionType: 0
     sequenceType: 1
     relativeOffsetMin: 0.45
     relativeOffsetMax: 0.5
@@ -45,10 +45,10 @@ MonoBehaviour:
       distributedAmount: 10
       emptyDistanceToEdges: 0
     distanceDistributionSettings:
-      distance: 1
+      distance: 1.95
       startAt: 0
       coverage: 0
-      emptyDistanceToEdges: 0
+      emptyDistanceToEdges: 1.9
       distributionType: 1
     amountLimitData:
       amountLimitType: 0

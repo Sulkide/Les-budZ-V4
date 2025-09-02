@@ -288,7 +288,23 @@ MonoBehaviour:
   recordPlayer2: 0
   recordPlayer3: 0
   recordPlayer4: 0
+  player1CurrentLife: 5
+  player2CurrentLife: 5
+  player3CurrentLife: 5
+  player4CurrentLife: 5
+  player1CurrentLifeSaved: 0
+  player2CurrentLifeSaved: 0
+  player3CurrentLifeSaved: 0
+  player4CurrentLifeSaved: 0
+  maxLife: 5
   XP: 0
+  basePalier: 2000
+  multiplicateur: 1
+  ajout: 0.1
+  lifePerLevel: 5
+  prochainPalier: 0
+  niveauxGagnes: 0
+  levelUpPrefab: {fileID: 6139773575775215222, guid: a34c8207dffe388478be9cbdc3a874d7, type: 3}
   Score: 0
   BluePrint: 0
   player1BluePrint: 0

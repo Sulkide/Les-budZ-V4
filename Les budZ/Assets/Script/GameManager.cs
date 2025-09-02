@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.IO;
 using System;
+using System.Collections;
 using TMPro;
 
 
@@ -49,12 +50,52 @@ public class GameManager : MonoBehaviour
     public bool recordPlayer3;
     public bool recordPlayer4;
 
-    public int XP;
+    
+    
+    
+    
+    public int player1CurrentLife = 5;
+    public int player2CurrentLife = 5;
+    public int player3CurrentLife = 5;
+    public int player4CurrentLife = 5;
 
+    public int player1CurrentLifeSaved;
+    public int player2CurrentLifeSaved;
+    public int player3CurrentLifeSaved;
+    public int player4CurrentLifeSaved;
+    
+    
+    
+
+    [Header("Paramètres de paliers")]
+    [Tooltip("Valeur de base du premier palier (ex : 100).")]
+    
+    public int maxLife = 5;
+    
+    public int XP;
+    
+    [Min(1)] public int basePalier = 2000;
+
+    [Tooltip("Multiplicateur appliqué à la valeur de base pour calculer l'écart jusqu'au prochain palier.")]
+    public float multiplicateur = 1f;
+
+    [Tooltip("Incrément ajouté au multiplicateur à chaque palier atteint.")]
+    public float ajout = 0.1f;
+
+    [Tooltip("Points de vie ajoutés à chaque palier passé.")]
+    public int lifePerLevel = 5;
+    
+    [Header("État (lecture seule)")] 
+    [SerializeField] private int prochainPalier;   // Palier à atteindre (démarre à basePalier)
+    [SerializeField] private int niveauxGagnes = 0;
+    public LevelUpFloaty levelUpPrefab;
     public int Score;
 
     public int BluePrint;
 
+    
+
+    
     public int player1BluePrint;
     public int player2BluePrint;
     public int player3BluePrint;
@@ -176,6 +217,10 @@ public class GameManager : MonoBehaviour
     {
         mainCamera = Camera.main;
         
+        if (basePalier < 1) basePalier = 1;
+        if (lifePerLevel < 1) lifePerLevel = 1;
+        prochainPalier = basePalier;
+        
         Screen.SetResolution(3840, 2160, FullScreenMode.FullScreenWindow);
 
         if (!playerInputManager)
@@ -237,6 +282,8 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        StartCoroutine(WaitInStart());
+        
         if (newSaveFileCreated)
         {
             SoundManager.Instance.PlayMusic("Bourée (Steven Wilson Remix)");
@@ -320,6 +367,7 @@ public class GameManager : MonoBehaviour
             Save(fileID);
         }
         
+
     }
 
     private void Update()
@@ -328,31 +376,37 @@ public class GameManager : MonoBehaviour
         {
             ReloadScene();
         }
-        
-        
-        
+         
         UpdatePlayTime();
 
+        LevelUp();
+        
         //ScoreText.text = Score.ToString();
 
         if (player1Location)
         {
             isPlayer1present = true;
+            player1CurrentLife = players[0].currentLife;
         }
 
         if (player2Location)
         {
             isPlayer2present = true;
+     
+            player2CurrentLife = players[1].currentLife;
+            
         }
 
         if (player3Location)
         {
             isPlayer3present = true;
+            player3CurrentLife = players[2].currentLife;
         }
 
         if (player4Location)
         {
             isPlayer4present = true;
+            player4CurrentLife = players[3].currentLife;
         }
     }
 
@@ -463,6 +517,11 @@ public class GameManager : MonoBehaviour
         tempCollectedBluePrint.Clear();
         tempCollectedCollectibles.Clear();
         
+        player1CurrentLifeSaved = player1CurrentLife;
+        player2CurrentLifeSaved = player2CurrentLife;
+        player3CurrentLifeSaved = player3CurrentLife;
+        player4CurrentLifeSaved = player4CurrentLife;
+        
         Save(fileID);
     }
 
@@ -470,6 +529,7 @@ public class GameManager : MonoBehaviour
     {
         currentMaxScoreInLevel = maxScoreInLevel;
         currentBluePrintInLevel = maxBluePrintInLevel;
+        ResetAllPlayersLife();
         resetAllScoreLevel();
         resetAllBluePrintScore();
         tempCollectedBluePrint.Clear();
@@ -618,6 +678,76 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void LevelUp()
+    {
+        // Utilise >= (et pas ==) pour ne pas rater un palier si le score saute.
+        while (XP >= prochainPalier)
+        {
+            // Récompense
+            maxLife += lifePerLevel;
+            niveauxGagnes++;
+
+            // Calcule l'écart vers le prochain palier avec le multiplicateur ACTUEL
+            int increment = Mathf.Max(1, Mathf.CeilToInt(basePalier * multiplicateur));
+            prochainPalier += increment;
+
+            // Augmente le multiplicateur pour les paliers suivants
+            multiplicateur += ajout;
+
+                            
+            if (player1Location)
+            {
+                players[0].currentLife = maxLife;
+                LevelUpFloaty.Spawn(levelUpPrefab, players[0].transform /*la cible à suivre*/, true /*parenter*/, new Vector3(0f, 0f, 0f));
+            }
+                
+
+            if (player2Location)
+            {
+                players[1].currentLife = maxLife;
+                LevelUpFloaty.Spawn(levelUpPrefab, players[1].transform /*la cible à suivre*/, true /*parenter*/, new Vector3(0f, 0f, 0f));
+            }
+
+            if (player3Location)
+            {
+                players[2].currentLife = maxLife;
+                LevelUpFloaty.Spawn(levelUpPrefab, players[2].transform /*la cible à suivre*/, true /*parenter*/, new Vector3(0f, 0f, 0f));
+            }
+
+            if (player4Location)
+            {
+                players[3].currentLife = maxLife;
+                LevelUpFloaty.Spawn(levelUpPrefab, players[3].transform /*la cible à suivre*/, true /*parenter*/, new Vector3(0f, 0f, 0f));
+            }
+        }
+    }
+
+    private bool WaitAtStart;
+    
+    IEnumerator WaitInStart()
+    {
+        WaitAtStart = true;
+        Debug.Log("Waiting");
+        yield return new WaitForSeconds(5);
+        Debug.Log("Waiting done");
+        WaitAtStart = false;
+    }
+
+    // Méthodes utilitaires (optionnel)
+    [ContextMenu("Réinitialiser la progression")]
+    public void ResetProgression()
+    {
+        niveauxGagnes = 0;
+        multiplicateur = Mathf.Max(0f, multiplicateur);
+        prochainPalier = Mathf.Max(1, basePalier);
+    }
+
+    private void OnValidate()
+    {
+        basePalier = Mathf.Max(1, basePalier);
+        lifePerLevel = Mathf.Max(1, lifePerLevel);
+    }
+    
     public void addScore(int score, string playerName)
     {
         Score += score;
@@ -944,6 +1074,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ResetAllPlayersLife()
+    {
+        player1CurrentLife = player1CurrentLifeSaved;
+        player2CurrentLife = player2CurrentLifeSaved;
+        player3CurrentLife = player3CurrentLifeSaved;
+        player4CurrentLife = player4CurrentLifeSaved;
+    }
+
     public void resetAllScoreLevel()
     {
         Score = currentScore;
@@ -990,6 +1128,8 @@ public class GameManager : MonoBehaviour
         currentPlayer4Score = 0;
 
     }
+    
+    
 
     public void assigneScore()
     {
@@ -1124,6 +1264,13 @@ public class GameManager : MonoBehaviour
         public bool recordPlayer3;
         public bool recordPlayer4;
 
+        public int maxLife;
+        
+        public int player1CurrentLifeSaved;
+        public int player2CurrentLifeSaved;
+        public int player3CurrentLifeSaved;
+        public int player4CurrentLifeSaved;
+        
         public int XP;
 
         public int Score;
@@ -1151,7 +1298,7 @@ public class GameManager : MonoBehaviour
         public int currentPlayer2Score;
         public int currentPlayer3Score;
         public int currentPlayer4Score;
-
+        
         public List<string> collectedCollectibles = new List<string>();
 
         // Liste temporaire qui stocke les collectibles récupérés depuis le dernier checkpoint
@@ -1165,6 +1312,8 @@ public class GameManager : MonoBehaviour
         public List<string> collectedBluePrintInTotal = new List<string>();
 
         public string currentMusicName;
+        
+        public int prochainPalier;
         
         public bool newSceneLoad = true;
     }
@@ -1193,6 +1342,13 @@ public class GameManager : MonoBehaviour
         data.recordPlayer2 =  recordPlayer2;
         data.recordPlayer3 =  recordPlayer3;    
         data.recordPlayer4 =  recordPlayer4;
+        
+        data.maxLife = maxLife;
+        
+        data.player1CurrentLifeSaved = player1CurrentLife;
+        data.player2CurrentLifeSaved = player2CurrentLife;
+        data.player3CurrentLifeSaved = player3CurrentLife;
+        data.player4CurrentLifeSaved = player4CurrentLife;
         
         data.XP = XP;
         data.Score = Score;
@@ -1225,7 +1381,10 @@ public class GameManager : MonoBehaviour
         
         data.currentMusicName = currentMusicName;
         
+        data.prochainPalier = prochainPalier;
+        
         data.newSceneLoad = newSceneLoad;
+        
         
         string json = JsonUtility.ToJson(data, true);
         
@@ -1265,6 +1424,14 @@ public class GameManager : MonoBehaviour
         recordPlayer2 = data.recordPlayer2;
         recordPlayer3 = data.recordPlayer3;
         recordPlayer4 = data.recordPlayer4;
+        
+        maxLife = data.maxLife;
+        
+        player1CurrentLifeSaved = data.player1CurrentLifeSaved;
+        player2CurrentLifeSaved = data.player2CurrentLifeSaved;
+        player3CurrentLifeSaved = data.player3CurrentLifeSaved;
+        player4CurrentLifeSaved = data.player4CurrentLifeSaved;
+        
         XP = data.XP;
         Score = data.Score;
         BluePrint = data.BluePrint;
@@ -1297,6 +1464,8 @@ public class GameManager : MonoBehaviour
 
         currentMusicName = data.currentMusicName;
 
+        prochainPalier = data.prochainPalier;
+        
         newSaveFileLoaded = true;
         
         newSceneLoad = false;

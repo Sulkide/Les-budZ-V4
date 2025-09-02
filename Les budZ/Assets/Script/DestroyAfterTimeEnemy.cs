@@ -5,6 +5,9 @@ public class DestroyAfterTimeEnemy : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    [Header("setting")]
+    public int damage = 1;
+    
     [Header("Timing & Physics")]
     public float dampingFactor = 0.8f;
     public float destroyAfterTime;
@@ -66,7 +69,7 @@ public class DestroyAfterTimeEnemy : MonoBehaviour
             else
                 knockBackDirection = playerMovement.isFacingRight ? Vector2.left : Vector2.right;
                 
-            playerMovement.KnockBack(knockBackDirection, doDamage, knockbackForce, true);
+            playerMovement.KnockBack(knockBackDirection, doDamage, knockbackForce, true, damage);
             
             
         }

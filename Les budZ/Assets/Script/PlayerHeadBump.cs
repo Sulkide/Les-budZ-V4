@@ -10,7 +10,7 @@ public class PlayerHeadBump : MonoBehaviour
     public float detectionBoxAngle = 0f;
     // Option pour que l'angle de détection suive en permanence la rotation Z du parent ciblé
 
-    
+    public int damage = 0;
     // Masque de layer pour filtrer uniquement les objets du layer "Player"
     private int playerLayerMask;
 
@@ -37,7 +37,7 @@ public class PlayerHeadBump : MonoBehaviour
                 {
                     playerMovement.Jump();
                     
-                    player.KnockBack(Vector2.down, false,10,true);
+                    player.KnockBack(Vector2.down, false,10,true, damage);
                 }
             }
         }

@@ -27,6 +27,9 @@ public class PlayerScoreUI : MonoBehaviour
         public Image icon;
         public TextMeshProUGUI nameText;
         public TextMeshProUGUI scoreText;
+        
+        public TextMeshProUGUI maxLife;
+        public TextMeshProUGUI currentLife;
     }
 
     // keyed by player slot number (1..4)
@@ -94,6 +97,29 @@ public class PlayerScoreUI : MonoBehaviour
                 _ => 0
             };
             entry.scoreText.text = score.ToString();
+            
+            
+            
+            int maxlife = slot switch
+            {
+                1 => gm.maxLife,
+                2 => gm.maxLife,
+                3 => gm.maxLife,
+                4 => gm.maxLife,
+                _ => 0
+            };
+            entry.maxLife.text = maxlife.ToString();
+            
+            
+            int currentlife = slot switch
+            {
+                1 => gm.player1CurrentLife,
+                2 => gm.player2CurrentLife,
+                3 => gm.player3CurrentLife,
+                4 => gm.player4CurrentLife,
+                _ => 0
+            };
+            entry.currentLife.text = currentlife.ToString();
         }
     }
 
@@ -106,7 +132,9 @@ public class PlayerScoreUI : MonoBehaviour
             root = go,
             icon = go.transform.Find("Icon").GetComponent<Image>(),
             nameText = go.transform.Find("NameText").GetComponent<TextMeshProUGUI>(),
-            scoreText = go.transform.Find("ScoreText").GetComponent<TextMeshProUGUI>()
+            scoreText = go.transform.Find("ScoreText").GetComponent<TextMeshProUGUI>(),
+            maxLife = go.transform.Find("MaxLife").GetComponent<TextMeshProUGUI>(),
+            currentLife = go.transform.Find("CurrentLife").GetComponent<TextMeshProUGUI>(),
         };
 
         // Position horizontally by slot

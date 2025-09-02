@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Enemy settings")]
-    public int health = 4;              
+    public int health = 4;    
+    public int damage = 1;
     public float recoilForce = 10f;      
     public float destructionDelay = 0.2f;
     public float moveSpeed = 3f;
@@ -327,7 +328,7 @@ public class Enemy : MonoBehaviour
                     else
                         knockBackDirection = playerMovement2.isFacingRight ? Vector2.left : Vector2.right;
                 
-                    playerMovement2.KnockBack(knockBackDirection, doDamage, knockbackForce, true);
+                    playerMovement2.KnockBack(knockBackDirection, doDamage, knockbackForce, true, this.damage);
                 }
                 
                 rb.AddForce(collisionDir * recoilForce*10, ForceMode2D.Impulse);
@@ -347,7 +348,7 @@ public class Enemy : MonoBehaviour
                 else
                     knockBackDirection = playerMovement.isFacingRight ? Vector2.left : Vector2.right;
                 
-                playerMovement.KnockBack(knockBackDirection, doDamage, knockbackForce, true);
+                playerMovement.KnockBack(knockBackDirection, doDamage, knockbackForce, true, this.damage);
             }
             
             

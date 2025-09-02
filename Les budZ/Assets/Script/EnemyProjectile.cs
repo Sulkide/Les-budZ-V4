@@ -6,6 +6,7 @@ public class FlyingEnemy : MonoBehaviour
 {
     [Header("Enemy Settings")]
     public int health = 4;
+    public int damage = 1;
     public float recoilForce = 10f;
     public float destructionDelay = 0.2f;
     public bool doDamage;
@@ -130,7 +131,7 @@ public class FlyingEnemy : MonoBehaviour
             else
                 knockBackDirection = !playerMovement.isFacingRight ? Vector2.left : Vector2.right;
 
-            playerMovement.KnockBack(knockBackDirection, doDamage, knockbackForce, true);
+            playerMovement.KnockBack(knockBackDirection, doDamage, knockbackForce, true, damage);
         }
         
         rb.AddForce(recoilDirection * recoilForce, ForceMode2D.Impulse);

@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
 
     public string parentName;
     private Transform playerTransform;
+    
+    public int currentLife = 5;
+
+    
     public bool isDead;
 
     [SerializeField] private Animator playerAnimator;
@@ -57,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentCACTime = 0;
     private float currentRecoverTime = 0;
     private float currentRecoverReset = 0;
-    public float damageRecoveryDuration = 0.1f;
+    public float damageRecoveryDuration = 1f;
     private bool contactGround;
     public bool collisionGround;
     private int originalLayer;
@@ -262,6 +266,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        
+        
         capsuleSize = GetComponent<CapsuleCollider2D>().size;
         capsuleOffset = GetComponent<CapsuleCollider2D>().offset;
         gameObject.layer = LayerMask.NameToLayer("Default");
@@ -286,21 +292,26 @@ public class PlayerMovement : MonoBehaviour
         {
             HasCurrentlyHealthbonus = GameManager.instance.player1CurrentBonus;
             GameManager.instance.player1Bonus = GameManager.instance.player1CurrentBonus;
+            currentLife = GameManager.instance.player1CurrentLifeSaved;
+
         }
         else if (parentName == "Player 2(Clone)")
         {
             HasCurrentlyHealthbonus = GameManager.instance.player2CurrentBonus;
             GameManager.instance.player2Bonus = GameManager.instance.player2CurrentBonus;
+            currentLife = GameManager.instance.player2CurrentLifeSaved;
         }
         else if (parentName == "Player 3(Clone)")
         {
             HasCurrentlyHealthbonus = GameManager.instance.player3CurrentBonus;
             GameManager.instance.player3Bonus = GameManager.instance.player3CurrentBonus;
+            currentLife = GameManager.instance.player3CurrentLifeSaved;
         }
         else if (parentName == "Player 4(Clone)")
         {
             HasCurrentlyHealthbonus = GameManager.instance.player4CurrentBonus;
             GameManager.instance.player4Bonus = GameManager.instance.player4CurrentBonus;
+            currentLife = GameManager.instance.player4CurrentLifeSaved;
         }
 
         selfColliders = new List<Collider2D>(GetComponentsInChildren<Collider2D>());
@@ -1988,6 +1999,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform respawnPoint;
 
 
+    public void Levelup()
+    {
+        
+    }
+    
     private IEnumerator Death()
     {
         isDead = true;
@@ -2171,7 +2187,7 @@ public class PlayerMovement : MonoBehaviour
             .OnComplete(() => transform.GetChild(0).GetChild(0).transform.localEulerAngles = Vector3.zero);
     }
 
-    public void KnockBack(Vector2 direction, bool triggerDamage, float knockBackForce, bool doAnimation)
+    public void KnockBack(Vector2 direction, bool triggerDamage, float knockBackForce, bool doAnimation, int damage)
     {
         if (doAnimation)
         {
@@ -2191,7 +2207,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (triggerDamage)
         {
-            Damage();
+            Damage(damage);
         }
     }
 
@@ -2332,33 +2348,55 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    public void Damage()
+    public void Damage(int damage)
     {
         SoundManager.Instance.PlayRandomSFX(clipsRandomSlap, 0.9f, 1.1f);
         CancelGrapple();
-        StartCoroutine(DamageCoroutine());
+        StartCoroutine(DamageCoroutine(damage));
     }
 
-    private IEnumerator DamageCoroutine()
+    private bool waitForRecovery;
+    private IEnumerator DamageCoroutine(int damage)
     {
         //cannotMove = true;
 
-
+        if (waitForRecovery)
+        {
+            yield break;
+        }
+        
+        
         if (HasCurrentlyHealthbonus)
         {
+            Instantiate(fairyDeathPrebfab, fairyAnimation.transform.position, Quaternion.Euler(0, 0, 0));
+            GameManager.instance.addOrRemovePlayerBonus(parentName, false);
+            HasCurrentlyHealthbonus = false;
+            areControllsRemoved = false;
+            StartCoroutine(WaitForRecovery());
+            yield break;
+        }
+        
+        
+        currentLife -= damage;
+        
+        if (currentLife > 0)
+        {
+            areControllsRemoved = false;
+            StartCoroutine(WaitForRecovery());
         }
         else
         {
             StartCoroutine(Death());
-            yield break;
         }
 
-        yield return new WaitForSeconds(damageRecoveryDuration);
+        
+    }
 
-        Instantiate(fairyDeathPrebfab, fairyAnimation.transform.position, Quaternion.Euler(0, 0, 0));
-        GameManager.instance.addOrRemovePlayerBonus(parentName, false);
-        HasCurrentlyHealthbonus = false;
-        areControllsRemoved = false;
+    IEnumerator WaitForRecovery()
+    {
+        waitForRecovery = true;
+        yield return new WaitForSecondsRealtime(damageRecoveryDuration);
+        waitForRecovery = false;
     }
 
     private void RemovePlayerControl(bool value)

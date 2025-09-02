@@ -369,6 +369,7 @@ MonoBehaviour:
   playerControls: {fileID: 0}
   currentPlayerID: 1
   parentName: 
+  currentLife: 5
   isDead: 0
   playerAnimator: {fileID: 2630391326720276492}
   canWallJump: 1
@@ -394,7 +395,7 @@ MonoBehaviour:
   HasCurrentlyHealthbonus: 0
   fairyAnimation: {fileID: 2567865790750349455}
   fairyDeathPrebfab: {fileID: 8145599743380673296, guid: f6177afc6e1d33446b40be862b0aee21, type: 3}
-  damageRecoveryDuration: 1
+  damageRecoveryDuration: 2.5
   collisionGround: 0
   projectilePrefab: {fileID: 5429434645121004496, guid: 20299151901c63d43b352b49c0f0b931, type: 3}
   Data: {fileID: 11400000, guid: 524d1f7f6166a1043be41b6e31935370, type: 2}
@@ -543,6 +544,7 @@ MonoBehaviour:
   player: {fileID: 951214077844566099}
   detectionBoxSize: {x: 1.41, y: 0.19}
   detectionBoxAngle: 0
+  damage: 0
 --- !u!1 &7840585582839767686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,6 +1037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 50
+  damage: 0
   friendlyFire: 0
   ignoreCollisionObject: {fileID: 6098828064166873579}
 --- !u!4 &5221473761020387327 stripped

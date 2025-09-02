@@ -10,6 +10,9 @@ public class EnemyMovement : MonoBehaviour
     [Tooltip("Mode de déplacement (Transform ou Force)")]
     public MovementMode movementMode = MovementMode.Transform;
     
+    [Header("Damage")]
+    public int damage = 1;
+    
     [Tooltip("Tag de l'objet cible (ex: 'Player')")]
     public string targetTag = "Player";
     
@@ -282,7 +285,7 @@ public class EnemyMovement : MonoBehaviour
                         Debug.Log("Ennemi tué via OverlapBox avec KnockBack false !");
                         
                         Vector2 direction = (col.transform.position - transform.position).normalized;
-                        pm.KnockBack(direction, playerKnockBackParam, knockBackForce, true);
+                        pm.KnockBack(direction, playerKnockBackParam, knockBackForce, true, damage);
                         
                         StartCoroutine(ResetKnockBackParamAfterCooldown());
                         CheckDeath();
@@ -340,7 +343,7 @@ public class EnemyMovement : MonoBehaviour
             else
             {
                 Vector2 enemyDirection = (collision.transform.position - transform.position).normalized;
-                playerMovement.KnockBack(enemyDirection, playerKnockBackParam, knockBackForce, true);
+                playerMovement.KnockBack(enemyDirection, playerKnockBackParam, knockBackForce, true, damage);
             }
         }
     }

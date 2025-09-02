@@ -224,6 +224,7 @@ MonoBehaviour:
   player: {fileID: 3953091412569041766}
   detectionBoxSize: {x: 0.77, y: 0.19}
   detectionBoxAngle: 0
+  damage: 0
 --- !u!1 &6170770998086408239
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +343,7 @@ MonoBehaviour:
   playerControls: {fileID: 0}
   currentPlayerID: 1
   parentName: 
+  currentLife: 5
   isDead: 0
   playerAnimator: {fileID: 393944159107126334}
   canWallJump: 1
@@ -367,7 +369,7 @@ MonoBehaviour:
   HasCurrentlyHealthbonus: 0
   fairyAnimation: {fileID: 6939093540895135350}
   fairyDeathPrebfab: {fileID: 8145599743380673296, guid: f6177afc6e1d33446b40be862b0aee21, type: 3}
-  damageRecoveryDuration: 1
+  damageRecoveryDuration: 2.5
   collisionGround: 0
   projectilePrefab: {fileID: 5429434645121004496, guid: 47c1a96efa291ff41a56a1005fad48fe, type: 3}
   Data: {fileID: 11400000, guid: b55f98cd1c891e64da9a2992c3655998, type: 2}

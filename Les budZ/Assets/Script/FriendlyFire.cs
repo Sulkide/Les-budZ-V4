@@ -6,6 +6,8 @@ public class KnockbackTrigger : MonoBehaviour
     [Tooltip("Force appliquée lors du knockback.")]
     public float force = 10f;
 
+    public int damage = 0;
+    
     [Tooltip("Si true, le knockback sera appliqué même en cas de friendly fire.")]
     public bool friendlyFire = false;
 
@@ -52,7 +54,7 @@ public class KnockbackTrigger : MonoBehaviour
                     knockBackDirection = ignoreCollisionObject.GetComponent<PlayerMovement>().isFacingRight ? Vector2.right : Vector2.left;
                     
                     // Appeler la fonction KnockBack sur le composant PlayerMovement
-                    playerMovement.KnockBack((knockBackDirection*10)+(Vector2.up/2), friendlyFire, force*1.5f, true);
+                    playerMovement.KnockBack((knockBackDirection*10)+(Vector2.up/2), friendlyFire, force*1.5f, true, 0);
                     
                 }
             }

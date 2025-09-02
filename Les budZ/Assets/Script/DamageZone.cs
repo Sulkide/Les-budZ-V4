@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class DamageZone : MonoBehaviour
 {
+    [Header("Settings")]
+    public int damage = 1;
+    public Transform respawnPoint;
+    
     [Header("KnockBack Settings")]
     [SerializeField] private float knockbackForce = 10f;
-    [SerializeField] private bool doDamage = true;
-    [SerializeField] private bool InstaDeath = false; // Si true, appelle la coroutine Death() plutôt que KnockBack.
+    [SerializeField] private bool doDamage = true; // Si true, appelle la coroutine Death() plutôt que KnockBack.
 
     // On utilisera les positions de pointA et pointZ pour calculer la direction du KnockBack
     [SerializeField] private Transform pointA;
@@ -47,24 +50,16 @@ public class DamageZone : MonoBehaviour
                 PlayerMovement playerMovement = col.GetComponent<PlayerMovement>();
                 if (playerMovement != null)
                 {
-                    if (InstaDeath)
-                    {
-                        // On appelle la coroutine Death() à la place du KnockBack
-                        // IMPORTANT : Death() doit être accessible, par exemple en "public"
-                        // ou via une méthode publique "TriggerDeath() => StartCoroutine(Death())"
-                        playerMovement.StartCoroutine("Death");  
-                    }
-                    else
-                    {
-                        // Calcul de la direction : pointA -> pointZ
-                        Vector2 direction = (pointZ.position - pointA.position).normalized;
-                        // On appelle KnockBack avec le bool "doDamage"
-                        playerMovement.KnockBack(direction, doDamage, knockbackForce, true);
-                    }
+                    // Calcul de la direction : pointA -> pointZ
+                    Vector2 direction = (pointZ.position - pointA.position).normalized;
+                    // On appelle KnockBack avec le bool "doDamage"
+                    playerMovement.KnockBack(direction, doDamage, knockbackForce, true, damage);
 
                     // On enregistre ce collider pour éviter de le re-traiter 
                     // tant qu’il n’est pas sorti de la zone.
                     _alreadyHit.Add(col);
+                    
+                    playerMovement.gameObject.transform.position = respawnPoint.position;
                 }
             }
         }
