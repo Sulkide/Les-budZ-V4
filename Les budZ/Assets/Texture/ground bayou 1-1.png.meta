@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ground bayou 1-1_0: -4964587366204324046
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

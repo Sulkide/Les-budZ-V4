@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      arbre_01_GIMP_0: 6199924657419856097
+      arbre_01_GIMP_1: 7261143223212089219
+      arbre_01_GIMP_2: 1648823390478860141
+      arbre_01_GIMP_3: 5488416696360157239
+      arbre_01_GIMP_4: 9045057801088512646
+      arbre_01_GIMP_5: 1133413905675534508
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

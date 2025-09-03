@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fleure_03_GIMP_0: 5964183285055098870
+      fleure_03_GIMP_1: 4790779948793469285
+      fleure_03_GIMP_2: -3542904841974532170
+      fleure_03_GIMP_3: 2164093069643313120
+      fleure_03_GIMP_4: -6627561954644729604
+      fleure_03_GIMP_5: 1046196741008687371
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

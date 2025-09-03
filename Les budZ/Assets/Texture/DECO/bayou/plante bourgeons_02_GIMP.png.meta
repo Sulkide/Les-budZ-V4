@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      plante bourgeons_02_GIMP_0: -60057651251193949
+      plante bourgeons_02_GIMP_1: 4067145843011959662
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
