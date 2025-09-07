@@ -69,6 +69,14 @@ public class NPCmanager : MonoBehaviour
     [SerializeField] private CharacterDialogueData darckoxData;
     [SerializeField] private CharacterDialogueData mrSlowData;
     [SerializeField] private CharacterDialogueData sulanaData;
+    
+    [Header("Describe Data (ScriptableObjects)")]
+    
+    [SerializeField] private CharacterDialogueData sulkideDescribeData;
+    [SerializeField] private CharacterDialogueData darckoxDescribeData;
+    [SerializeField] private CharacterDialogueData mrSlowDescribeData;
+    [SerializeField] private CharacterDialogueData sulanaDescribeData;
+
 
     [Header("Sélecteur visuel de personnage")]
     [SerializeField] private GameObject selectionIndicatorPrefab;
@@ -79,6 +87,8 @@ public class NPCmanager : MonoBehaviour
     [SerializeField] private float axisDeadZone = 0.5f;
     [SerializeField] private float initialRepeatDelay = 0.30f;
     [SerializeField] private float repeatInterval = 0.12f;
+    private Button btnDescribe;
+    private Text   btnDescribeText;
 
     [Header("Character Switch Tuning")]
     [SerializeField] private float switchCooldown = 0.25f;
@@ -120,9 +130,11 @@ public class NPCmanager : MonoBehaviour
     {
         public string name;
         public GameObject obj;
-        public CharacterDialogueData data;
+        public CharacterDialogueData talkData;     // ex-"data"
+        public CharacterDialogueData describeData; // nouveau
         public AudioSource audio;
     }
+
     private CharacterSlot[] characters;
     private int currentCharacter = 0;
     private GameObject indicatorInstance;
@@ -139,6 +151,17 @@ public class NPCmanager : MonoBehaviour
     private int dpadLastXDir = 0;
     private int dpadLastYDir = 0;
 
+    private enum OptionMode { Talk, Describe }
+    private OptionMode currentOptionsMode = OptionMode.Talk;
+
+    private CharacterDialogueData GetDataForMode(int charIndex, OptionMode mode)
+    {
+        return mode == OptionMode.Describe
+            ? characters[charIndex].describeData
+            : characters[charIndex].talkData;
+    }
+
+    
     private void Awake()
     {
         mainCam = Camera.main;
@@ -156,10 +179,11 @@ public class NPCmanager : MonoBehaviour
         animNpc     = npc.transform.GetChild(0).GetComponent<DummyAnimation>();
 
         characters = new CharacterSlot[4];
-        characters[0] = MakeSlot(sulkide, sulkideData);
-        characters[1] = MakeSlot(darckox, darckoxData);
-        characters[2] = MakeSlot(mrSlow,  mrSlowData);
-        characters[3] = MakeSlot(sulana,  sulanaData);
+        characters[0] = MakeSlot(sulkide, sulkideData,  sulkideDescribeData);
+        characters[1] = MakeSlot(darckox, darckoxData,  darckoxDescribeData);
+        characters[2] = MakeSlot(mrSlow,  mrSlowData,   mrSlowDescribeData);
+        characters[3] = MakeSlot(sulana,  sulanaData,   sulanaDescribeData);
+
 
         if (!npcAudioSource)
         {
@@ -172,22 +196,27 @@ public class NPCmanager : MonoBehaviour
         if (npcAnim == null) npcAnim = GetComponentInChildren<DummyAnimation>();
     }
 
-    private CharacterSlot MakeSlot(GameObject go, CharacterDialogueData data)
+    private CharacterSlot MakeSlot(GameObject go, CharacterDialogueData talk, CharacterDialogueData describe)
     {
         var slot = new CharacterSlot
         {
             obj = go,
-            data = data,
-            name = data != null && !string.IsNullOrEmpty(data.characterName) ? data.characterName : (go ? go.name : "Char"),
-            audio = go ? go.GetComponent<AudioSource>() : null
+            talkData = talk,
+            describeData = describe,
+            // On prend un nom depuis talk si dispo, sinon describe, sinon le nom du GO
+            name = (talk != null && !string.IsNullOrEmpty(talk.characterName)) ? talk.characterName :
+                (describe != null && !string.IsNullOrEmpty(describe.characterName)) ? describe.characterName :
+                go.name,
+            audio = go.GetComponent<AudioSource>()
         };
-        if (slot.audio == null && go != null)
+        if (!slot.audio)
         {
             slot.audio = go.AddComponent<AudioSource>();
             slot.audio.playOnAwake = false;
         }
         return slot;
     }
+
 
     private Font ResolveUIFont()
     {
@@ -406,8 +435,15 @@ public class NPCmanager : MonoBehaviour
 
         var (btn2, txt2) = CreateButton("BtnTalk", topPanel, new Vector2(200, 48), new Vector2(224, -12));
         btnTalk = btn2; btnTalkText = txt2; btnTalkText.text = "Parler";
-        btnTalk.onClick.AddListener(OpenOptions);
+        btnTalk.onClick.AddListener(() => OpenOptions(OptionMode.Talk));
 
+
+        // Bouton Décrire
+        var (btn3, txt3) = CreateButton("BtnDescribe", topPanel, new Vector2(200, 48), new Vector2(436, -12));
+        btnDescribe = btn3; btnDescribeText = txt3; btnDescribeText.text = "Décrire";
+        btnDescribe.onClick.AddListener(() => OpenOptions(OptionMode.Describe));
+
+        
         bottomPanel = CreatePanel("BottomBarUI", uiCanvas.transform as RectTransform, new Color(0, 0, 0, 1f));
         AnchorBottom(bottomPanel);
 
@@ -460,8 +496,11 @@ public class NPCmanager : MonoBehaviour
         HideBottom();
 
         var navNone = new Navigation { mode = Navigation.Mode.None };
+        
         btnCharacter.navigation = navNone;
         btnTalk.navigation = navNone;
+        btnDescribe.navigation = navNone;
+
     }
 
     private T MarkDontSave<T>(T go) where T : UnityEngine.Object
@@ -548,7 +587,9 @@ public class NPCmanager : MonoBehaviour
         uiState = UIState.TopBar;
 
         // Par défaut : "Parler"
-        topSelectionIndex = (initialIndex >= 0) ? Mathf.Clamp(initialIndex, 0, 1) : 1;
+        if (initialIndex >= 0)
+            topSelectionIndex = Mathf.Clamp(initialIndex, 0, 2); // <- 2 au lieu de 1
+
 
         SetTopButtonsInteractable(true);
         HighlightTopButton();
@@ -659,7 +700,7 @@ public class NPCmanager : MonoBehaviour
 
         if (uiState == UIState.Options)
         {
-            BuildOptionsForCurrentCharacter();
+            BuildOptionsForCurrentCharacter(currentOptionsMode); // <- plutôt que sans param
             selectedOptionIndex = Mathf.Clamp(selectedOptionIndex, 0, Mathf.Max(0, optionTexts.Count - 1));
             HighlightOption();
             optionsInputUnlockTime = Time.time + optionsOpenCooldown;
@@ -757,12 +798,15 @@ public class NPCmanager : MonoBehaviour
         float x = currentPM.moveInput.x;
         float y = currentPM.moveInput.y;
 
-        // X : Personnage (0) <-> Parler (1)
+        // X : -1/ +1 pour se déplacer entre 0..2
         int hEdge = AxisEdge(ref hLastDir, x, axisDeadZone);
-        if (hEdge > 0) { topSelectionIndex = 1; HighlightTopButton(); }
-        else if (hEdge < 0) { topSelectionIndex = 0; HighlightTopButton(); }
+        if (hEdge != 0)
+        {
+            topSelectionIndex = Mathf.Clamp(topSelectionIndex + hEdge, 0, 2);
+            HighlightTopButton();
+        }
 
-        // Y : Haut = changer de perso, Bas = confirmer
+        // Y : haut = changer de perso / bas = confirmer
         int vEdge = AxisEdge(ref vLastDir, y, axisDeadZone);
         if (vEdge > 0 && CanSwitchNow())
         {
@@ -771,12 +815,11 @@ public class NPCmanager : MonoBehaviour
         }
         else if (vEdge < 0)
         {
-            if (topSelectionIndex == 0) SwitchCharacterNext();
-            else OpenOptions();
+            ConfirmTopSelection();
             return;
         }
 
-        // D-pad gauche/droite = switch persos
+        // D-Pad pour changer de perso
         int dpadX = DpadEdgeX();
         if (dpadX != 0 && CanSwitchNow())
         {
@@ -785,50 +828,57 @@ public class NPCmanager : MonoBehaviour
             return;
         }
 
-        // Gâchettes
+        // Gâchettes pour changer de perso
         if (PressedOnce("SelectR") && CanSwitchNow()) { SwitchCharacterNext(); ArmSwitchCooldown(); return; }
         if (PressedOnce("SelectL", "Selectl") && CanSwitchNow()) { SwitchCharacterPrev(); ArmSwitchCooldown(); return; }
 
-        // Use
-        if (PressedOnceUse())
-        {
-            if (topSelectionIndex == 0) SwitchCharacterNext();
-            else OpenOptions();
-        }
+        // Bouton Use = confirmer
+        if (PressedOnceUse()) ConfirmTopSelection();
+    }
+    
+    private void ConfirmTopSelection()
+    {
+        if (topSelectionIndex == 0)        // Personnage
+            SwitchCharacterNext();
+        else if (topSelectionIndex == 1)   // Parler
+            OpenOptions(OptionMode.Talk);
+        else                               // Décrire
+            OpenOptions(OptionMode.Describe);
     }
 
     private void HighlightTopButton()
     {
-        if (!btnCharacter || !btnTalk) return;
-        var selectedBg = GetCurrentHighlightColor();
+        if (!btnCharacter || !btnTalk || !btnDescribe) return;
+
+        var selectedBg   = GetCurrentHighlightColor();
         var deselectedBg = topBarUnselectedBg;
 
         var imgChar = btnCharacter.GetComponent<Image>();
         var imgTalk = btnTalk.GetComponent<Image>();
+        var imgDesc = btnDescribe.GetComponent<Image>();
 
-        if (topSelectionIndex == 0)
-        {
-            if (imgChar) imgChar.color = selectedBg;
-            if (imgTalk) imgTalk.color = deselectedBg;
-            if (btnCharacterText) btnCharacterText.color = topBarSelectedText;
-            if (btnTalkText)      btnTalkText.color      = topBarUnselectedText;
-        }
-        else
-        {
-            if (imgChar) imgChar.color = deselectedBg;
-            if (imgTalk) imgTalk.color = selectedBg;
-            if (btnCharacterText) btnCharacterText.color = topBarUnselectedText;
-            if (btnTalkText)      btnTalkText.color      = topBarSelectedText;
-        }
+        // Couleurs de fond
+        if (imgChar) imgChar.color = (topSelectionIndex == 0) ? selectedBg : deselectedBg;
+        if (imgTalk) imgTalk.color = (topSelectionIndex == 1) ? selectedBg : deselectedBg;
+        if (imgDesc) imgDesc.color = (topSelectionIndex == 2) ? selectedBg : deselectedBg;
+
+        // Couleurs de texte
+        if (btnCharacterText) btnCharacterText.color = (topSelectionIndex == 0) ? topBarSelectedText : topBarUnselectedText;
+        if (btnTalkText)      btnTalkText.color      = (topSelectionIndex == 1) ? topBarSelectedText : topBarUnselectedText;
+        if (btnDescribeText)  btnDescribeText.color  = (topSelectionIndex == 2) ? topBarSelectedText : topBarUnselectedText;
     }
 
-    private void OpenOptions()
+
+    private void OpenOptions(OptionMode mode = OptionMode.Talk)
     {
-        BuildOptionsForCurrentCharacter();
+        currentOptionsMode = mode;
+        BuildOptionsForCurrentCharacter(currentOptionsMode);
         ShowOptions();
+        uiState = UIState.Options;
         selectedOptionIndex = 0;
         HighlightOption();
     }
+
 
     // ------------------------------ Options ------------------------------
     private void HandleOptionsInput()
@@ -885,13 +935,14 @@ public class NPCmanager : MonoBehaviour
         MoveOption(delta);
     }
 
-    private void BuildOptionsForCurrentCharacter()
+    private void BuildOptionsForCurrentCharacter(OptionMode mode)
     {
+        // clear anciens
         foreach (var t in optionTexts) if (t) Destroy(t.gameObject);
         optionTexts.Clear();
         _visibleOptionIndices.Clear();
 
-        var data = characters[currentCharacter].data;
+        var data = GetDataForMode(currentCharacter, mode);
         if (data == null || data.dialogueOptions == null || data.dialogueOptions.Count == 0)
         {
             optionTexts.Add(CreateOptionText("(Aucune option)"));
@@ -901,11 +952,13 @@ public class NPCmanager : MonoBehaviour
         for (int i = 0; i < data.dialogueOptions.Count; i++)
         {
             if (!IsOptionVisible(data, i)) continue;
+
             var opt = data.dialogueOptions[i];
             string label = opt.optionLabel;
 
             if (string.IsNullOrWhiteSpace(label))
             {
+                // Cherche une ligne Player sinon première ligne non vide
                 D.DialogueLine firstPlayer = opt.lines.Find(
                     l => l.speaker == Speaker.Player && !string.IsNullOrWhiteSpace(l.text)
                 );
@@ -919,10 +972,9 @@ public class NPCmanager : MonoBehaviour
         }
 
         if (_visibleOptionIndices.Count == 0)
-        {
             optionTexts.Add(CreateOptionText("(Aucune option)"));
-        }
     }
+
 
     private bool IsOptionVisible(CharacterDialogueData data, int optIndex)
     {
@@ -977,7 +1029,8 @@ public class NPCmanager : MonoBehaviour
 
     private void SelectCurrentOption()
     {
-        var data = characters[currentCharacter].data;
+        var data = GetDataForMode(currentCharacter, currentOptionsMode);
+
         if (data == null || data.dialogueOptions == null || data.dialogueOptions.Count == 0 || _visibleOptionIndices.Count == 0)
         {
             ShowTopBarUI(1);
@@ -1137,7 +1190,8 @@ public class NPCmanager : MonoBehaviour
             if (activeLineIndex >= activeLines.Count)
             {
                 // Marquer l’option jouée
-                var data = characters[currentCharacter].data;
+                var data = GetDataForMode(currentCharacter, currentOptionsMode);
+
                 if (data != null && _currentOptionSourceIndex >= 0)
                     MarkOptionUsed(data, _currentOptionSourceIndex);
 
@@ -1169,7 +1223,9 @@ public class NPCmanager : MonoBehaviour
     {
         if (btnCharacter) btnCharacter.interactable = interactable;
         if (btnTalk)      btnTalk.interactable      = interactable;
+        if (btnDescribe)  btnDescribe.interactable  = interactable; // nouveau
     }
+
     
     private void OnDisable()
     {

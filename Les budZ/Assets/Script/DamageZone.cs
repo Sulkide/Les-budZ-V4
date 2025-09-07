@@ -9,7 +9,7 @@ public class DamageZone : MonoBehaviour
     public Transform respawnPoint;
     
     [Header("KnockBack Settings")]
-    [SerializeField] private float knockbackForce = 10f;
+    private float knockbackForce = 10f;
     [SerializeField] private bool doDamage = true; // Si true, appelle la coroutine Death() plutôt que KnockBack.
 
     // On utilisera les positions de pointA et pointZ pour calculer la direction du KnockBack

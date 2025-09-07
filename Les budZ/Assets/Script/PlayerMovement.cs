@@ -266,8 +266,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        
-        
+
+        target = gameObject.transform.GetChild(0).gameObject;
         capsuleSize = GetComponent<CapsuleCollider2D>().size;
         capsuleOffset = GetComponent<CapsuleCollider2D>().offset;
         gameObject.layer = LayerMask.NameToLayer("Default");
@@ -403,6 +403,9 @@ public class PlayerMovement : MonoBehaviour
             isGroundSliding = false;
         }
 
+        
+
+        
         if (areControllsRemoved)
         {
             RB.linearVelocity = Vector2.zero;
@@ -411,6 +414,15 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        if (waitForRecovery)
+        {
+            StartBlinkingIfNeeded();
+        }
+        else if (_blinkRoutine != null)
+        {
+            StopBlinking(forceEnable: true); // Finir activé
+        }
+        
 
         if (HasCurrentlyHealthbonus && !isDead)
         {
@@ -2350,12 +2362,22 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damage(int damage)
     {
-        SoundManager.Instance.PlayRandomSFX(clipsRandomSlap, 0.9f, 1.1f);
+        if (waitForRecovery)
+        {
+            SoundManager.Instance.PlayRandomSFX(clipsRandomSlap, 1.7f, 1.7f);
+        }
+        else
+        {
+            SoundManager.Instance.PlayRandomSFX(clipsRandomSlap, 0.9f, 1.1f);
+        }
+        
         CancelGrapple();
         StartCoroutine(DamageCoroutine(damage));
     }
 
     private bool waitForRecovery;
+    public bool useUnscaledTime = false;
+    private Coroutine _blinkRoutine;
     private IEnumerator DamageCoroutine(int damage)
     {
         //cannotMove = true;
@@ -2392,6 +2414,72 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    public GameObject target;
+    
+
+    private void OnEnable()
+    {
+        if (waitForRecovery) StartBlinkingIfNeeded();
+    }
+
+    private void OnDisable()
+    {
+        // Si ce script est désactivé, on arrête proprement.
+        StopBlinking(forceEnable: false);
+    }
+    
+    private void StartBlinkingIfNeeded()
+    {
+        if (_blinkRoutine == null)
+            _blinkRoutine = StartCoroutine(BlinkRoutine());
+    }
+
+    private IEnumerator BlinkRoutine()
+    {
+
+        // Boucle de clignotement tant que waitForRecovery est vrai
+        while (waitForRecovery)
+        {
+            target.SetActive(!target.activeSelf);
+
+            if (useUnscaledTime)
+                yield return new WaitForSecondsRealtime(Mathf.Max(0f, 0.09f));
+            else
+                yield return new WaitForSeconds(Mathf.Max(0f, 0.09f));
+        }
+
+        // Fin: s'assurer que la cible est active
+        target.SetActive(true);
+        _blinkRoutine = null;
+    }
+
+    private void StopBlinking(bool forceEnable)
+    {
+        if (_blinkRoutine != null)
+        {
+            StopCoroutine(_blinkRoutine);
+            _blinkRoutine = null;
+        }
+
+        if (forceEnable && target)
+            target.SetActive(true);
+    }
+
+    // --- Petites méthodes utilitaires publiques (optionnelles) ---
+    public void BeginRecovery()
+    {
+        waitForRecovery = true;
+        StartBlinkingIfNeeded();
+    }
+
+    public void EndRecovery()
+    {
+        waitForRecovery = false;
+        // On force la fin activée au cas où Update ne passe pas ce frame
+        StopBlinking(forceEnable: true);
+    }
+
+    
     IEnumerator WaitForRecovery()
     {
         waitForRecovery = true;
