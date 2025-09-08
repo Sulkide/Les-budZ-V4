@@ -38,6 +38,9 @@ namespace Sulkide.Dialogue
         [TextArea(2, 6)] public string text;
         public AnimationKind animation = AnimationKind.TalkingNormal;
         public AudioClip audio;
+        
+        [Header("Give item (optionnel)")]
+        public KeyObjData giveItem; 
     }
 }
 

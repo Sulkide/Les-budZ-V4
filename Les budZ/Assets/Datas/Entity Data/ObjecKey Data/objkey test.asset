@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1fbfeede1a9a94082c1683f0996a33, type: 3}
+  m_Name: objkey test
+  m_EditorClassIdentifier: 
+  id: 000
+  displayName: Object Test
+  description: "si vous voyer se message, sachez mes amis que Michel Franceschini
+    est un sacr\xE9e con."
+  icon: {fileID: 7482667652216324306, guid: 9f719a36f4b0e48488acdd18b34a569d, type: 3}

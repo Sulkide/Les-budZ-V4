@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using Sulkide.Dialogue;
 using D = Sulkide.Dialogue;
+using UIGridLayoutGroup = UnityEngine.UI.GridLayoutGroup;
+using UIVerticalLayoutGroup = UnityEngine.UI.VerticalLayoutGroup;
 
 public class NPCmanager : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class NPCmanager : MonoBehaviour
     [SerializeField] private string defaultNpcName = "PNJ";
     private static readonly string[] UseActionNames = new[] { "Use" };
 
-    // Options jouées par asset
+    // Options jouées par asset (Talk/Describe)
     private readonly Dictionary<CharacterDialogueData, HashSet<int>> _usedOptions = new();
     // Indices visibles (UI -> data)
     private readonly List<int> _visibleOptionIndices = new();
@@ -64,19 +66,17 @@ public class NPCmanager : MonoBehaviour
     [SerializeField] private float barsOpenDuration = 0.5f;
     [SerializeField] private Material barsMaterial;
 
-    [Header("Dialogue Data (ScriptableObjects)")]
+    [Header("Dialogue Data (Talk)")]
     [SerializeField] private CharacterDialogueData sulkideData;
     [SerializeField] private CharacterDialogueData darckoxData;
     [SerializeField] private CharacterDialogueData mrSlowData;
     [SerializeField] private CharacterDialogueData sulanaData;
-    
-    [Header("Describe Data (ScriptableObjects)")]
-    
+
+    [Header("Dialogue Data (Describe)")]
     [SerializeField] private CharacterDialogueData sulkideDescribeData;
     [SerializeField] private CharacterDialogueData darckoxDescribeData;
     [SerializeField] private CharacterDialogueData mrSlowDescribeData;
     [SerializeField] private CharacterDialogueData sulanaDescribeData;
-
 
     [Header("Sélecteur visuel de personnage")]
     [SerializeField] private GameObject selectionIndicatorPrefab;
@@ -87,8 +87,9 @@ public class NPCmanager : MonoBehaviour
     [SerializeField] private float axisDeadZone = 0.5f;
     [SerializeField] private float initialRepeatDelay = 0.30f;
     [SerializeField] private float repeatInterval = 0.12f;
-    private Button btnDescribe;
-    private Text   btnDescribeText;
+
+    private Button btnDescribe;  private Text btnDescribeText;
+    private Button btnUse;       private Text btnUseText;
 
     [Header("Character Switch Tuning")]
     [SerializeField] private float switchCooldown = 0.25f;
@@ -120,18 +121,34 @@ public class NPCmanager : MonoBehaviour
     private GameObject responseBox;
     private Text responseNameText, responseText;
     private TypewriterEffect responseTyper;
+    private KeyObjData pendingConsumedItem = null;
+// Layouts pour optionsContainer
+// Layouts pour optionsContainer
+    private UIVerticalLayoutGroup optionsVLG;
+    private UIGridLayoutGroup     optionsGrid;
+    
+    // Deux racines séparées, une pour liste et une pour grille
+    private RectTransform optionsListRoot, optionsGridRoot;
+    private UIVerticalLayoutGroup listVLG;
+    private UIGridLayoutGroup     gridGLG;
+    private bool usingGrid = false;
+
+
+
+    
 
     private enum UIState { Hidden, TopBar, Options, ShowingResponse }
     private UIState uiState = UIState.Hidden;
-    private int topSelectionIndex = 1; // 0=Personnage, 1=Parler (Parler par défaut)
+    private int topSelectionIndex = 1; // 0=Perso, 1=Parler, 2=Décrire, 3=Utiliser
     private int selectedOptionIndex = 0;
 
+    // perso courants
     private struct CharacterSlot
     {
         public string name;
         public GameObject obj;
-        public CharacterDialogueData talkData;     // ex-"data"
-        public CharacterDialogueData describeData; // nouveau
+        public CharacterDialogueData talkData;
+        public CharacterDialogueData describeData;
         public AudioSource audio;
     }
 
@@ -151,17 +168,49 @@ public class NPCmanager : MonoBehaviour
     private int dpadLastXDir = 0;
     private int dpadLastYDir = 0;
 
-    private enum OptionMode { Talk, Describe }
+    // ====== INVENTAIRE / UTILISER ======
+    // UI "Utiliser"
+    private readonly List<Image> useItemIcons = new();
+    private readonly List<KeyObjData> useItems = new();
+    private int selectedUseIndex = 0;
+
+    [System.Serializable] public class UseDialogueEntry
+    {
+        public KeyObjData item;
+        public List<D.DialogueLine> lines;
+        public bool consumeItem = false;   // <-- NOUVEAU
+    
+    }
+
+    [Header("Use Dialogues par personnage")]
+    public UseDialogueEntry[] useWithSulkide;
+    public UseDialogueEntry[] useWithDarckox;
+    public UseDialogueEntry[] useWithMrSlow;
+    public UseDialogueEntry[] useWithSulana;
+
+    // --- Give Item Popup ---
+    [Header("Give Item UI")]
+    [SerializeField] private Sprite defaultItemSprite;
+    private GameObject givePopup;
+    private Image giveIcon;
+    private Text giveTitle;
+    private Text giveDescription;
+    private Text giveHint;
+
+    private bool isShowingGivePopup = false;
+    private bool givePopupShownThisLine = false;
+
+    
+    private enum OptionMode { Talk, Describe, Use }
     private OptionMode currentOptionsMode = OptionMode.Talk;
 
     private CharacterDialogueData GetDataForMode(int charIndex, OptionMode mode)
     {
         return mode == OptionMode.Describe
             ? characters[charIndex].describeData
-            : characters[charIndex].talkData;
+            : characters[charIndex].talkData; // Talk par défaut (Use géré à part)
     }
 
-    
     private void Awake()
     {
         mainCam = Camera.main;
@@ -184,7 +233,6 @@ public class NPCmanager : MonoBehaviour
         characters[2] = MakeSlot(mrSlow,  mrSlowData,   mrSlowDescribeData);
         characters[3] = MakeSlot(sulana,  sulanaData,   sulanaDescribeData);
 
-
         if (!npcAudioSource)
         {
             npcAudioSource = gameObject.AddComponent<AudioSource>();
@@ -203,10 +251,9 @@ public class NPCmanager : MonoBehaviour
             obj = go,
             talkData = talk,
             describeData = describe,
-            // On prend un nom depuis talk si dispo, sinon describe, sinon le nom du GO
             name = (talk != null && !string.IsNullOrEmpty(talk.characterName)) ? talk.characterName :
-                (describe != null && !string.IsNullOrEmpty(describe.characterName)) ? describe.characterName :
-                go.name,
+                   (describe != null && !string.IsNullOrEmpty(describe.characterName)) ? describe.characterName :
+                   go.name,
             audio = go.GetComponent<AudioSource>()
         };
         if (!slot.audio)
@@ -216,7 +263,6 @@ public class NPCmanager : MonoBehaviour
         }
         return slot;
     }
-
 
     private Font ResolveUIFont()
     {
@@ -243,17 +289,32 @@ public class NPCmanager : MonoBehaviour
         UpdateIndicatorPosition();
     }
 
+    private void ClearOptionsContainer()
+    {
+        if (optionsListRoot)
+            for (int i = optionsListRoot.childCount - 1; i >= 0; i--)
+                Destroy(optionsListRoot.GetChild(i).gameObject);
+
+        if (optionsGridRoot)
+            for (int i = optionsGridRoot.childCount - 1; i >= 0; i--)
+                Destroy(optionsGridRoot.GetChild(i).gameObject);
+
+        optionTexts.Clear();
+        useItemIcons.Clear();
+        useItems.Clear();
+    }
+
+
+    
     private void OnTriggerStay2D(Collider2D other)
     {
         if (!eventStart && other.CompareTag("Target"))
         {
-            Debug.Log("[NPCmanager] OnTriggerStay2D");
-            
             var pm = other.GetComponent<PlayerMovement>();
             if (pm != null && pm.useInputRegistered)
             {
                 eventStart = true;
-                GameManager.instance.MakePlayerInvisible();
+                GameManager.instance?.MakePlayerInvisible(); // si tu as cette méthode
                 EventStart(pm);
             }
         }
@@ -261,7 +322,7 @@ public class NPCmanager : MonoBehaviour
 
     public void EventStart(PlayerMovement pm) => StartCoroutine(EventFlow(pm));
 
-    // ----------------- Letterbox helpers (inchangés, compacts) -----------------
+    // ----------------- Letterbox helpers (abrégés) -----------------
     private void EnsureBarsExist()
     {
         if (!Application.isPlaying) return;
@@ -375,7 +436,8 @@ public class NPCmanager : MonoBehaviour
         SetBarsOutsideImmediate();
         yield return AnimateBarsClose(barsCloseDuration);
 
-        GameManager.instance?.MakePlayerInvinsible();
+        // (optionnel) masquer tes players ici
+        // GameManager.instance?.MakePlayerInvisible();
 
         if (newCameraPos && mainCam)
         {
@@ -402,77 +464,122 @@ public class NPCmanager : MonoBehaviour
     private void EnsureUIExists()
     {
         if (!Application.isPlaying) return;
-        
         if (uiCanvas != null) return;
 
+        // EventSystem
         if (FindObjectOfType<EventSystem>() == null)
         {
             var es = new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
             es.hideFlags = HideFlags.DontSave | HideFlags.DontSaveInBuild;
-
-            
         }
 
-        var canvasGO = MarkDontSave(new GameObject("DialogueCanvas", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster)));
-
+        // Canvas + RectTransform (FORCÉ)
+        var canvasGO = new GameObject("DialogueCanvas",
+            typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        var canvasRT = canvasGO.GetComponent<RectTransform>(); // <-- parent garanti
         uiCanvas = canvasGO.GetComponent<Canvas>();
         uiCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+
         var scaler = canvasGO.GetComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1920, 1080);
-        canvasGO.layer = LayerMask.NameToLayer("UI");
 
-        
+        int uiLayer = LayerMask.NameToLayer("UI");
+        if (uiLayer >= 0) canvasGO.layer = uiLayer;
         canvasGO.hideFlags = HideFlags.DontSave | HideFlags.DontSaveInBuild;
 
-        
-        topPanel = CreatePanel("TopBarUI", uiCanvas.transform as RectTransform, new Color(0, 0, 0, 1f));
+        // Top / Bottom panels (parent = canvasRT, jamais null)
+        topPanel = CreatePanel("TopBarUI", canvasRT, new Color(0, 0, 0, 1f));
         AnchorTop(topPanel);
 
-        var (btn1, txt1) = CreateButton("BtnCharacter", topPanel, new Vector2(200, 48), new Vector2(12, -12));
-        btnCharacter = btn1; btnCharacterText = txt1; btnCharacterText.text = "Sulkide";
-        btnCharacter.onClick.AddListener(SwitchCharacterNext);
-
-        var (btn2, txt2) = CreateButton("BtnTalk", topPanel, new Vector2(200, 48), new Vector2(224, -12));
-        btnTalk = btn2; btnTalkText = txt2; btnTalkText.text = "Parler";
-        btnTalk.onClick.AddListener(() => OpenOptions(OptionMode.Talk));
-
-
-        // Bouton Décrire
-        var (btn3, txt3) = CreateButton("BtnDescribe", topPanel, new Vector2(200, 48), new Vector2(436, -12));
-        btnDescribe = btn3; btnDescribeText = txt3; btnDescribeText.text = "Décrire";
-        btnDescribe.onClick.AddListener(() => OpenOptions(OptionMode.Describe));
-
-        
-        bottomPanel = CreatePanel("BottomBarUI", uiCanvas.transform as RectTransform, new Color(0, 0, 0, 1f));
+        bottomPanel = CreatePanel("BottomBarUI", canvasRT, new Color(0, 0, 0, 1f));
         AnchorBottom(bottomPanel);
 
-        var optionsGO = new GameObject("OptionsContainer", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
+        // --- Boutons du top ---
+        (btnCharacter, btnCharacterText) = CreateButton("BtnCharacter", topPanel, new Vector2(200, 48), new Vector2(12,  -12));
+        btnCharacterText.text = "Personnage";
+        btnCharacter.onClick.AddListener(SwitchCharacterNext);
+
+        (btnTalk, btnTalkText) = CreateButton("BtnTalk", topPanel, new Vector2(200, 48), new Vector2(224, -12));
+        btnTalkText.text = "Parler";
+        btnTalk.onClick.AddListener(() => OpenOptions(OptionMode.Talk));
+
+        (btnDescribe, btnDescribeText) = CreateButton("BtnDescribe", topPanel, new Vector2(200, 48), new Vector2(436, -12));
+        btnDescribeText.text = "Décrire";
+        btnDescribe.onClick.AddListener(() => OpenOptions(OptionMode.Describe));
+
+        (btnUse, btnUseText) = CreateButton("BtnUse", topPanel, new Vector2(200, 48), new Vector2(648, -12));
+        btnUseText.text = "Utiliser";
+        btnUse.onClick.AddListener(() => OpenOptions(OptionMode.Use));
+
+        // --- Options container (texte / inventaire) ---
+        var optionsGO = new GameObject("OptionsContainer", typeof(RectTransform));
         optionsGO.transform.SetParent(bottomPanel, false);
         optionsContainer = optionsGO.GetComponent<RectTransform>();
-        optionsContainer.anchorMin = new(0, 0);
-        optionsContainer.anchorMax = new(1, 1);
-        optionsContainer.offsetMin = new(20, 20);
-        optionsContainer.offsetMax = new(-20, -20);
-        var vlg = optionsGO.GetComponent<VerticalLayoutGroup>();
-        vlg.spacing = 8f;
-        vlg.childControlHeight = true; vlg.childControlWidth = true;
-        vlg.childForceExpandHeight = false; vlg.childForceExpandWidth = false;
-        var csf = optionsGO.GetComponent<ContentSizeFitter>();
-        csf.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
-        csf.verticalFit   = ContentSizeFitter.FitMode.Unconstrained;
+        optionsContainer.anchorMin = new Vector2(0, 0);
+        optionsContainer.anchorMax = new Vector2(1, 1);
+        optionsContainer.offsetMin = new Vector2(20, 20);
+        optionsContainer.offsetMax = new Vector2(-20, -20);
 
+        // --- Racine LISTE (Vertical) ---
+        var listGO = new GameObject("ListRoot", typeof(RectTransform));
+        listGO.transform.SetParent(optionsContainer, false);
+        optionsListRoot = listGO.GetComponent<RectTransform>();
+        optionsListRoot.anchorMin = new Vector2(0, 0);
+        optionsListRoot.anchorMax = new Vector2(1, 1);
+        optionsListRoot.offsetMin = Vector2.zero;
+        optionsListRoot.offsetMax = Vector2.zero;
+        listVLG = listGO.AddComponent<UIVerticalLayoutGroup>();
+        listVLG.spacing = 12f;
+        listVLG.childControlHeight = true;
+        listVLG.childControlWidth  = true;
+        listVLG.childForceExpandHeight = false;
+        listVLG.childForceExpandWidth  = false;
+        listVLG.padding = new RectOffset(10, 10, 10, 10);
+        optionsListRoot.gameObject.SetActive(true);
+
+// --- Racine GRILLE (Grid) ---
+        var gridGO = new GameObject("GridRoot", typeof(RectTransform));
+        gridGO.transform.SetParent(optionsContainer, false);
+        optionsGridRoot = gridGO.GetComponent<RectTransform>();
+        optionsGridRoot.anchorMin = new Vector2(0, 0);
+        optionsGridRoot.anchorMax = new Vector2(1, 1);
+        optionsGridRoot.offsetMin = Vector2.zero;
+        optionsGridRoot.offsetMax = Vector2.zero;
+        gridGLG = gridGO.AddComponent<UIGridLayoutGroup>();
+        gridGLG.startCorner     = GridLayoutGroup.Corner.UpperLeft;
+        gridGLG.startAxis       = GridLayoutGroup.Axis.Horizontal;
+        gridGLG.constraint      = UIGridLayoutGroup.Constraint.FixedRowCount;
+        gridGLG.constraintCount = 1;
+        gridGLG.childAlignment  = TextAnchor.UpperLeft;
+        gridGLG.padding         = new RectOffset(10, 10, 10, 10);
+        gridGLG.spacing         = new Vector2(24f, 0f);
+        optionsGridRoot.gameObject.SetActive(false);
+
+        
+
+
+
+// ⚠️ NE PAS créer le Grid ici. On le créera quand on en a besoin.
+        //optionsGrid = null;
+        
+
+        // --- Response box ---
         responseBox = CreatePanel("ResponseBox", bottomPanel, new Color(0, 0, 0, 0)).gameObject;
         var rb = responseBox.GetComponent<RectTransform>();
-        rb.anchorMin = new(0, 0); rb.anchorMax = new(1, 1);
-        rb.offsetMin = new(20, 20); rb.offsetMax = new(-20, -20);
+        rb.anchorMin = new Vector2(0, 0);
+        rb.anchorMax = new Vector2(1, 1);
+        rb.offsetMin = new Vector2(20, 20);
+        rb.offsetMax = new Vector2(-20, -20);
 
         var nameGO = new GameObject("SpeakerName", typeof(RectTransform), typeof(Text));
         nameGO.transform.SetParent(responseBox.transform, false);
         var nameRT = nameGO.GetComponent<RectTransform>();
-        nameRT.anchorMin = new(0, 1); nameRT.anchorMax = new(1, 1);
-        nameRT.pivot = new(0, 1);
-        nameRT.offsetMin = new(0, -36); nameRT.offsetMax = new(0, 0);
+        nameRT.anchorMin = new Vector2(0, 1);
+        nameRT.anchorMax = new Vector2(1, 1);
+        nameRT.pivot = new Vector2(0, 1);
+        nameRT.offsetMin = new Vector2(0, -36);
+        nameRT.offsetMax = new Vector2(0, 0);
         responseNameText = nameGO.GetComponent<Text>();
         responseNameText.font = ResolveUIFont();
         responseNameText.fontSize = 22;
@@ -480,35 +587,151 @@ public class NPCmanager : MonoBehaviour
         responseNameText.alignment = TextAnchor.UpperLeft;
         responseNameText.text = "PNJ";
 
-        var textGO = new GameObject("ResponseText", typeof(RectTransform), typeof(Text), typeof(TypewriterEffect));
+        var textGO = new GameObject("ResponseText", typeof(RectTransform), typeof(Text));
         textGO.transform.SetParent(responseBox.transform, false);
         var textRT = textGO.GetComponent<RectTransform>();
-        textRT.anchorMin = new(0, 0); textRT.anchorMax = new(1, 1);
-        textRT.offsetMin = Vector2.zero; textRT.offsetMax = new Vector2(0, -40);
+        textRT.anchorMin = new Vector2(0, 0);
+        textRT.anchorMax = new Vector2(1, 1);
+        textRT.offsetMin = Vector2.zero;
+        textRT.offsetMax = new Vector2(0, -40);
         responseText = textGO.GetComponent<Text>();
         responseText.font = ResolveUIFont();
         responseText.fontSize = 24;
         responseText.color = Color.white;
         responseText.alignment = TextAnchor.UpperLeft;
-        responseTyper = textGO.GetComponent<TypewriterEffect>();
+        // ➜ Ajouter TypewriterEffect APRÈS création/assignation des Texts
+        responseTyper = textGO.AddComponent<TypewriterEffect>();
+
         responseBox.SetActive(false);
 
+        // --- GiveItemPopup ---
+        givePopup = CreatePanel("GiveItemPopup", bottomPanel, new Color(0, 0, 0, 0.90f)).gameObject;
+        var gp = givePopup.GetComponent<RectTransform>();
+        gp.anchorMin = new Vector2(0.5f, 0.5f);
+        gp.anchorMax = new Vector2(0.5f, 0.5f);
+        gp.pivot     = new Vector2(0.5f, 0.5f);
+        gp.sizeDelta = new Vector2(680, 220);
+        gp.anchoredPosition = Vector2.zero;
+        givePopup.SetActive(false);
+
+        var iconGO = new GameObject("Icon", typeof(RectTransform), typeof(Image));
+        iconGO.transform.SetParent(givePopup.transform, false);
+        var iconRT = iconGO.GetComponent<RectTransform>();
+        iconRT.anchorMin = new Vector2(0, 0.5f);
+        iconRT.anchorMax = new Vector2(0, 0.5f);
+        iconRT.pivot     = new Vector2(0, 0.5f);
+        iconRT.sizeDelta = new Vector2(128, 128);
+        iconRT.anchoredPosition = new Vector2(24, 0);
+        giveIcon = iconGO.GetComponent<Image>();
+        giveIcon.preserveAspect = true;
+
+        giveTitle = new GameObject("Title", typeof(RectTransform), typeof(Text)).GetComponent<Text>();
+        giveTitle.transform.SetParent(givePopup.transform, false);
+        var titleRT = giveTitle.GetComponent<RectTransform>();
+        titleRT.anchorMin = new Vector2(0, 1);
+        titleRT.anchorMax = new Vector2(1, 1);
+        titleRT.offsetMin = new Vector2(168, -60);
+        titleRT.offsetMax = new Vector2(-20, -16);
+        giveTitle.font = ResolveUIFont();
+        giveTitle.fontSize = 30;
+        giveTitle.color = Color.white;
+        giveTitle.alignment = TextAnchor.UpperLeft;
+
+        giveDescription = new GameObject("Description", typeof(RectTransform), typeof(Text)).GetComponent<Text>();
+        giveDescription.transform.SetParent(givePopup.transform, false);
+        var descRT = giveDescription.GetComponent<RectTransform>();
+        descRT.anchorMin = new Vector2(0, 0);
+        descRT.anchorMax = new Vector2(1, 1);
+        descRT.offsetMin = new Vector2(168, 20);
+        descRT.offsetMax = new Vector2(-20, -70);
+        giveDescription.font = ResolveUIFont();
+        giveDescription.fontSize = 22;
+        giveDescription.color = new Color(0.9f, 0.9f, 0.9f, 1f);
+        giveDescription.alignment = TextAnchor.UpperLeft;
+
+        giveHint = new GameObject("Hint", typeof(RectTransform), typeof(Text)).GetComponent<Text>();
+        giveHint.transform.SetParent(givePopup.transform, false);
+        var hintRT = giveHint.GetComponent<RectTransform>();
+        hintRT.anchorMin = new Vector2(0, 0);
+        hintRT.anchorMax = new Vector2(1, 0);
+        hintRT.offsetMin = new Vector2(20, 16);
+        hintRT.offsetMax = new Vector2(-20, 56);
+        giveHint.font = ResolveUIFont();
+        giveHint.fontSize = 18;
+        giveHint.color = new Color(1f, 1f, 1f, 0.85f);
+        giveHint.alignment = TextAnchor.LowerRight;
+        giveHint.text = "Appuyez sur Utiliser pour continuer";
+
+        // Masquer le bas au départ
         HideBottom();
 
+        // Navigation: off
         var navNone = new Navigation { mode = Navigation.Mode.None };
-        
         btnCharacter.navigation = navNone;
-        btnTalk.navigation = navNone;
-        btnDescribe.navigation = navNone;
-
+        btnTalk.navigation      = navNone;
+        btnDescribe.navigation  = navNone;
+        btnUse.navigation       = navNone;
     }
 
-    private T MarkDontSave<T>(T go) where T : UnityEngine.Object
+
+    
+    private void SetOptionsLayoutMode(bool horizontalGrid, int itemCount = 0)
     {
-        if (go is GameObject g) g.hideFlags = HideFlags.DontSave | HideFlags.DontSaveInBuild;
-        else if (go is Component c) c.gameObject.hideFlags = HideFlags.DontSave | HideFlags.DontSaveInBuild;
-        return go;
+        if (!optionsContainer) return;
+
+        usingGrid = horizontalGrid;
+
+        if (optionsListRoot) optionsListRoot.gameObject.SetActive(!horizontalGrid);
+        if (optionsGridRoot) optionsGridRoot.gameObject.SetActive(horizontalGrid);
+
+        // Ajuste la largeur des cellules si on est en grille
+        if (horizontalGrid && gridGLG && optionsGridRoot)
+        {
+            float containerW = optionsGridRoot.rect.width;
+            if (containerW <= 0f) containerW = Screen.width - 40f;
+            float padLR    = gridGLG.padding.left + gridGLG.padding.right;
+            float spacingX = gridGLG.spacing.x;
+            float available = Mathf.Max(0f, containerW - padLR - spacingX * Mathf.Max(0, itemCount - 1));
+            float cellW = (itemCount > 0) ? available / itemCount : 420f;
+            gridGLG.cellSize = new Vector2(Mathf.Clamp(cellW, 64f, 520f), 72f);
+        }
+
+        if (optionsContainer.gameObject.activeInHierarchy)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(optionsContainer);
     }
+
+
+
+
+
+
+
+    private void ShowGiveItemPopup(KeyObjData item)
+    {
+        if (item == null || givePopup == null) return;
+
+        // Ajoute à l’inventaire (une fois)
+        GameManager.instance?.AddKeyObject(item);
+
+        // UI
+        giveIcon.sprite = item.icon ? item.icon : defaultItemSprite;
+        giveTitle.text  = string.IsNullOrEmpty(item.displayName) ? item.id : item.displayName;
+
+        // On suppose que KeyObjData possède un champ 'description'
+        string desc = item.description; 
+        giveDescription.text = string.IsNullOrEmpty(desc) ? "" : desc;
+
+        givePopup.SetActive(true);
+        isShowingGivePopup = true;
+    }
+
+    private void HideGiveItemPopup()
+    {
+        if (!givePopup) return;
+        givePopup.SetActive(false);
+        isShowingGivePopup = false;
+    }
+
     
     private RectTransform CreatePanel(string name, RectTransform parent, Color color)
     {
@@ -519,6 +742,7 @@ public class NPCmanager : MonoBehaviour
         img.color = color;
         return rt;
     }
+
 
     private (Button, Text) CreateButton(string name, RectTransform parent, Vector2 size, Vector2 topLeftOffset)
     {
@@ -586,26 +810,24 @@ public class NPCmanager : MonoBehaviour
         HideBottom();
         uiState = UIState.TopBar;
 
-        // Par défaut : "Parler"
         if (initialIndex >= 0)
-            topSelectionIndex = Mathf.Clamp(initialIndex, 0, 2); // <- 2 au lieu de 1
-
+            topSelectionIndex = Mathf.Clamp(initialIndex, 0, 3);
 
         SetTopButtonsInteractable(true);
         HighlightTopButton();
         ResetInputLatchAll();
         ResetAxisRepeatState();
 
-        // Force la sélection du bouton "Parler"
         if (EventSystem.current != null)
             EventSystem.current.SetSelectedGameObject(btnTalk ? btnTalk.gameObject : null);
     }
 
     private void HideBottom()
     {
+        if (!bottomPanel) return;
         bottomPanel.gameObject.SetActive(false);
-        optionsContainer.gameObject.SetActive(false);
-        responseBox.SetActive(false);
+        if (optionsContainer) optionsContainer.gameObject.SetActive(false);
+        if (responseBox) responseBox.SetActive(false);
     }
 
     private void ShowOptions()
@@ -700,7 +922,11 @@ public class NPCmanager : MonoBehaviour
 
         if (uiState == UIState.Options)
         {
-            BuildOptionsForCurrentCharacter(currentOptionsMode); // <- plutôt que sans param
+            if (currentOptionsMode == OptionMode.Use)
+                BuildUseList();
+            else
+                BuildOptionsForCurrentCharacter(currentOptionsMode);
+
             selectedOptionIndex = Mathf.Clamp(selectedOptionIndex, 0, Mathf.Max(0, optionTexts.Count - 1));
             HighlightOption();
             optionsInputUnlockTime = Time.time + optionsOpenCooldown;
@@ -798,11 +1024,11 @@ public class NPCmanager : MonoBehaviour
         float x = currentPM.moveInput.x;
         float y = currentPM.moveInput.y;
 
-        // X : -1/ +1 pour se déplacer entre 0..2
+        // X : -1/ +1 pour se déplacer entre 0..3
         int hEdge = AxisEdge(ref hLastDir, x, axisDeadZone);
         if (hEdge != 0)
         {
-            topSelectionIndex = Mathf.Clamp(topSelectionIndex + hEdge, 0, 2);
+            topSelectionIndex = Mathf.Clamp(topSelectionIndex + hEdge, 0, 3);
             HighlightTopButton();
         }
 
@@ -835,20 +1061,21 @@ public class NPCmanager : MonoBehaviour
         // Bouton Use = confirmer
         if (PressedOnceUse()) ConfirmTopSelection();
     }
-    
+
     private void ConfirmTopSelection()
     {
-        if (topSelectionIndex == 0)        // Personnage
-            SwitchCharacterNext();
-        else if (topSelectionIndex == 1)   // Parler
-            OpenOptions(OptionMode.Talk);
-        else                               // Décrire
-            OpenOptions(OptionMode.Describe);
+        switch (topSelectionIndex)
+        {
+            case 0: SwitchCharacterNext(); break;            // Personnage
+            case 1: OpenOptions(OptionMode.Talk); break;     // Parler
+            case 2: OpenOptions(OptionMode.Describe); break; // Décrire
+            case 3: OpenOptions(OptionMode.Use); break;      // Utiliser
+        }
     }
 
     private void HighlightTopButton()
     {
-        if (!btnCharacter || !btnTalk || !btnDescribe) return;
+        if (!btnCharacter || !btnTalk || !btnDescribe || !btnUse) return;
 
         var selectedBg   = GetCurrentHighlightColor();
         var deselectedBg = topBarUnselectedBg;
@@ -856,31 +1083,40 @@ public class NPCmanager : MonoBehaviour
         var imgChar = btnCharacter.GetComponent<Image>();
         var imgTalk = btnTalk.GetComponent<Image>();
         var imgDesc = btnDescribe.GetComponent<Image>();
+        var imgUse  = btnUse.GetComponent<Image>();
 
-        // Couleurs de fond
         if (imgChar) imgChar.color = (topSelectionIndex == 0) ? selectedBg : deselectedBg;
         if (imgTalk) imgTalk.color = (topSelectionIndex == 1) ? selectedBg : deselectedBg;
         if (imgDesc) imgDesc.color = (topSelectionIndex == 2) ? selectedBg : deselectedBg;
+        if (imgUse)  imgUse.color  = (topSelectionIndex == 3) ? selectedBg : deselectedBg;
 
-        // Couleurs de texte
         if (btnCharacterText) btnCharacterText.color = (topSelectionIndex == 0) ? topBarSelectedText : topBarUnselectedText;
         if (btnTalkText)      btnTalkText.color      = (topSelectionIndex == 1) ? topBarSelectedText : topBarUnselectedText;
         if (btnDescribeText)  btnDescribeText.color  = (topSelectionIndex == 2) ? topBarSelectedText : topBarUnselectedText;
+        if (btnUseText)       btnUseText.color       = (topSelectionIndex == 3) ? topBarSelectedText : topBarUnselectedText;
     }
 
-
-    private void OpenOptions(OptionMode mode = OptionMode.Talk)
+    private void OpenOptions(OptionMode mode)
     {
         currentOptionsMode = mode;
-        BuildOptionsForCurrentCharacter(currentOptionsMode);
+
+        if (mode == OptionMode.Use)
+        {
+            ShowOptions();                 // ⬅️ D'ABORD on active le panneau + container
+            BuildUseList();                // ⬅️ ENSUITE on remplit et on bascule en grille
+            selectedUseIndex = 0;
+            HighlightUseItem();
+            return;
+        }
+
+        BuildOptionsForCurrentCharacter(mode);
         ShowOptions();
-        uiState = UIState.Options;
         selectedOptionIndex = 0;
         HighlightOption();
     }
 
 
-    // ------------------------------ Options ------------------------------
+    // ------------------------------ Options : Talk/Describe ------------------------------
     private void HandleOptionsInput()
     {
         // Gâchettes
@@ -907,6 +1143,37 @@ public class NPCmanager : MonoBehaviour
             return;
         }
 
+        if (currentOptionsMode == OptionMode.Use)
+        {
+            // NAV HORIZONTALE (gauche/droite) + VERTICALE (remonter au TopBar)
+            int xStep = DpadEdgeX();
+            if (xStep == 0) xStep = AxisEdge(ref hLastDir, currentPM.moveInput.x, axisDeadZone);
+
+            if (xStep != 0 && useItems.Count > 0)
+            {
+                selectedUseIndex = Mathf.Clamp(selectedUseIndex + xStep, 0, Mathf.Max(0, useItems.Count - 1));
+                HighlightUseItem();
+                return;
+            }
+
+            int yStep = DpadEdgeY();
+            if (yStep == 0) yStep = AxisEdge(ref vLastDir, currentPM.moveInput.y, axisDeadZone);
+            if (yStep != 0)
+            {
+                if (useItems.Count == 0) { ShowTopBarUI(3); return; }
+                if (yStep > 0 && selectedUseIndex == 0) { ShowTopBarUI(3); return; } // haut => remonter
+                // bas/haut n’affectent pas l’index (on garde la rangée unique)
+            }
+
+            // Valider
+            if (PressedOnceUse() && useItems.Count > 0)
+            {
+                LaunchUseDialogue(useItems[selectedUseIndex]);
+            }
+            return;
+        }
+
+
         // Stick X : droite => next / gauche => prev
         int hEdge = AxisEdge(ref hLastDir, currentPM.moveInput.x, axisDeadZone);
         if (hEdge != 0 && CanSwitchNow())
@@ -916,8 +1183,8 @@ public class NPCmanager : MonoBehaviour
         }
 
         // Y : naviguer liste
-        int dpadY = DpadEdgeY();
-        if (dpadY != 0) { NavigateOptions(-dpadY); }
+        int dpy = DpadEdgeY();
+        if (dpy != 0) { NavigateOptions(-dpy); }
         else
         {
             int vEdge = AxisEdge(ref vLastDir, currentPM.moveInput.y, axisDeadZone);
@@ -930,17 +1197,20 @@ public class NPCmanager : MonoBehaviour
 
     private void NavigateOptions(int delta)
     {
-        if (_visibleOptionIndices.Count == 0) { ShowTopBarUI(0); return; }
-        if (delta < 0 && selectedOptionIndex == 0) { ShowTopBarUI(0); return; }
+        if (_visibleOptionIndices.Count == 0) { ShowTopBarUI( (currentOptionsMode==OptionMode.Talk)?1:2 ); return; }
+        if (delta < 0 && selectedOptionIndex == 0) { ShowTopBarUI( (currentOptionsMode==OptionMode.Talk)?1:2 ); return; }
         MoveOption(delta);
     }
 
     private void BuildOptionsForCurrentCharacter(OptionMode mode)
     {
         // clear anciens
-        foreach (var t in optionTexts) if (t) Destroy(t.gameObject);
-        optionTexts.Clear();
+        ClearOptionsContainer();
         _visibleOptionIndices.Clear();
+        
+        // Talk / Describe => layout vertical
+        SetOptionsLayoutMode(false);
+
 
         var data = GetDataForMode(currentCharacter, mode);
         if (data == null || data.dialogueOptions == null || data.dialogueOptions.Count == 0)
@@ -960,7 +1230,7 @@ public class NPCmanager : MonoBehaviour
             {
                 // Cherche une ligne Player sinon première ligne non vide
                 D.DialogueLine firstPlayer = opt.lines.Find(
-                    l => l.speaker == Speaker.Player && !string.IsNullOrWhiteSpace(l.text)
+                    l => l.speaker == D.Speaker.Player && !string.IsNullOrWhiteSpace(l.text)
                 );
                 if (firstPlayer != null) label = firstPlayer.text;
                 else if (opt.lines.Count > 0) label = string.IsNullOrWhiteSpace(opt.lines[0].text) ? "(...)" : opt.lines[0].text;
@@ -974,7 +1244,6 @@ public class NPCmanager : MonoBehaviour
         if (_visibleOptionIndices.Count == 0)
             optionTexts.Add(CreateOptionText("(Aucune option)"));
     }
-
 
     private bool IsOptionVisible(CharacterDialogueData data, int optIndex)
     {
@@ -999,7 +1268,7 @@ public class NPCmanager : MonoBehaviour
     private Text CreateOptionText(string content)
     {
         var go = new GameObject("Option", typeof(RectTransform), typeof(Text));
-        go.transform.SetParent(optionsContainer, false);
+        go.transform.SetParent(optionsListRoot ? optionsListRoot : optionsContainer, false);
         var rt = go.GetComponent<RectTransform>();
         rt.anchorMin = new(0, 1); rt.anchorMax = new(1, 1);
         rt.pivot = new(0, 1); rt.sizeDelta = new(0, 36);
@@ -1033,7 +1302,7 @@ public class NPCmanager : MonoBehaviour
 
         if (data == null || data.dialogueOptions == null || data.dialogueOptions.Count == 0 || _visibleOptionIndices.Count == 0)
         {
-            ShowTopBarUI(1);
+            ShowTopBarUI( (currentOptionsMode==OptionMode.Talk)?1:2 );
             return;
         }
 
@@ -1047,6 +1316,125 @@ public class NPCmanager : MonoBehaviour
         StartConversation(opt.lines, npcName);
     }
 
+    // ====== UTILISER : inventaire et mapping ======
+    private void BuildUseList()
+    {
+        
+        
+        // nettoyer UI précédente
+        ClearOptionsContainer(); 
+
+        var gm = GameManager.instance;
+        var list = gm != null ? gm.GetKeyItems() : null;
+        
+        if (list == null || list.Count == 0)
+        {
+            SetOptionsLayoutMode(false);
+            optionTexts.Add(CreateOptionText("(Inventaire vide)"));
+            return;
+        }
+        
+        int count = list.Count;
+        SetOptionsLayoutMode(true, count);
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            var data = list[i];
+            if (!data) continue;
+
+            var row = new GameObject("UseItemRow", typeof(RectTransform));
+            row.transform.SetParent(optionsGridRoot, false); // ← ICI (et plus sur optionsContainer)
+            var rt = row.GetComponent<RectTransform>();
+            rt.anchorMin = new Vector2(0, 1);
+            rt.anchorMax = new Vector2(1, 1);
+            rt.pivot     = new Vector2(0, 1);
+            rt.sizeDelta = new Vector2(0, 72);
+
+            var iconGO = new GameObject("Icon", typeof(RectTransform), typeof(Image));
+            iconGO.transform.SetParent(row.transform, false);
+            var irt = iconGO.GetComponent<RectTransform>();
+            irt.anchorMin = new Vector2(0, 0.5f);
+            irt.anchorMax = new Vector2(0, 0.5f);
+            irt.pivot     = new Vector2(0, 0.5f);
+            irt.sizeDelta = new Vector2(64, 64);
+            irt.anchoredPosition = new Vector2(0, 0);
+            var icon = iconGO.GetComponent<Image>();
+            icon.sprite = data.icon;
+            icon.preserveAspect = true;
+
+            var label = new GameObject("Label", typeof(RectTransform), typeof(Text)).GetComponent<Text>();
+            label.transform.SetParent(row.transform, false);
+            var lrt = label.GetComponent<RectTransform>();
+            lrt.anchorMin = new Vector2(0, 0);
+            lrt.anchorMax = new Vector2(1, 1);
+            lrt.offsetMin = new Vector2(72, 0);
+            lrt.offsetMax = new Vector2(0, 0);
+            label.font     = ResolveUIFont();
+            label.fontSize = 24;
+            label.alignment = TextAnchor.MiddleLeft;
+            label.color = Color.white;
+            label.text  = string.IsNullOrEmpty(data.displayName) ? data.id : data.displayName;
+
+            useItemIcons.Add(icon);
+            useItems.Add(data);
+        }
+
+        
+    }
+
+    private void HighlightUseItem()
+    {
+        for (int i = 0; i < useItemIcons.Count; i++)
+        {
+            if (!useItemIcons[i]) continue;
+            useItemIcons[i].color = (i == selectedUseIndex) ? GetCurrentHighlightColor() : Color.white;
+        }
+    }
+
+    private UseDialogueEntry FindUseEntry(KeyObjData item, int charIndex)
+    {
+        UseDialogueEntry[] table = null;
+        switch (charIndex)
+        {
+            case 0: table = useWithSulkide; break;
+            case 1: table = useWithDarckox; break;
+            case 2: table = useWithMrSlow;  break;
+            case 3: table = useWithSulana;  break;
+        }
+        if (table != null)
+        {
+            for (int i = 0; i < table.Length; i++)
+                if (table[i] != null && table[i].item == item)
+                    return table[i];
+        }
+        return null;
+    }
+
+
+    private void LaunchUseDialogue(KeyObjData item)
+    {
+        var entry = FindUseEntry(item, currentCharacter);
+
+        if (entry == null || entry.lines == null || entry.lines.Count == 0)
+        {
+            var fallback = new List<D.DialogueLine> {
+                new D.DialogueLine { speaker = D.Speaker.NPC, text = "Je ne vois pas l'intérêt de me montrer ça." }
+            };
+            pendingConsumedItem = null;               // rien à consommer
+            StartConversation(fallback, activeNpcName);
+            return;
+        }
+
+        // ➜ On consommera l’objet seulement si la case est cochée
+        pendingConsumedItem = entry.consumeItem ? item : null;
+
+        string npcName = string.IsNullOrEmpty(activeNpcName) ? defaultNpcName : activeNpcName;
+        StartConversation(entry.lines, npcName);
+    }
+
+
+
+    // ------------------------------ Conversation ------------------------------
     private void StartConversation(List<D.DialogueLine> lines, string npcName)
     {
         if (lines == null || lines.Count == 0) { ShowTopBarUI(1); return; }
@@ -1059,29 +1447,28 @@ public class NPCmanager : MonoBehaviour
         ShowCurrentLine();
     }
 
-    private DummyAnimation GetDummyForSpeaker(Speaker speaker)
+    private DummyAnimation GetDummyForSpeaker(D.Speaker speaker)
     {
         switch (speaker)
         {
-            case Speaker.Player:
+            case D.Speaker.Player:
                 return (currentCharacter >= 0 && currentCharacter < characterAnims.Length) ? characterAnims[currentCharacter] : null;
-            case Speaker.NPC:     return npcAnim;
-            case Speaker.Sulkide: return animSulkide;
-            case Speaker.Darckox: return animDarckox;
-            case Speaker.MrSlow:  return animMrSlow;
-            case Speaker.Sulana:  return animSulana;
+            case D.Speaker.NPC:     return npcAnim;
+            case D.Speaker.Sulkide: return animSulkide;
+            case D.Speaker.Darckox: return animDarckox;
+            case D.Speaker.MrSlow:  return animMrSlow;
+            case D.Speaker.Sulana:  return animSulana;
             default: return null;
         }
     }
 
-    private void PlayDummyAnimation(D.AnimationKind kind, Speaker speaker)
+    private void PlayDummyAnimation(D.AnimationKind kind, D.Speaker speaker)
     {
         if (kind == D.AnimationKind.None) return;
 
         var dummy = GetDummyForSpeaker(speaker);
         if (dummy == null) return;
 
-        // Reset d’abord
         dummy.Idle();
 
         switch (kind)
@@ -1097,7 +1484,6 @@ public class NPCmanager : MonoBehaviour
         }
     }
 
-
     private void StopAllDialogueAudio()
     {
         if (npcAudioSource) npcAudioSource.Stop();
@@ -1110,36 +1496,39 @@ public class NPCmanager : MonoBehaviour
     {
         if (activeLines == null || activeLineIndex < 0 || activeLineIndex >= activeLines.Count) return;
 
+        givePopupShownThisLine = false;  // reset par ligne
+
+        
         var line = activeLines[activeLineIndex];
 
         // Nom dans la box
         switch (line.speaker)
         {
-            case Speaker.Player:
+            case D.Speaker.Player:
                 responseNameText.text = characters[currentCharacter].name;
                 responseNameText.color = GetCurrentHighlightColor();
                 break;
-            case Speaker.NPC:
+            case D.Speaker.NPC:
                 responseNameText.text = activeNpcName; responseNameText.color = Color.gray; break;
-            case Speaker.Sulkide:
+            case D.Speaker.Sulkide:
                 responseNameText.text = sulkideData ? sulkideData.characterName : "Sulkide"; responseNameText.color = sulkideColor; break;
-            case Speaker.Darckox:
+            case D.Speaker.Darckox:
                 responseNameText.text = darckoxData ? darckoxData.characterName : "Darckox"; responseNameText.color = darckoxColor; break;
-            case Speaker.MrSlow:
+            case D.Speaker.MrSlow:
                 responseNameText.text = mrSlowData ? mrSlowData.characterName : "MrSlow"; responseNameText.color = mrSlowColor; break;
-            case Speaker.Sulana:
+            case D.Speaker.Sulana:
                 responseNameText.text = sulanaData ? sulanaData.characterName : "Sulana"; responseNameText.color = sulanaColor; break;
         }
 
         // Audio
         if (line.audio != null)
         {
-            if (line.speaker == Speaker.Player)
+            if (line.speaker == D.Speaker.Player)
             {
                 var a = characters[currentCharacter].audio;
                 if (a) a.PlayOneShot(line.audio);
             }
-            else if (line.speaker == Speaker.NPC)
+            else if (line.speaker == D.Speaker.NPC)
             {
                 if (npcAudioSource) npcAudioSource.PlayOneShot(line.audio);
             }
@@ -1158,6 +1547,15 @@ public class NPCmanager : MonoBehaviour
         // Typewriter
         responseTyper.SetSpeed(45f);
         responseTyper.StartTyping(line.text ?? "");
+        
+        // Donner un item si la ligne le demande
+// (on suppose que D.DialogueLine possède: public KeyObjData giveItem;)
+        if (!givePopupShownThisLine && line.giveItem != null)
+        {
+            ShowGiveItemPopup(line.giveItem);
+            givePopupShownThisLine = true;
+        }
+
     }
 
     private void HandleResponseInput()
@@ -1184,25 +1582,42 @@ public class NPCmanager : MonoBehaviour
                 responseTyper.StopAndShowAll(line.text ?? "");
                 return;
             }
+            
+            // Si la carte "objet reçu" est affichée, on la ferme d'abord
+            if (isShowingGivePopup)
+            {
+                HideGiveItemPopup();
+                return; // on ne passe pas à la ligne suivante tant que la carte n'est pas fermée
+            }
+
 
             // Avancer
             activeLineIndex++;
             if (activeLineIndex >= activeLines.Count)
             {
-                // Marquer l’option jouée
-                var data = GetDataForMode(currentCharacter, currentOptionsMode);
+                if (currentOptionsMode != OptionMode.Use)
+                {
+                    var data = GetDataForMode(currentCharacter, currentOptionsMode);
+                    if (data != null && _currentOptionSourceIndex >= 0)
+                        MarkOptionUsed(data, _currentOptionSourceIndex);
+                }
+                else // currentOptionsMode == OptionMode.Use
+                {
+                    if (pendingConsumedItem != null)
+                    {
+                        GameManager.instance?.RemoveKeyObject(pendingConsumedItem); // <-- voit étape 2
+                        pendingConsumedItem = null;
+                    }
+                    BuildUseList(); // rafraîchit l'inventaire UI
+                }
 
-                if (data != null && _currentOptionSourceIndex >= 0)
-                    MarkOptionUsed(data, _currentOptionSourceIndex);
 
-                // Tout remettre Idle (important si un autre perso que le sélectionné parlait)
                 ResetConversationAnimations();
-                ShowTopBarUI(1);
+                ShowTopBarUI(currentOptionsMode == OptionMode.Use ? 3 : 1);
                 return;
             }
 
-            // Avant d’afficher la prochaine ligne, remettre tous les dummies en Idle
-            // pour éviter qu’un locuteur précédent reste en anim.
+            // Avant la ligne suivante, on remet tout Idle pour éviter un locuteur “bloqué”
             ResetConversationAnimations();
             ShowCurrentLine();
         }
@@ -1223,19 +1638,12 @@ public class NPCmanager : MonoBehaviour
     {
         if (btnCharacter) btnCharacter.interactable = interactable;
         if (btnTalk)      btnTalk.interactable      = interactable;
-        if (btnDescribe)  btnDescribe.interactable  = interactable; // nouveau
+        if (btnDescribe)  btnDescribe.interactable  = interactable;
+        if (btnUse)       btnUse.interactable       = interactable;
     }
 
-    
-    private void OnDisable()
-    {
-        CleanupRuntimeObjects();
-    }
-
-    private void OnDestroy()
-    {
-        CleanupRuntimeObjects();
-    }
+    private void OnDisable()  { CleanupRuntimeObjects(); }
+    private void OnDestroy()  { CleanupRuntimeObjects(); }
 
     private void CleanupRuntimeObjects()
     {
@@ -1244,11 +1652,8 @@ public class NPCmanager : MonoBehaviour
         {
             if (Application.isEditor) DestroyImmediate(barRoot);
             else Destroy(barRoot);
-            barRoot = null;
-            topBar = null;
-            bottomBar = null;
+            barRoot = null; topBar = null; bottomBar = null;
         }
-
         // UI
         if (uiCanvas != null)
         {
@@ -1258,11 +1663,10 @@ public class NPCmanager : MonoBehaviour
             topPanel = bottomPanel = null;
             optionsContainer = null;
             responseBox = null;
-            btnCharacter = btnTalk = null;
-            btnCharacterText = btnTalkText = null;
+            btnCharacter = btnTalk = btnDescribe = btnUse = null;
+            btnCharacterText = btnTalkText = btnDescribeText = btnUseText = null;
             optionTexts.Clear();
         }
-
         // Indicator
         if (indicatorInstance != null)
         {
@@ -1271,5 +1675,4 @@ public class NPCmanager : MonoBehaviour
             indicatorInstance = null;
         }
     }
-
 }

@@ -484,6 +484,47 @@ public class GameManager : MonoBehaviour
         Debug.Log("test3");
         
     }
+    // tout en haut des autres champs du GameManager
+
+    [Header("Key Items (Objets clés)")]
+    [SerializeField] private List<KeyObjData> keyItems = new List<KeyObjData>();
+
+    public IReadOnlyList<KeyObjData> GetKeyItems() => keyItems;
+
+    public bool HasKeyItem(string id)
+    {
+        if (string.IsNullOrEmpty(id)) return false;
+        return keyItems.Exists(k => k && k.id == id);
+    }
+    
+    public void RemoveKeyObject(KeyObjData data)
+    {
+        if (data == null) return;
+
+        // Retire l’instance exacte ou toute entrée avec le même ID (sécurité)
+        keyItems.RemoveAll(k => k == data || (k != null && k.id == data.id));
+    }
+
+
+
+    public void AddKeyObject(KeyObjData data)
+    {
+        if (data == null)
+        {
+            Debug.LogWarning("[GameManager] AddKeyObject: data null");
+            return;
+        }
+        if (string.IsNullOrEmpty(data.id))
+        {
+            Debug.LogWarning("[GameManager] AddKeyObject: id manquant sur " + data.name);
+            return;
+        }
+        if (keyItems.Exists(k => k && k.id == data.id))
+            return; // pas de doublon
+
+        keyItems.Add(data);
+        // TODO: persistance si tu as un système de sauvegarde
+    }
 
     public void UpdateCheckPoint(Vector3 checkPointPosition)
     {
@@ -1236,7 +1277,33 @@ public class GameManager : MonoBehaviour
         lastSecond = now.Second;
     }
 
-    
+    // ----- Key Items lookup pour LOAD -----
+    [SerializeField] private string keyObjResourcesFolder = "KeyItems"; 
+// Place tes ScriptableObjects KeyObjData dans un dossier Assets/Resources/KeyItems
+
+    private Dictionary<string, KeyObjData> keyItemLookup;
+
+    private void EnsureKeyItemLookup()
+    {
+        if (keyItemLookup != null) return;
+        keyItemLookup = new Dictionary<string, KeyObjData>();
+        var all = Resources.LoadAll<KeyObjData>(keyObjResourcesFolder);
+        foreach (var k in all)
+        {
+            if (k != null && !string.IsNullOrEmpty(k.id))
+                keyItemLookup[k.id] = k;
+        }
+    }
+
+    private List<string> BuildKeyItemIdList()
+    {
+        var ids = new List<string>();
+        foreach (var k in keyItems)
+            if (k != null && !string.IsNullOrEmpty(k.id))
+                ids.Add(k.id);
+        return ids;
+    }
+
     
     [System.Serializable]
     public class GameData
@@ -1315,6 +1382,10 @@ public class GameManager : MonoBehaviour
         
         public int prochainPalier;
         
+        public List<string> keyItemIDs = new List<string>();
+
+
+        
         public bool newSceneLoad = true;
     }
     
@@ -1382,6 +1453,10 @@ public class GameManager : MonoBehaviour
         data.currentMusicName = currentMusicName;
         
         data.prochainPalier = prochainPalier;
+        
+        data.keyItemIDs = BuildKeyItemIdList();
+
+
         
         data.newSceneLoad = newSceneLoad;
         
@@ -1464,6 +1539,21 @@ public class GameManager : MonoBehaviour
 
         currentMusicName = data.currentMusicName;
 
+        keyItems.Clear();
+        EnsureKeyItemLookup();
+        var ids = data.keyItemIDs ?? new List<string>();
+        foreach (var id in ids)
+        {
+            if (string.IsNullOrEmpty(id)) continue;
+            if (keyItemLookup.TryGetValue(id, out var asset) && asset != null)
+                keyItems.Add(asset);
+            else
+                Debug.LogWarning($"[GameManager] KeyObjData introuvable pour id '{id}'. " +
+                                 $"Vérifie qu’un asset avec cet id est dans Resources/{keyObjResourcesFolder}");
+        }
+
+
+        
         prochainPalier = data.prochainPalier;
         
         newSaveFileLoaded = true;

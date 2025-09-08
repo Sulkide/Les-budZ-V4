@@ -254,6 +254,7 @@ Transform:
   - {fileID: 5140573166818614457}
   - {fileID: 4899277144939339083}
   - {fileID: 4094095308554462544}
+  - {fileID: 8255646056274916143}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8410201366613941503
@@ -389,6 +390,8 @@ MonoBehaviour:
   player3Is: 4
   player4Is: 4
   test: 1
+  ObjectKeyObtained: []
+  ObjectKeyObtain: []
   BluePrintslist: []
 --- !u!114 &6248098250637441170
 MonoBehaviour:
@@ -446,6 +449,60 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!1 &4049137142379446508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8255646056274916143}
+  - component: {fileID: 4394089711653211996}
+  m_Layer: 0
+  m_Name: Objet key manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8255646056274916143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4049137142379446508}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1447344462007547925}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4394089711653211996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4049137142379446508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35e211f270893a418b9a1be4a21bd63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenRatio: 0.16666667
+  tweenIn: 0.25
+  tweenOut: 0.5
+  holdSeconds: 5
+  canvas: {fileID: 0}
+  topBar: {fileID: 0}
+  bottomBar: {fileID: 0}
+  topText: {fileID: 0}
+  bottomText: {fileID: 0}
+  itemIcon: {fileID: 0}
 --- !u!1 &4356005857425996892
 GameObject:
   m_ObjectHideFlags: 0
