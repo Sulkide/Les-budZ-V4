@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCollectible: 1
   score: 1
-  XP: 100
+  XP: 10
   detectionRadius: 1.2
   uniqueId: 
   isHealthBonus: 0
@@ -120,6 +120,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 0
+  useRandomStartDelay: 0
+  randomDelayMin: 1
+  randomDelayMax: 9
+  loopDelay: 0
+  useRandomLoopDelay: 0
+  randomLoopDelayMin: 0.5
+  randomLoopDelayMax: 2
   floatUpDown: 1
   floatStrength: 0.5
   floatSpeed: 1
@@ -146,3 +153,9 @@ MonoBehaviour:
   scaleShake: 0
   scaleShakeStrength: 0.1
   scaleShakeSpeed: 20
+  cascade: 0
+  cascadeEndY: -2
+  cascadeStretchForce: 0.5
+  cascadeActionTime: 1
+  cascadePauseTime: 0.5
+  cascadeReappearTime: 0.7

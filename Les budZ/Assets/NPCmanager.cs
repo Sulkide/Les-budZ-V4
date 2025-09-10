@@ -132,6 +132,23 @@ public class NPCmanager : MonoBehaviour
     private UIVerticalLayoutGroup listVLG;
     private UIGridLayoutGroup     gridGLG;
     private bool usingGrid = false;
+// --- Quitter ---
+    [Header("Quit Dialogues par personnage")]
+    public List<D.DialogueLine> quitWithSulkide;
+    public List<D.DialogueLine> quitWithDarckox;
+    public List<D.DialogueLine> quitWithMrSlow;
+    public List<D.DialogueLine> quitWithSulana;
+
+    private Button btnQuit; private Text btnQuitText;
+    private bool quittingAfterConversation = false;
+
+// Caméra sauvegarde
+    private Vector3 savedCamPos;
+    private Quaternion savedCamRot;
+    private bool savedCamWasOrtho = false;
+    private float savedCamFOV = 60f;
+    private float savedOrthoSize = 5f;
+    private bool preCamSaved = false;
 
 
 
@@ -439,6 +456,16 @@ public class NPCmanager : MonoBehaviour
         // (optionnel) masquer tes players ici
         // GameManager.instance?.MakePlayerInvisible();
 
+        if (mainCam && !preCamSaved)
+        {
+            savedCamPos = mainCam.transform.position;
+            savedCamRot = mainCam.transform.rotation;
+            savedCamWasOrtho = mainCam.orthographic;
+            if (savedCamWasOrtho) savedOrthoSize = mainCam.orthographicSize;
+            else                  savedCamFOV    = mainCam.fieldOfView;
+            preCamSaved = true;
+        }
+        
         if (newCameraPos && mainCam)
         {
             mainCam.transform.SetPositionAndRotation(newCameraPos.position, newCameraPos.rotation);
@@ -512,6 +539,11 @@ public class NPCmanager : MonoBehaviour
         btnUseText.text = "Utiliser";
         btnUse.onClick.AddListener(() => OpenOptions(OptionMode.Use));
 
+        (btnQuit, btnQuitText) = CreateButton("BtnQuit", topPanel, new Vector2(200, 48), new Vector2(860, -12));
+        btnQuitText.text = "Quitter";
+        btnQuit.onClick.AddListener(StartQuitFlow);
+
+        
         // --- Options container (texte / inventaire) ---
         var optionsGO = new GameObject("OptionsContainer", typeof(RectTransform));
         optionsGO.transform.SetParent(bottomPanel, false);
@@ -530,7 +562,7 @@ public class NPCmanager : MonoBehaviour
         optionsListRoot.offsetMin = Vector2.zero;
         optionsListRoot.offsetMax = Vector2.zero;
         listVLG = listGO.AddComponent<UIVerticalLayoutGroup>();
-        listVLG.spacing = 12f;
+        listVLG.spacing = 2f;
         listVLG.childControlHeight = true;
         listVLG.childControlWidth  = true;
         listVLG.childForceExpandHeight = false;
@@ -671,6 +703,8 @@ public class NPCmanager : MonoBehaviour
         btnTalk.navigation      = navNone;
         btnDescribe.navigation  = navNone;
         btnUse.navigation       = navNone;
+        btnQuit.navigation = navNone;
+
     }
 
 
@@ -811,7 +845,7 @@ public class NPCmanager : MonoBehaviour
         uiState = UIState.TopBar;
 
         if (initialIndex >= 0)
-            topSelectionIndex = Mathf.Clamp(initialIndex, 0, 3);
+            topSelectionIndex = Mathf.Clamp(initialIndex, 0, 4);
 
         SetTopButtonsInteractable(true);
         HighlightTopButton();
@@ -1028,35 +1062,24 @@ public class NPCmanager : MonoBehaviour
         int hEdge = AxisEdge(ref hLastDir, x, axisDeadZone);
         if (hEdge != 0)
         {
-            topSelectionIndex = Mathf.Clamp(topSelectionIndex + hEdge, 0, 3);
+            topSelectionIndex = Mathf.Clamp(topSelectionIndex + hEdge, 0, 4);
             HighlightTopButton();
         }
 
         // Y : haut = changer de perso / bas = confirmer
+// Y : bas = confirmer (PLUS de changement de perso avec haut)
         int vEdge = AxisEdge(ref vLastDir, y, axisDeadZone);
-        if (vEdge > 0 && CanSwitchNow())
-        {
-            SwitchCharacterNext();
-            ArmSwitchCooldown();
-        }
-        else if (vEdge < 0)
+        if (vEdge < 0)
         {
             ConfirmTopSelection();
             return;
         }
 
-        // D-Pad pour changer de perso
-        int dpadX = DpadEdgeX();
-        if (dpadX != 0 && CanSwitchNow())
-        {
-            if (dpadX > 0) SwitchCharacterNext(); else SwitchCharacterPrev();
-            ArmSwitchCooldown();
-            return;
-        }
+        
 
         // Gâchettes pour changer de perso
-        if (PressedOnce("SelectR") && CanSwitchNow()) { SwitchCharacterNext(); ArmSwitchCooldown(); return; }
-        if (PressedOnce("SelectL", "Selectl") && CanSwitchNow()) { SwitchCharacterPrev(); ArmSwitchCooldown(); return; }
+        if (PressedOnce("SelectL", "Selectl") && CanSwitchNow()) { SwitchCharacterNext(); ArmSwitchCooldown(); return; }
+        if (PressedOnce("SelectR") && CanSwitchNow()) { SwitchCharacterPrev(); ArmSwitchCooldown(); return; }
 
         // Bouton Use = confirmer
         if (PressedOnceUse()) ConfirmTopSelection();
@@ -1070,8 +1093,10 @@ public class NPCmanager : MonoBehaviour
             case 1: OpenOptions(OptionMode.Talk); break;     // Parler
             case 2: OpenOptions(OptionMode.Describe); break; // Décrire
             case 3: OpenOptions(OptionMode.Use); break;      // Utiliser
+            case 4: StartQuitFlow(); break;                  // Quitter
         }
     }
+
 
     private void HighlightTopButton()
     {
@@ -1084,16 +1109,17 @@ public class NPCmanager : MonoBehaviour
         var imgTalk = btnTalk.GetComponent<Image>();
         var imgDesc = btnDescribe.GetComponent<Image>();
         var imgUse  = btnUse.GetComponent<Image>();
-
+        var imgQuit = btnQuit.GetComponent<Image>();
         if (imgChar) imgChar.color = (topSelectionIndex == 0) ? selectedBg : deselectedBg;
         if (imgTalk) imgTalk.color = (topSelectionIndex == 1) ? selectedBg : deselectedBg;
         if (imgDesc) imgDesc.color = (topSelectionIndex == 2) ? selectedBg : deselectedBg;
         if (imgUse)  imgUse.color  = (topSelectionIndex == 3) ? selectedBg : deselectedBg;
-
+        if (imgQuit) imgQuit.color = (topSelectionIndex == 4) ? selectedBg : deselectedBg;
         if (btnCharacterText) btnCharacterText.color = (topSelectionIndex == 0) ? topBarSelectedText : topBarUnselectedText;
         if (btnTalkText)      btnTalkText.color      = (topSelectionIndex == 1) ? topBarSelectedText : topBarUnselectedText;
         if (btnDescribeText)  btnDescribeText.color  = (topSelectionIndex == 2) ? topBarSelectedText : topBarUnselectedText;
         if (btnUseText)       btnUseText.color       = (topSelectionIndex == 3) ? topBarSelectedText : topBarUnselectedText;
+        if (btnQuitText) btnQuitText.color = (topSelectionIndex == 4) ? topBarSelectedText : topBarUnselectedText;
     }
 
     private void OpenOptions(OptionMode mode)
@@ -1120,17 +1146,10 @@ public class NPCmanager : MonoBehaviour
     private void HandleOptionsInput()
     {
         // Gâchettes
-        if (PressedOnce("SelectR") && CanSwitchNow()) { SwitchCharacterNext(); ArmSwitchCooldown(); return; }
-        if (PressedOnce("SelectL", "Selectl") && CanSwitchNow()) { SwitchCharacterPrev(); ArmSwitchCooldown(); return; }
+        if (PressedOnce("SelectL", "Selectl") && CanSwitchNow()) { SwitchCharacterNext(); ArmSwitchCooldown(); return; }
+        if (PressedOnce("SelectR") && CanSwitchNow()) { SwitchCharacterPrev(); ArmSwitchCooldown(); return; }
 
         // D-pad X (droite => next / gauche => prev)
-        int dpadX = DpadEdgeX();
-        if (dpadX != 0 && CanSwitchNow())
-        {
-            if (dpadX > 0) SwitchCharacterNext(); else SwitchCharacterPrev();
-            ArmSwitchCooldown();
-            return;
-        }
 
         // Verrou ouverture
         if (Time.time < optionsInputUnlockTime)
@@ -1175,12 +1194,7 @@ public class NPCmanager : MonoBehaviour
 
 
         // Stick X : droite => next / gauche => prev
-        int hEdge = AxisEdge(ref hLastDir, currentPM.moveInput.x, axisDeadZone);
-        if (hEdge != 0 && CanSwitchNow())
-        {
-            if (hEdge > 0) SwitchCharacterNext(); else SwitchCharacterPrev();
-            ArmSwitchCooldown();
-        }
+
 
         // Y : naviguer liste
         int dpy = DpadEdgeY();
@@ -1561,15 +1575,9 @@ public class NPCmanager : MonoBehaviour
     private void HandleResponseInput()
     {
         // Switch perso pendant la réponse
-        int dpadStep = DpadEdgeX();
-        if (dpadStep != 0 && CanSwitchNow())
-        {
-            if (dpadStep > 0) SwitchCharacterNext(); else SwitchCharacterPrev();
-            ArmSwitchCooldown();
-            return;
-        }
-        if (PressedOnce("SelectR") && CanSwitchNow()) { SwitchCharacterPrev(); ArmSwitchCooldown(); return; }
-        if (PressedOnce("SelectL", "Selectl") && CanSwitchNow()) { SwitchCharacterNext(); ArmSwitchCooldown(); return; }
+
+        if (PressedOnce("SelectL", "Selectl") && CanSwitchNow()) { SwitchCharacterPrev(); ArmSwitchCooldown(); return; }
+        if (PressedOnce("SelectR") && CanSwitchNow()) { SwitchCharacterNext(); ArmSwitchCooldown(); return; }
 
         if (PressedOnceUse())
         {
@@ -1589,33 +1597,40 @@ public class NPCmanager : MonoBehaviour
                 HideGiveItemPopup();
                 return; // on ne passe pas à la ligne suivante tant que la carte n'est pas fermée
             }
-
-
+            
             // Avancer
             activeLineIndex++;
             if (activeLineIndex >= activeLines.Count)
             {
+                if (quittingAfterConversation)
+                {
+                    quittingAfterConversation = false;
+                    ResetConversationAnimations();
+                    StartCoroutine(ExitDialogueSequence());
+                    return;
+                }
+
                 if (currentOptionsMode != OptionMode.Use)
                 {
                     var data = GetDataForMode(currentCharacter, currentOptionsMode);
                     if (data != null && _currentOptionSourceIndex >= 0)
                         MarkOptionUsed(data, _currentOptionSourceIndex);
                 }
-                else // currentOptionsMode == OptionMode.Use
+                else
                 {
                     if (pendingConsumedItem != null)
                     {
-                        GameManager.instance?.RemoveKeyObject(pendingConsumedItem); // <-- voit étape 2
+                        GameManager.instance?.RemoveKeyObject(pendingConsumedItem);
                         pendingConsumedItem = null;
                     }
-                    BuildUseList(); // rafraîchit l'inventaire UI
+                    BuildUseList();
                 }
-
 
                 ResetConversationAnimations();
                 ShowTopBarUI(currentOptionsMode == OptionMode.Use ? 3 : 1);
                 return;
             }
+
 
             // Avant la ligne suivante, on remet tout Idle pour éviter un locuteur “bloqué”
             ResetConversationAnimations();
@@ -1640,6 +1655,8 @@ public class NPCmanager : MonoBehaviour
         if (btnTalk)      btnTalk.interactable      = interactable;
         if (btnDescribe)  btnDescribe.interactable  = interactable;
         if (btnUse)       btnUse.interactable       = interactable;
+        if (btnQuit) btnQuit.interactable = interactable;
+
     }
 
     private void OnDisable()  { CleanupRuntimeObjects(); }
@@ -1675,4 +1692,61 @@ public class NPCmanager : MonoBehaviour
             indicatorInstance = null;
         }
     }
+    
+    private List<D.DialogueLine> GetQuitLinesForCurrentCharacter()
+    {
+        switch (currentCharacter)
+        {
+            case 0: return (quitWithSulkide != null && quitWithSulkide.Count > 0) ? quitWithSulkide
+                       : new List<D.DialogueLine>{ new D.DialogueLine{ speaker=D.Speaker.Sulkide, text="On s'capte plus tard." } };
+            case 1: return (quitWithDarckox != null && quitWithDarckox.Count > 0) ? quitWithDarckox
+                       : new List<D.DialogueLine>{ new D.DialogueLine{ speaker=D.Speaker.Darckox, text="Ça marche, à +." } };
+            case 2: return (quitWithMrSlow != null && quitWithMrSlow.Count > 0) ? quitWithMrSlow
+                       : new List<D.DialogueLine>{ new D.DialogueLine{ speaker=D.Speaker.MrSlow, text="Très bien, à bientôt." } };
+            case 3: return (quitWithSulana != null && quitWithSulana.Count > 0) ? quitWithSulana
+                       : new List<D.DialogueLine>{ new D.DialogueLine{ speaker=D.Speaker.Sulana, text="D'accord, on se revoit." } };
+            default: return new List<D.DialogueLine>{ new D.DialogueLine{ speaker=D.Speaker.NPC, text="À la prochaine." } };
+        }
+    }
+
+    private void StartQuitFlow()
+    {
+        // Lancer un mini dialogue selon le perso, puis on quittera à la fin
+        var lines = GetQuitLinesForCurrentCharacter();
+        quittingAfterConversation = true;
+        // Nom de NPC déjà utilisé ailleurs
+        string npcName = string.IsNullOrEmpty(activeNpcName) ? defaultNpcName : activeNpcName;
+        StartConversation(lines, npcName);
+    }
+
+    private IEnumerator ExitDialogueSequence()
+    {
+        // Fermer les bandes noires au milieu (transition comme l’intro)
+        EnsureBarsExist();
+        yield return AnimateBarsClose(barsCloseDuration);
+
+        // Rendre le joueur visible
+        GameManager.instance?.MakePlayervisible();
+
+        // Restaurer la caméra d’origine
+        if (mainCam && preCamSaved)
+        {
+            mainCam.transform.SetPositionAndRotation(savedCamPos, savedCamRot);
+            if (savedCamWasOrtho) mainCam.orthographicSize = savedOrthoSize;
+            else                  mainCam.fieldOfView      = savedCamFOV;
+        }
+
+        // Nettoyage UI/bars
+        CleanupRuntimeObjects();
+        preCamSaved = false;
+
+        // Remettre l’état
+        uiState = UIState.Hidden;
+        eventStart = false;
+        currentPM = null;
+
+        // (Optionnel) masquer les dummies si tu veux
+        if (dummyHolder) dummyHolder.SetActive(false);
+    }
+
 }

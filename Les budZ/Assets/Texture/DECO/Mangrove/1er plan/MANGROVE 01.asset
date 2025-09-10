@@ -134,8 +134,8 @@ MonoBehaviour:
         depthDelta: 0.18
       range_auto:
         range2D: {x: 0, y: 0, z: 1}
-        range3D: {x: 0.05, y: 1.4547619, z: 1.4047619}
-        depthDelta: 0.0702381
+        range3D: {x: 0.05, y: 0.9833333, z: 0.9333333}
+        depthDelta: 0.05
       range_default:
         range2D: {x: 0, y: 0, z: 1}
         range3D: {x: 0, y: 1, z: 1}
@@ -213,8 +213,8 @@ MonoBehaviour:
         depthDelta: 0
       range_auto:
         range2D: {x: 0, y: 0, z: 1}
-        range3D: {x: 1.525, y: 2.929762, z: 1.4047619}
-        depthDelta: 0.0702381
+        range3D: {x: 1.0333333, y: 1.9666667, z: 0.9333334}
+        depthDelta: 0.05
       range_default:
         range2D: {x: 0, y: 0, z: 1}
         range3D: {x: 0, y: 1, z: 1}
