@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(SpriteRenderer))]
 
@@ -26,14 +27,13 @@ public class SpriteToMeshShadowCaster : MonoBehaviour
         // Convertit le sprite en mesh
         meshFilter.mesh = SpriteToMesh(sprite);
 
-        // Crée un matériau URP avec transparence + alpha clip
+        // Crée un matériau URP 
         Material mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
         mat.mainTexture = sprite.texture;
-        mat.SetFloat("_Surface", 1); // Transparent
         mat.SetFloat("_Blend", 0); // Alpha blend mode
         mat.SetFloat("_AlphaClip", 1); // Active alpha clipping
         mat.SetFloat("_Cutoff", 0.1f); // Seuil d’opacité à ajuster selon ton sprite
-        mat.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
+        mat.SetInt("_Cull", (int)CullMode.Off); 
         mat.EnableKeyword("_ALPHATEST_ON");
 
         meshRenderer.material = mat;

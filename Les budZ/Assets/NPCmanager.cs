@@ -327,12 +327,15 @@ public class NPCmanager : MonoBehaviour
     {
         if (!eventStart && other.CompareTag("Target"))
         {
+            
+            
             var pm = other.GetComponent<PlayerMovement>();
             if (pm != null && pm.useInputRegistered)
             {
                 eventStart = true;
                 GameManager.instance?.MakePlayerInvisible(); // si tu as cette méthode
                 EventStart(pm);
+                Debug.Log("entre");
             }
         }
     }

@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     public int fileID;
     
-    Camera mainCamera;
+    public Camera mainCamera;
     private float elapsedTime = 0f;      
     public string gameTime = "00:00:00";
     public TMP_Text gameTimeText;
@@ -215,7 +215,6 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        mainCamera = Camera.main;
         
         if (basePalier < 1) basePalier = 1;
         if (lifePerLevel < 1) lifePerLevel = 1;
@@ -329,6 +328,8 @@ public class GameManager : MonoBehaviour
             }
             
             Debug.Log("test1");
+            
+            
             
             newSceneLoad = false;
         }
@@ -769,6 +770,7 @@ public class GameManager : MonoBehaviour
     {
         WaitAtStart = true;
         Debug.Log("Waiting");
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         yield return new WaitForSeconds(5);
         Debug.Log("Waiting done");
         WaitAtStart = false;
