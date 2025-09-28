@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
     public string gameTime = "00:00:00";
     public TMP_Text gameTimeText;
 
-
+    public GameObject globalLight;
+    
     public string realTime = "00:00:00";
     public TMP_Text realTimeText;
     private int lastSecond = -1;

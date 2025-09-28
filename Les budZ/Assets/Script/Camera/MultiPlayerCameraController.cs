@@ -71,7 +71,11 @@ public class CameraFollow2D : MonoBehaviour
         {
             railPoints = new List<Transform>();
             foreach (Transform child in transform)
-                railPoints.Add(child);
+                if (child.tag != "Ignore")
+                {
+                    railPoints.Add(child);
+                }
+                
         }
         if (railPoints.Count < 2)
         {

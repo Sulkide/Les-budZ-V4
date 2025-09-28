@@ -24,6 +24,8 @@ TagManager:
   - Blade
   - Filter
   - IgnoreFilter
+  - Ignore
+  - GlobalLight
   layers:
   - Default
   - TransparentFX
@@ -50,7 +52,7 @@ TagManager:
   - Phantom
   - CheckPoint
   - marker
-  - 
+  - background
   - 
   - 
   - 

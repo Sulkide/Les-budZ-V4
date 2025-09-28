@@ -2513,7 +2513,7 @@ public class PlayerMovement : MonoBehaviour
     {
         int indexToActivate = -1;
 
-        if (direction == Vector2.up) // Player0
+        if (direction == Vector2.up) // Player0zoom
         {
             if (GameManager.instance.isDarckoxPresent)
             {
