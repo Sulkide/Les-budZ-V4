@@ -274,7 +274,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   gameTime: 
   gameTimeText: {fileID: 2847124474785963966}
-  globalLight: {fileID: 4356005857425996892}
+  globalLight: {fileID: 9153690405188510733}
   realTime: 00:00:00
   realTimeText: {fileID: 1860299636150215110}
   currentSceneName: 
@@ -648,9 +648,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d465d02b8af32a7439ceab00ee510170, type: 2}
   - {fileID: 11400000, guid: 3624c41a30f8e58428b73fbe41fa2508, type: 2}
   - {fileID: 11400000, guid: 21a1e5ec09303d94eb6e44c27515c88c, type: 2}
-  - {fileID: 11400000, guid: a9b052d5dba191a478579c660185c6e2, type: 2}
-  useRealTime: 1
-  fixedTime: 06:00:00
+  useRealTime: 0
+  fixedTime: 23:00:00
+  maincamera: {fileID: 0}
+  cameraTransform: {fileID: 0}
+  captureBaselineAtStart: 1
+  cameraXBaseline: 0
+  degreesPerXUnit: 1
+  maxOffsetUp: 100
+  maxOffsetDown: 100
+  rotateAroundLocalX: 1
+  offsetDampTime: 0.15
 --- !u!1 &6671680462041747086
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ public class TimeBasedLightController : MonoBehaviour
     [Tooltip("Format HH:mm:ss, utilisé si useRealTime est false")]
     public string fixedTime = "12:00:00";    // heure de substitution pour tests
 
+    
+    
     void Update()
     {
         if (!Application.isPlaying) return; // sécurité : ne fonctionne qu'en Play Mode

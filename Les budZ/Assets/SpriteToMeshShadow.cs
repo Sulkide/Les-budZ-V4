@@ -20,7 +20,7 @@ public class SpriteToMeshShadowCaster : MonoBehaviour
         shadowCaster.transform.localPosition = cloneMesheRotationOffset;
         shadowCaster.transform.localRotation = Quaternion.identity;
         shadowCaster.transform.localScale = Vector3.one;
-
+        shadowCaster.layer = gameObject.layer;
         var meshFilter = shadowCaster.AddComponent<MeshFilter>();
         var meshRenderer = shadowCaster.AddComponent<MeshRenderer>();
 
