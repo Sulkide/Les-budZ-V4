@@ -1,0 +1,226 @@
+fileFormatVersion: 2
+guid: 5285ad1f5b806494d8e4b16f11abfb53
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2613880159803608806
+    second: Feuilles_02_GIMP_0
+  - first:
+      213: -4077232902442601860
+    second: Feuilles_02_GIMP_1
+  - first:
+      213: -7918948596585529648
+    second: Feuilles_02_GIMP_2
+  - first:
+      213: 2079345567396335773
+    second: Feuilles_02_GIMP_3
+  - first:
+      213: 9006639101954485576
+    second: Feuilles_02_GIMP_4
+  - first:
+      213: -4272135830097712371
+    second: Feuilles_02_GIMP_5
+  - first:
+      213: 4336323658648792273
+    second: Feuilles_02_GIMP_6
+  - first:
+      213: -5606118071835548634
+    second: Feuilles_02_GIMP_7
+  - first:
+      213: 1193040225981282552
+    second: Feuilles_02_GIMP_8
+  - first:
+      213: -7223025823161725404
+    second: Feuilles_02_GIMP_9
+  - first:
+      213: -2693985020486031647
+    second: Feuilles_02_GIMP_10
+  - first:
+      213: -7442593388365063288
+    second: Feuilles_02_GIMP_11
+  - first:
+      213: 3926813867080484573
+    second: Feuilles_02_GIMP_12
+  - first:
+      213: 318806423970357614
+    second: Feuilles_02_GIMP_13
+  - first:
+      213: 1912510667216553389
+    second: Feuilles_02_GIMP_14
+  - first:
+      213: -7301029432427842089
+    second: Feuilles_02_GIMP_15
+  - first:
+      213: 1202714388138845063
+    second: Feuilles_02_GIMP_16
+  - first:
+      213: -2676229918238629977
+    second: Feuilles_02_GIMP_17
+  - first:
+      213: 2698553350632471948
+    second: Feuilles_02_GIMP_18
+  - first:
+      213: 1571885556068680395
+    second: Feuilles_02_GIMP_19
+  - first:
+      213: 3631257511722914759
+    second: Feuilles_02_GIMP_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Feuilles_02_GIMP_0
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 1037
+        width: 448
+        height: 606
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a884ab1d01c97a49925d4b9e140edd3
+      internalID: 478052225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feuilles_02_GIMP_1
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 736
+        width: 364
+        height: 461
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a89f849cda0ffec40b03ca9e1b786c59
+      internalID: 104667782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 99a4fdc80fe25ee4d82774f87fac630c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Feuilles_02_GIMP_0: 478052225
+      Feuilles_02_GIMP_1: 104667782
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

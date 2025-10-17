@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disabledForEveryone: 0
   groupData:
-    distributionType: 2
+    distributionType: 1
     sequenceType: 1
     relativeOffsetMin: 0.45
     relativeOffsetMax: 0.5
@@ -35,17 +35,17 @@ MonoBehaviour:
     emptyDistanceToEdges: 0
     mirrorWallDecorations: 1
     continuousDistributionSettings:
-      margin: 8.48
+      margin: 20.4
       emptyDistanceToEdges: 0
     randomDistributionSettings:
-      density: 0.23437501
+      density: 0.001
       emptyDistanceToEdges: 1.82
     evenlyDistributionSettings:
       distributionType: 1
       distributedAmount: 10
       emptyDistanceToEdges: 0
     distanceDistributionSettings:
-      distance: 14.36
+      distance: 15.4
       startAt: 0
       coverage: 0
       emptyDistanceToEdges: 5.2
@@ -85,10 +85,10 @@ MonoBehaviour:
     vecMaxScale: {x: 1, y: 1, z: 1}
     relativeOffsetY: 0
     randomFlipX: 1
-  - name: deco - EMPTY
+  - name: deco - cannes_01_GIMP_0
     allDefault: 1
     spr: {fileID: 0}
-    objToInstantiate: {fileID: 5840203159019124, guid: 51414b3e8b2f75a469ae89b9b8574df9, type: 3}
+    objToInstantiate: {fileID: 8145665025503472614, guid: 0feb7db4a94c845449ab24d3833e53be, type: 3}
     tint: {r: 1, g: 1, b: 1, a: 1}
     useTint: 0
     defaultRotation: 1
@@ -145,10 +145,70 @@ MonoBehaviour:
     vecMaxScale: {x: 1, y: 1, z: 1}
     relativeOffsetY: 0
     randomFlipX: 0
+  - name: deco - cannes_01_GIMP_1
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 5616388694958121335, guid: 7b71aa5816b902d46bf511efad66a344, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
   - name: deco - EMPTY
     allDefault: 1
     spr: {fileID: 0}
     objToInstantiate: {fileID: 5840203159019124, guid: 51414b3e8b2f75a469ae89b9b8574df9, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: deco - EMPTY
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 5840203159019124, guid: 51414b3e8b2f75a469ae89b9b8574df9, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: deco - cannes_01_GIMP_1
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 5616388694958121335, guid: 7b71aa5816b902d46bf511efad66a344, type: 3}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    useTint: 0
+    defaultRotation: 1
+    maxRotation: 0
+    defaultScale: 1
+    minScale: 0.7
+    maxScale: 1.3
+    vecMinScale: {x: 1, y: 1, z: 1}
+    vecMaxScale: {x: 1, y: 1, z: 1}
+    relativeOffsetY: 0
+    randomFlipX: 1
+  - name: deco - cannes_01_GIMP_0
+    allDefault: 1
+    spr: {fileID: 0}
+    objToInstantiate: {fileID: 8145665025503472614, guid: 0feb7db4a94c845449ab24d3833e53be, type: 3}
     tint: {r: 1, g: 1, b: 1, a: 1}
     useTint: 0
     defaultRotation: 1
