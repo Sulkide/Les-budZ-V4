@@ -14,6 +14,7 @@ public class BorderExtruder : MonoBehaviour
     public float topRepeat = 0.1f;    // combien de fois la texture se répète sur la face supérieure (en XY)
     public float sideRepeatU = 0.1f;  // répétition le long de la longueur du contour
     public float sideRepeatV = 0.1f;  // répétition sur la profondeur (depth)
+    public bool autoCalculetedDepth = false;
     
     private const string borderName = "BorderMesh";
 
@@ -62,6 +63,11 @@ public class BorderExtruder : MonoBehaviour
         int[] origTris = sourceMesh.triangles;
         int n = origVerts.Length;
 
+        if (autoCalculetedDepth)
+        {
+            depth -= transform.position.z;
+        }
+        
         // Sommets : base + extrudés
         Vector3[] newVerts = new Vector3[n * 2];
         for (int i = 0; i < n; i++)
@@ -190,9 +196,11 @@ public class BorderExtruder : MonoBehaviour
         borderObject.transform.localPosition = Vector3.zero;
         borderObject.transform.localRotation = Quaternion.identity;
         borderObject.transform.localScale = Vector3.one;
+        borderObject.layer = gameObject.layer;
 
         var mf = borderObject.AddComponent<MeshFilter>();
         var mr = borderObject.AddComponent<MeshRenderer>();
+        var mc = borderObject.AddComponent<MeshCollider>();
         mf.mesh = borderMesh;
         mr.material = matToUse;
         borderMesh.uv = uvs;

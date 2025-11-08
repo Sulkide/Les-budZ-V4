@@ -20,10 +20,25 @@ public class MeshClone1erPlan : MonoBehaviour
     public float topRepeat = 0.1f;  
     public float sideRepeatU = 0.1f;
     public float sideRepeatV = 0.1f;
+    private bool autoCalculetedDepth = false;
 
     private void Start()
     {
-        
+        if (borderZ <= 0)
+        {
+            var splineDeco = GetComponent<SplineDecorator>();
+
+            if (splineDeco != null)
+            {
+                DecorationMaterial md = splineDeco.GetCurrentDecorationMaterial();
+                borderZ = md.global_range_auto.range3D.y;
+                autoCalculetedDepth =  true;
+            }
+            else
+            {
+                Debug.Log("border Z of " + gameObject.name + "is <=0, and has no spline !");
+            }
+        }
         
         // Duplique manuellement l'objet sans exécuter Start() du clone
         GameObject clone = Instantiate(gameObject);
@@ -104,6 +119,7 @@ public class MeshClone1erPlan : MonoBehaviour
             border.topRepeat = topRepeat;
             border.sideRepeatU = sideRepeatU;
             border.sideRepeatV = sideRepeatV;
+            border.autoCalculetedDepth = autoCalculetedDepth;
 
             /*
             GameObject polygoneClone = Instantiate(polygon.gameObject, polygon.transform);
