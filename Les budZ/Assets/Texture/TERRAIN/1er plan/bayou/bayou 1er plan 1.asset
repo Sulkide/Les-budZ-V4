@@ -201,7 +201,7 @@ MonoBehaviour:
     ceilingZ: -0.2
     fillLayer: 0
     fillOrder: -175
-    fillZ: 0
+    fillZ: 0.1
     cornersLayer: 0
     cornerOrder: 99
     cornerZ: -1

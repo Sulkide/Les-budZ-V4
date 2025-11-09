@@ -910,6 +910,12 @@ public class PlayerMovement : MonoBehaviour
             dashPoint.SetActive(false);
         }
 
+        if (playerControls.actions["FlipDimension"].ReadValue<float>() > 0)
+        {
+            OnDimensionInput();
+            Debug.Log("dfcx ukjZD");
+        }
+
 
         if (areControllsRemoved) return;
 
@@ -1145,10 +1151,17 @@ public class PlayerMovement : MonoBehaviour
         lastPressedDashTime = Data.dashInputBufferTime;
     }
 
+    public void OnDimensionInput()
+    {
+        GameManager.instance.ChangeDimension();
+    }
+
     #endregion
 
     #region GENERAL METHODS
 
+    
+    
     public void SetGravityScale(float scale)
     {
         RB.gravityScale = scale;

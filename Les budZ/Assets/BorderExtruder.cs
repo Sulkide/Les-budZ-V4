@@ -203,6 +203,7 @@ public class BorderExtruder : MonoBehaviour
         var mc = borderObject.AddComponent<MeshCollider>();
         mf.mesh = borderMesh;
         mr.material = matToUse;
+        mc.sharedMesh = borderMesh;
         borderMesh.uv = uvs;
     }
 

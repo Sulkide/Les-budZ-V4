@@ -189,7 +189,7 @@ MonoBehaviour:
     renderOrderType: 2
     groundLayer: 0
     groundOrder: 99
-    groundZ: -0.5
+    groundZ: -0.75
     wallLayer: 0
     wallOrder: 96
     wallZ: -0.1
@@ -201,10 +201,10 @@ MonoBehaviour:
     ceilingZ: -0.2
     fillLayer: 0
     fillOrder: -175
-    fillZ: 0.1
+    fillZ: 0
     cornersLayer: 0
     cornerOrder: 98
-    cornerZ: -0.5
+    cornerZ: -0.75
   splitPaths: 1
   material: {fileID: 2100000, guid: fa3cf68cf598318488aa3d4fac6c13d7, type: 2}
   colliderSettings:

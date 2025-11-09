@@ -98,7 +98,7 @@ public class DialogueTrigger : MonoBehaviour
     private float originalCameraSize;
     private Vector3 originalCameraPosition;
     private bool isDialogueRunning = false;
-    private CameraFollow2D multiCameraController;
+    private CameraFlip3D2D multiCameraController;
 
     // Variable pour recevoir le résultat de la branche
     private int choiceResult;
@@ -114,7 +114,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             originalCameraSize = mainCamera.fieldOfView;
             originalCameraPosition = mainCamera.transform.position;
-            multiCameraController = mainCamera.GetComponent<CameraFollow2D>();
+            multiCameraController = mainCamera.GetComponent<CameraFlip3D2D>();
         }
     }
 

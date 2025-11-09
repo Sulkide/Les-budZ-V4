@@ -13,13 +13,14 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     
     
-    
+    public bool is3d;
     
     [SerializeField] private PauseMenu pauseMenu;
 
     public int fileID;
     
     public Camera mainCamera;
+    public CameraFlip3D2D cameraFlip3D;
     private float elapsedTime = 0f;      
     public string gameTime = "00:00:00";
     public TMP_Text gameTimeText;
@@ -772,6 +773,7 @@ public class GameManager : MonoBehaviour
         WaitAtStart = true;
         Debug.Log("Waiting");
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        cameraFlip3D = mainCamera.GetComponent<CameraFlip3D2D>();
         yield return new WaitForSeconds(5);
         Debug.Log("Waiting done");
         WaitAtStart = false;
@@ -1100,7 +1102,7 @@ public class GameManager : MonoBehaviour
         {
             if (!player) continue;
             player.gameObject.layer = LayerMask.NameToLayer("Default");
-            mainCamera.gameObject.GetComponent<CameraFollow2D>().enabled = false;
+            mainCamera.gameObject.GetComponent<CameraFlip3D2D>().enabled = false;
             player.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             player.areControllsRemoved = true;
         }
@@ -1112,7 +1114,7 @@ public class GameManager : MonoBehaviour
         {
             if (!player) continue;
             player.gameObject.layer = LayerMask.NameToLayer("Player");
-            mainCamera.gameObject.GetComponent<CameraFollow2D>().enabled = true;
+            mainCamera.gameObject.GetComponent<CameraFlip3D2D>().enabled = true;
             player.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             player.areControllsRemoved = false;
         }
@@ -1285,6 +1287,7 @@ public class GameManager : MonoBehaviour
 // Place tes ScriptableObjects KeyObjData dans un dossier Assets/Resources/KeyItems
 
     private Dictionary<string, KeyObjData> keyItemLookup;
+
 
     private void EnsureKeyItemLookup()
     {
@@ -1565,5 +1568,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(currentSceneName);
     }
 
-    
+
+    public void ChangeDimensionState(bool is3DValue)
+    {
+        is3d = is3DValue;
+    }
+
+    public void ChangeDimension()
+    {
+        if (is3d)
+        {
+            cameraFlip3D.Flip3Dto2D();
+        }
+        else
+        {
+            cameraFlip3D.Flip2Dto3D();
+        }
+    }
 }

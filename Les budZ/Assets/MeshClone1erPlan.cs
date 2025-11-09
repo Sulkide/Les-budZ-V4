@@ -31,7 +31,8 @@ public class MeshClone1erPlan : MonoBehaviour
             if (splineDeco != null)
             {
                 DecorationMaterial md = splineDeco.GetCurrentDecorationMaterial();
-                borderZ = md.global_range_auto.range3D.y;
+                borderZ = md.global_range_manual.range3D.y;
+                Debug.Log(md.ToString() +" " + md.global_range_manual.range3D.y.ToString() );
                 autoCalculetedDepth =  true;
             }
             else
