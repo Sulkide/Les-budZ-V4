@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using DG.Tweening;
 using NUnit.Framework;
 using Unity.Mathematics;
+using UnityEditor.Rendering;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -82,6 +84,40 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGroundSliding;
 
+    [Header("Attacking (Cooldowns & Flags)")]
+    [SerializeField] private float attackingAirCoolDown  = 0.25f;
+    [SerializeField] private float attackingMoveCoolDown = 0.5f;
+    [SerializeField] private float attackingIdleCoolDown = 1.0f;
+
+// Fenêtre pendant laquelle le bool d’attaque reste true (utile pour déclencher une anim)
+    [SerializeField] private float attackFlagActiveWindow = 0.15f;
+
+// Timestamps (prochains moments autorisés)
+    private float _nextAirAttackTime;
+    private float _nextMovingAttackTime;
+    private float _nextIdleAttackTime;
+
+// Données runtime pour l’attaque aérienne
+
+    private bool  _airAttackInitialized;
+
+
+    // -------- Attaque aérienne pilotable --------
+    [Header("Air Attack Control")]
+    [SerializeField] private float airAttackControlDeadzone = 0.075f; // zone morte pour "aucun input"
+
+    private float _airAttackInitialSpeedX;            // |Vx| au déclenchement
+    private bool  _airAttackHasInit;                  // init de l’état faite ?
+    private bool  _airAttackBouncedThisGroundContact; // rebond déjà appliqué pour ce contact sol ?
+
+    [Header("Air Attack (Slope Fix)")]
+    [SerializeField] private float airAttackMinRebounceInterval = 0.06f; // cadence minimale entre deux rebonds
+    [SerializeField] private float airAttackNormalNudge = 1.5f;          // petit coup de pouce le long de la normale// zone morte horizontale
+
+    private float   _airAttackNextEligibleBounceTime;
+
+    private Vector2 _lastGroundNormal = Vector2.up; // maj à chaque contact sol
+
     
     List<string> clipsRandomImpact = new List<string> { "impact1", "impact2", "impact3", "impact4" };
     List<string> clipsRandomDeath = new List<string> { "deathBell1" };
@@ -103,6 +139,9 @@ public class PlayerMovement : MonoBehaviour
     public bool isWallJumping { get; private set; }
     public bool isDashing { get; private set; }
     public bool isSliding { get; private set; }
+    public bool isAirAttcking { get; private set; }
+    public bool isMovingAttcking { get; private set; }
+    public bool isIdleAttcking { get; private set; }
 
 
     public float lastOnGroundTime { get; private set; }
@@ -671,20 +710,7 @@ public class PlayerMovement : MonoBehaviour
             OnJumpUpInput();
         }
 
-        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.K) ||
-            playerControls.actions["Dash"].ReadValue<float>() > 0)
-        {
-            if (!cutGlide)
-            {
-                Push();
-            }
-        }
-        else
-        {
-            playerAnimator.SetBool("isPushing", false);
-            isGliding = false;
-            cutGlide = false;
-        }
+   
 
 
         if (playerControls.actions["Dpad"].WasPressedThisFrame() &&
@@ -913,7 +939,53 @@ public class PlayerMovement : MonoBehaviour
         if (playerControls.actions["FlipDimension"].ReadValue<float>() > 0)
         {
             OnDimensionInput();
-            Debug.Log("dfcx ukjZD");
+        }
+
+        if (playerControls.actions["Attack"].ReadValue<float>() > 0)
+        {
+            
+            
+            if (isAirAttcking)
+            {
+                canWallJump = false;
+                StayAirAttaking();
+            }
+            else
+            {
+                canWallJump = true;
+            }
+            
+            if (!collisionGround)
+            {
+                AirAttack();
+            }
+            
+            if (moveInput != Vector2.zero)
+            {
+                if (GameManager.instance.is3d)
+                {
+                    MovingAttack3D();
+                }
+                
+                if (!GameManager.instance.is3d && moveInput.x != 0 )
+                {
+                    MovingAttack2D();
+                }
+            }
+            else
+            {
+                IdleAttacking();
+            }
+        }
+        else
+        {
+            isAirAttcking = false;
+            _airAttackInitialized = false;               
+            _airAttackBouncedThisGroundContact = false;   
+            _airAttackHasInit = false;                  // <— ajoute
+
+            playerAnimator.SetBool("isStayAttack", false);
+            playerAnimator.SetBool("isAirAttack", false);
         }
 
 
@@ -1079,6 +1151,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+
+
 
     private void UIInput()
     {
@@ -1344,7 +1419,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (cannotMove) return;
+        if (cannotMove || isAirAttcking) return;
         
         SoundManager.Instance.PlayRandomSFX(clipsRandomjump, 1.1f, 1.5f);
         
@@ -1843,180 +1918,164 @@ public class PlayerMovement : MonoBehaviour
         isStalling = false;
 
         playerAnimator.SetBool("isPushing", true);
-        if (canGlide)
-        {
-            Glide();
-        }
+
 
         if (moveInput != Vector2.zero)
             playerAnimator.SetBool("isPushing", false);
     }
 
 
-    private Vector2 glideMove;
-
-    private void Glide()
+private void StayAirAttaking()
+{
+    // --- 1) Init à la 1re frame de l’état ---
+    playerAnimator.SetBool("isStayAttack", true);
+    playerAnimator.SetBool("isAirAttack", false);
+    if (!_airAttackHasInit)
     {
-        // 1) recupère l'input
-        glideMove.x = moveInput.x;
+        _airAttackHasInit = true;
+        _airAttackInitialSpeedX = Mathf.Abs(RB.linearVelocity.x);
+        _airAttackBouncedThisGroundContact = false;
+    }
 
-        if (!yDecayEnabled)
+    // --- 2) Contrôle joueur : on garde l’air-control, 
+    //     mais on impose un plancher de vitesse quand pas d’entrée ou même sens ---
+    float inputX = moveInput.x;
+    float vx     = RB.linearVelocity.x;
+    float vy     = RB.linearVelocity.y;
+
+    bool noInput = Mathf.Abs(inputX) <= airAttackControlDeadzone;
+    bool sameDir = Mathf.Sign(inputX) == Mathf.Sign(vx) || Mathf.Abs(vx) < 0.001f;
+
+    if ((noInput || sameDir) && _airAttackInitialSpeedX > 0.001f)
+    {
+        float minAbs = _airAttackInitialSpeedX;
+        if (Mathf.Abs(vx) < minAbs)
         {
-            glideMove.y = moveInput.y;
+            float sign = (Mathf.Abs(vx) > 0.001f) ? Mathf.Sign(vx) : 1f;
+            RB.linearVelocity = new Vector2(sign * minAbs, vy);
         }
+    }
+
+    // --- 3) Détection de rebond : 
+    //     on ne dépend plus de vy ; on utilise un intervalle mini + un "nudge" normal ---
+    bool consideredGrounded = collisionGround && (Time.time >= _airAttackNextEligibleBounceTime);
+
+    if (consideredGrounded && !_airAttackBouncedThisGroundContact)
+    {
+        _airAttackBouncedThisGroundContact = true;
+
+        // limiter la friction pour ne pas perdre de vitesse horizontale
+        if (collider2D && noFrictionMaterial)
+            collider2D.sharedMaterial = noFrictionMaterial;
+        
+        SoundManager.Instance.PlayRandomSFX(clipsRandomjump, 1.1f, 1.5f);
+
+        // Rebond vertical "même hauteur" (composante monde vers le haut)
+        float upVel  = Vector2.Dot(RB.linearVelocity, Vector2.up);
+        float force  = Data.jumpForce;
+        if (upVel < 0) force -= upVel; // annule la chute pour hauteur constante
+        RB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+
+        // Petit nudge le long de la normale pour te décoller des pentes
+        float steepnessComp = 1f / Mathf.Clamp(_lastGroundNormal.y, 0.25f, 1f); // plus de nudge si pente raide
+        RB.AddForce(_lastGroundNormal * (airAttackNormalNudge * steepnessComp), ForceMode2D.Impulse);
+
+        // On "reste en l’air" côté états
+        lastOnGroundTime = 0f;
+        lastPressedJumpTime = 0f;
+
+        // Cadence minimale avant d'autoriser le prochain rebond
+        _airAttackNextEligibleBounceTime = Time.time + airAttackMinRebounceInterval;
+    }
+    else if (!consideredGrounded)
+    {
+        // Prêt pour un (ré)rebond dès qu’on redevient "éligible"
+
+        _airAttackBouncedThisGroundContact = false;
+    }
+}
 
 
-        // 2) détection de maintien de la même valeur y
-        if (moveInput.y >= -0.5f && moveInput.y <= 1f)
+
+    private void AirAttack()
+    {
+        playerAnimator.SetBool("isAirAttack", true);
+        if (Time.time < _nextAirAttackTime) return;
+
+        isAirAttcking = true;
+
+        // Snap des données au déclenchement
+        _airAttackInitialized = true;
+        _airAttackInitialSpeedX = RB.linearVelocity.x;
+        _airAttackBouncedThisGroundContact = false;
+
+        _nextAirAttackTime = Time.time + attackingAirCoolDown;
+    }
+
+    private void MovingAttack3D()
+    {
+        if (Time.time < _nextMovingAttackTime) return;
+
+        isMovingAttcking = true;
+        StartCoroutine(ResetFlagAfter(() => isMovingAttcking = false, attackFlagActiveWindow));
+
+        // Attendre le coolDown "attackingMoveCoolDown" (défaut 0.25 sec)
+        _nextMovingAttackTime = Time.time + attackingMoveCoolDown;
+    }
+
+    private void MovingAttack2D()
+    {
+        if (Time.time < _nextMovingAttackTime) return;
+
+        isMovingAttcking = true;
+        StartCoroutine(ResetFlagAfter(() => isMovingAttcking = false, attackFlagActiveWindow));
+
+        // Attendre le coolDown "attackingMoveCoolDown" (défaut 0.25 sec)
+        _nextMovingAttackTime = Time.time + attackingMoveCoolDown;
+    }
+
+    private void IdleAttacking()
+    {
+        if (Time.time < _nextIdleAttackTime) return;
+
+        isIdleAttcking = true;
+        StartCoroutine(ResetFlagAfter(() => isIdleAttcking = false, attackFlagActiveWindow));
+
+        // Attendre le coolDown "attackingIdleCoolDown" (défaut 1.0 sec)
+        _nextIdleAttackTime = Time.time + attackingIdleCoolDown;
+    }
+
+
+    private IEnumerator ResetFlagAfter(System.Action reset, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        reset?.Invoke();
+    }
+
+    private void AirAttackBounceOnce()
+    {
+        // Rebond de hauteur constante : même logique que Jump(), sans side effects d’anim/sons
+        if (!isGravityOff)
         {
-            // si l’axe y n’a presque pas bougé
-            if (Mathf.Abs(moveInput.y - lastHoldY) < 0.01f)
-            {
-                yHoldTimer += Time.deltaTime;
-                if (yHoldTimer >= yHoldDecayDelay)
-                    yDecayEnabled = true;
-            }
-            else
-            {
-                yHoldTimer = 0f;
-                yDecayEnabled = false;
-                lastHoldY = moveInput.y;
-            }
+            float force = Data.jumpForce;
+            if (RB.linearVelocity.y < 0) force -= RB.linearVelocity.y;
+            RB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
         }
         else
         {
-            // hors de l’intervalle → reset
-            yHoldTimer = 0f;
-            yDecayEnabled = false;
-            lastHoldY = moveInput.y;
+            // Gravité OFF : rebond le long de l’axe local "up"
+            float force = gravityJumpForce;
+            float localUpVel = Vector2.Dot(RB.linearVelocity, transform.up);
+            if (localUpVel < 0) force -= localUpVel;
+            RB.AddForce(transform.up * force, ForceMode2D.Impulse);
         }
 
-        // 3) si la décroissance est activée, on fait tendre y vers -1
-        if (yDecayEnabled)
-        {
-            Debug.Log("bouger");
-            glideMove.y = Mathf.MoveTowards(glideMove.y, -1f, yDecayRate * Time.deltaTime);
-        }
-
-
-        // --- suite de Glide() inchangée ---
-        if (glideDisabled) return;
-        if (!collisionGround)
-        {
-            float dt = Time.deltaTime;
-            float speed = RB.linearVelocity.magnitude;
-
-
-            if (glideMove.sqrMagnitude > 0.01f)
-            {
-                float angle = Mathf.Atan2(glideMove.y, glideMove.x) * Mathf.Rad2Deg;
-                float angle2 = Mathf.Atan2(glideMove.y, -glideMove.x) * Mathf.Rad2Deg;
-                if (isFacingRight)
-                    transform.GetChild(0).localRotation = Quaternion.Euler(0f, 0f, angle);
-                else
-                    transform.GetChild(0).localRotation = Quaternion.Euler(0f, 0f, angle2);
-            }
-            else
-            {
-                transform.GetChild(0).localRotation = Quaternion.Euler(0f, 0f, -90f);
-            }
-
-            if (!isGliding)
-            {
-                isGliding = true;
-                isStalling = false;
-                SetGravityScale(Data.gravityScale * glideGravityMult);
-
-                Vector2 init = isFacingRight ? new Vector2(1, -0.5F) : new Vector2(-1, -0.5F);
-                glideDir = init.normalized;
-
-                /*
-                // départ à 45° vers le bas
-                if (speed <= minGlideSpeed*4)
-                {
-                    Vector2 init = isFacingRight ? new Vector2(1, -1) : new Vector2(-1, -1);
-                    glideDir = init.normalized;
-                    Debug.Log("test1");
-                }
-
-                if (speed > minGlideSpeed*4)
-                {
-                    Vector2 init = moveInput.normalized;
-                    glideDir = init.normalized;
-                    Debug.Log("Stall duration exceeded");
-                }
-                */
-            }
-
-            // ——— Gestion du stall (vitesse trop faible OU déjà en stall) ———
-            bool justEnteredStall = !isStalling && speed <= minGlideSpeed;
-            if (justEnteredStall || isStalling)
-            {
-                isStalling = true;
-                stallTimer += dt;
-
-                if (stallTimer > maxStallDuration)
-                {
-                    CancelGlide();
-                    return;
-                }
-
-                float vx = glideMove.x * stallHorizontalSpeed;
-                float vy = -stallFallSpeed;
-                RB.linearVelocity = new Vector2(vx, vy);
-                return;
-            }
-            else
-            {
-            }
-
-            isStalling = false;
-            SetGravityScale(Data.gravityScale * glideGravityMult);
-
-            if (glideMove.y < 0f)
-            {
-                speed += -glideMove.y * diveAcceleration * dt;
-                stallTimer = 1;
-            }
-            else
-            {
-                float decelFactor = Mathf.Max(glideMove.y, 1f);
-                speed -= decelFactor * climbDeceleration * dt;
-            }
-
-            speed = Mathf.Clamp(speed, minGlideSpeed, maxGlideSpeed);
-
-            Vector2 targetDir = (glideMove.sqrMagnitude > 0.01f) ? glideMove.normalized : glideDir;
-
-            glideDir = Vector2.Lerp(glideDir, targetDir, steeringSpeed * dt).normalized;
-
-            RB.linearVelocity = glideDir * speed;
-        }
-        else if (isGliding)
-        {
-            isGliding = false;
-            isLowSpeedFalling = false;
-            transform.GetChild(0).localRotation = Quaternion.identity;
-            SetGravityScale(Data.gravityScale);
-        }
+        // On coupe immédiatement les timers de sol pour rester "en l’air" côté state
+        lastOnGroundTime    = 0f;
+        lastPressedJumpTime = 0f;
     }
 
-
-    private void CancelGlide()
-    {
-        cutGlide = true;
-        stallTimer = 1;
-        glideDisabled = true;
-        isStalling = false;
-        isGliding = false;
-        SetGravityScale(Data.gravityScale);
-        isLowSpeedFalling = false;
-        transform.GetChild(0).localRotation = Quaternion.identity;
-    }
-
-    private bool cutGlide;
-
-
+    
     [SerializeField] private RagdollController ragdollController;
 
     [SerializeField] private GameObject spiritPrefab;
@@ -2295,6 +2354,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.layer == 6)
         {
             collisionGround = true;
+
         }
 
 
@@ -2331,6 +2391,7 @@ public class PlayerMovement : MonoBehaviour
                 if (collision.gameObject.layer == 6)
                 {
                     collisionGround = true;
+                    _lastGroundNormal = contact.normal;
                 }
 
                 float normalAngle = Mathf.Atan2(contact.normal.y, contact.normal.x) * Mathf.Rad2Deg;
@@ -2364,6 +2425,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.layer == 6)
         {
             collisionGround = false;
+            
         }
 
         if (collision.gameObject.CompareTag("MovingPlatform"))

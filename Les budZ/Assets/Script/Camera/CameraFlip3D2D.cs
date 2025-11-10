@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
@@ -12,21 +13,28 @@ public class CameraFlip3D2D : MonoBehaviour
     public bool is3D = true;
 
     [Header("Capture auto au Start (si is3D = true)")]
-    [ReadOnly] public Vector3 posOffset3D;
+    [ReadOnly] public Vector3 posOffset3D;   // on conserve pour rot/FOV de référence
     [ReadOnly] public Vector3 rotOffset3D;
-    [ReadOnly] public float fov3D;
+    [ReadOnly] public float fov3D = 60f;
 
     [Header("Cible 2D (Orthographic)")]
-    [Tooltip("Position locale cible (X,Y). Z sera toujours 0 en mode Ortho.")]
-    public Vector2 posOffset2D = new Vector2(0f, 10f);
-    [Tooltip("Rotation locale cible (en degrés).")]
     public Vector3 rotOffset2D = new Vector3(0f, 0f, 0f);
-    [Tooltip("Orthographic Size (demi-hauteur du frustum ortho).")]
     public float orthoSize = 7f;
 
     [Header("Préservation d'échelle")]
     public bool preserveScale = true;
     [Range(0.1f, 5f)] public float minFOV = 1.0f;
+
+    [Header("Rail & Suivi")]
+    public Transform target;                 // par défaut: GameManager.instance.players[0].transform
+    public float followSpeed = 6f;
+    public bool disableRailChildrenAfterBake = true;
+
+    [Header("3D Target Distance")]
+    [Tooltip("Distance finale (magnitude, positive) de la caméra en mode 3D. Le Z final sera -target3DDistance.")]
+    public float target3DDistance = 20f;
+
+    private readonly List<Vector3> _railLocalPoints = new List<Vector3>();
 
     Camera _cam;
     bool _isFlipping;
@@ -35,6 +43,7 @@ public class CameraFlip3D2D : MonoBehaviour
     {
         _cam = GetComponent<Camera>();
         minFOV = Mathf.Max(0.1f, minFOV);
+        target3DDistance = Mathf.Max(0.01f, target3DDistance);
     }
 
     void Start()
@@ -42,17 +51,41 @@ public class CameraFlip3D2D : MonoBehaviour
         if (is3D)
         {
             _cam.orthographic = false;
-            posOffset3D = transform.localPosition;
+            posOffset3D = transform.localPosition;     // on garde comme info, mais on ne réutilise plus son Z pour la cible
             rotOffset3D = transform.localEulerAngles;
-            fov3D = _cam.fieldOfView;
+            if (_cam.fieldOfView > 0f) fov3D = _cam.fieldOfView;
         }
         else
         {
             _cam.orthographic = true;
             _cam.orthographicSize = orthoSize;
-            // Z = 0 en mode Ortho
-            transform.localPosition = new Vector3(posOffset2D.x, posOffset2D.y, 0f);
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0f);
             transform.localEulerAngles = rotOffset2D;
+        }
+
+        if (target == null && GameManager.instance != null &&
+            GameManager.instance.players != null && GameManager.instance.players.Length > 0 &&
+            GameManager.instance.players[0] != null)
+        {
+            target = GameManager.instance.players[0].transform;
+        }
+
+        BakeRailFromChildren();
+    }
+
+    void LateUpdate()
+    {
+        if (_isFlipping) return;
+
+        if (_railLocalPoints.Count >= 2 && target != null)
+        {
+            Vector3 targetLocal = WorldToParentLocal(target.position);
+            Vector3 projectedLocal = ProjectPointOnRailLocal(targetLocal);
+
+            float desiredZ = _cam.orthographic ? 0f : transform.localPosition.z;
+
+            Vector3 desiredLocal = new Vector3(projectedLocal.x, projectedLocal.y, desiredZ);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, desiredLocal, followSpeed * Time.deltaTime);
         }
     }
 
@@ -61,16 +94,12 @@ public class CameraFlip3D2D : MonoBehaviour
     public void Flip3Dto2D()
     {
         if (!is3D || _isFlipping) return;
-        is3D = false;
-        GameManager.instance.ChangeDimensionState(is3D);
         StartCoroutine(CoFlip3Dto2D());
     }
 
     public void Flip2Dto3D()
     {
         if (is3D || _isFlipping) return;
-        is3D = true;
-        GameManager.instance.ChangeDimensionState(is3D);
         StartCoroutine(CoFlip2Dto3D());
     }
 
@@ -80,14 +109,15 @@ public class CameraFlip3D2D : MonoBehaviour
     {
         _isFlipping = true;
 
-        Vector3 startPos = posOffset3D;
-        Vector3 startRot = rotOffset3D;
-        float startFOV = fov3D;
+        // ÉTAT COURANT (pas les valeurs inspector)
+        Vector3 startPosLocal = transform.localPosition;
+        Vector3 startRotLocal = transform.localEulerAngles;
+        float   startFOV      = _cam.fieldOfView;
 
-        Vector3 endRot = rotOffset2D;
-        float endFOV = minFOV;
+        Vector3 endRotLocal   = rotOffset2D;
+        float   endFOV        = minFOV;
 
-        float startLmag = Mathf.Max(0.01f, Mathf.Abs(startPos.z));
+        float startLmag = Mathf.Max(0.01f, Mathf.Abs(startPosLocal.z));
         float H3D = startLmag * Mathf.Tan(Mathf.Deg2Rad * startFOV * 0.5f);
         float H2D = orthoSize;
 
@@ -96,8 +126,18 @@ public class CameraFlip3D2D : MonoBehaviour
         {
             float u = ease.Evaluate(t / flipDuration);
 
-            Vector3 rotNow = SlerpEuler(startRot, endRot, u);
-            float fovNow = Mathf.Lerp(startFOV, endFOV, u);
+            // Suivi rail XY
+            Vector3 followXY = transform.localPosition;
+            if (_railLocalPoints.Count >= 2 && target != null)
+            {
+                Vector3 trgL = WorldToParentLocal(target.position);
+                Vector3 prjL = ProjectPointOnRailLocal(trgL);
+                Vector3 curr = transform.localPosition;
+                followXY = Vector3.Lerp(curr, new Vector3(prjL.x, prjL.y, curr.z), followSpeed * Time.deltaTime);
+            }
+
+            Vector3 rotNow = SlerpEuler(startRotLocal, endRotLocal, u);
+            float fovNow   = Mathf.Lerp(startFOV, endFOV, u);
 
             float Hnow = preserveScale ? Mathf.Lerp(H3D, H2D, u) : H3D;
             float LmagNow;
@@ -108,19 +148,12 @@ public class CameraFlip3D2D : MonoBehaviour
             }
             else
             {
-                // On garde la direction –Z, mais ce chemin est rarement utile si preserveScale est true
-                float zNow = Mathf.Lerp(startPos.z, 0f, u);
+                float zNow = Mathf.Lerp(startPosLocal.z, 0f, u);
                 LmagNow = Mathf.Abs(zNow);
             }
 
-            Vector3 posNow = new Vector3(
-                Mathf.Lerp(startPos.x, posOffset2D.x, u),
-                Mathf.Lerp(startPos.y, posOffset2D.y, u),
-                -LmagNow // recule vers –Z pendant la compression
-            );
-
             transform.localEulerAngles = rotNow;
-            transform.localPosition = posNow;
+            transform.localPosition = new Vector3(followXY.x, followXY.y, -LmagNow);
             _cam.orthographic = false;
             _cam.fieldOfView = fovNow;
 
@@ -128,13 +161,14 @@ public class CameraFlip3D2D : MonoBehaviour
             yield return null;
         }
 
-        // Switch Ortho : on fige Z = 0
-        transform.localEulerAngles = endRot;
-        transform.localPosition = new Vector3(posOffset2D.x, posOffset2D.y, 0f);
-        _cam.orthographic = true;
-        _cam.orthographicSize = orthoSize;
+        // ORTHO : Z = 0, XY reste celui du suivi
+        transform.localEulerAngles = endRotLocal;
+        transform.localPosition    = new Vector3(transform.localPosition.x, transform.localPosition.y, 0f);
+        _cam.orthographic          = true;
+        _cam.orthographicSize      = orthoSize;
 
         is3D = false;
+        GameManager.instance?.ChangeDimensionState(is3D);
         _isFlipping = false;
     }
 
@@ -142,23 +176,22 @@ public class CameraFlip3D2D : MonoBehaviour
     {
         _isFlipping = true;
 
-        // Départ Ortho (Z=0)
-        Vector3 startPos = new Vector3(posOffset2D.x, posOffset2D.y, 0f);
-        Vector3 startRot = rotOffset2D;
+        // Part d'Ortho (Z=0), on passe en perspective proprement
+        Vector3 startRotLocal = transform.localEulerAngles;
 
-        // Pour éviter le pop, on passe en perspective avec FOV=minFOV et Z = -L(orthoSize, minFOV)
-        float startLmag = HeightToDistance(orthoSize, minFOV);
-        _cam.orthographic = false;
-        _cam.fieldOfView = minFOV;
-        transform.localEulerAngles = startRot;
-        transform.localPosition = new Vector3(startPos.x, startPos.y, -startLmag);
-
-        // Arrivée 3D
-        Vector3 endPos = posOffset3D;
+        // On définit la **cible** 3D claire :
+        float endFOV   = (fov3D > 0f) ? fov3D : 60f;
+        float endLmag  = target3DDistance;                 // <= ICI : Z final = -target3DDistance
         Vector3 endRot = rotOffset3D;
-        float endFOV = fov3D;
 
-        float endLmag = Mathf.Max(0.01f, Mathf.Abs(endPos.z));
+        // Basculer en Perspective sans pop :
+        float startLmag = HeightToDistance(orthoSize, minFOV);
+        _cam.orthographic      = false;
+        _cam.fieldOfView       = minFOV;
+        transform.localEulerAngles = startRotLocal;
+        transform.localPosition    = new Vector3(transform.localPosition.x, transform.localPosition.y, -startLmag);
+
+        // Hauteurs de frustum pour préservation d’échelle pendant le flip
         float H2D = orthoSize;
         float H3D = endLmag * Mathf.Tan(Mathf.Deg2Rad * endFOV * 0.5f);
 
@@ -167,8 +200,18 @@ public class CameraFlip3D2D : MonoBehaviour
         {
             float u = ease.Evaluate(t / flipDuration);
 
-            Vector3 rotNow = SlerpEuler(startRot, endRot, u);
-            float fovNow = Mathf.Lerp(minFOV, endFOV, u);
+            // Suivi rail XY pendant le flip
+            Vector3 followXY = transform.localPosition;
+            if (_railLocalPoints.Count >= 2 && target != null)
+            {
+                Vector3 trgL = WorldToParentLocal(target.position);
+                Vector3 prjL = ProjectPointOnRailLocal(trgL);
+                Vector3 curr = transform.localPosition;
+                followXY = Vector3.Lerp(curr, new Vector3(prjL.x, prjL.y, curr.z), followSpeed * Time.deltaTime);
+            }
+
+            Vector3 rotNow = SlerpEuler(startRotLocal, endRot, u);
+            float fovNow   = Mathf.Lerp(minFOV, endFOV, u);
 
             float Hnow = preserveScale ? Mathf.Lerp(H2D, H3D, u) : H3D;
             float tanHalf = Mathf.Tan(Mathf.Deg2Rad * Mathf.Max(0.001f, fovNow) * 0.5f);
@@ -176,31 +219,90 @@ public class CameraFlip3D2D : MonoBehaviour
                 ? Mathf.Max(0.01f, Hnow / Mathf.Max(0.0001f, tanHalf))
                 : Mathf.Lerp(startLmag, endLmag, u);
 
-            Vector3 posNow = new Vector3(
-                Mathf.Lerp(startPos.x, endPos.x, u),
-                Mathf.Lerp(startPos.y, endPos.y, u),
-                -LmagNow // on “avance” vers l’état cible en –Z
-            );
-
             transform.localEulerAngles = rotNow;
-            transform.localPosition = posNow;
-            _cam.fieldOfView = fovNow;
+            transform.localPosition    = new Vector3(followXY.x, followXY.y, -LmagNow);
+            _cam.fieldOfView           = fovNow;
 
             t += Time.deltaTime;
             yield return null;
         }
 
-        // Fin 3D
+        // Fin 3D : objectif net
         transform.localEulerAngles = endRot;
-        transform.localPosition = endPos;
-        _cam.orthographic = false;
-        _cam.fieldOfView = endFOV;
+        transform.localPosition    = new Vector3(transform.localPosition.x, transform.localPosition.y, -endLmag);
+        _cam.orthographic          = false;
+        _cam.fieldOfView           = endFOV;
 
         is3D = true;
+        GameManager.instance?.ChangeDimensionState(is3D);
         _isFlipping = false;
     }
 
-    // -------------------- UTILITAIRES --------------------
+    // -------------------- RAIL --------------------
+
+    void BakeRailFromChildren()
+    {
+        _railLocalPoints.Clear();
+        Transform parent = transform.parent;
+
+        List<Transform> children = new List<Transform>();
+        foreach (Transform c in transform) children.Add(c);
+
+        if (children.Count < 2)
+        {
+            Debug.LogWarning("[CameraFlip3D2D] Il faut au moins 2 enfants pour définir le rail.");
+        }
+
+        foreach (var c in children)
+        {
+            Vector3 world = c.position;
+            Vector3 localInParent = (parent != null) ? parent.InverseTransformPoint(world) : world;
+            _railLocalPoints.Add(localInParent);
+
+            if (disableRailChildrenAfterBake)
+                c.gameObject.SetActive(false);
+        }
+    }
+
+    Vector3 ProjectPointOnRailLocal(Vector3 pLocal)
+    {
+        Vector3 best = _railLocalPoints[0];
+        float bestSqr = float.MaxValue;
+
+        for (int i = 0; i < _railLocalPoints.Count - 1; i++)
+        {
+            Vector3 A = _railLocalPoints[i];
+            Vector3 B = _railLocalPoints[i + 1];
+
+            Vector2 a2 = new Vector2(A.x, A.y);
+            Vector2 b2 = new Vector2(B.x, B.y);
+            Vector2 p2 = new Vector2(pLocal.x, pLocal.y);
+
+            Vector2 AB = b2 - a2;
+            float len2 = AB.sqrMagnitude;
+            if (len2 < 1e-5f) continue;
+
+            float t = Mathf.Clamp01(Vector2.Dot(p2 - a2, AB) / len2);
+            Vector2 proj = a2 + t * AB;
+
+            float d2 = (p2 - proj).sqrMagnitude;
+            if (d2 < bestSqr)
+            {
+                bestSqr = d2;
+                float z = Mathf.Lerp(A.z, B.z, t);
+                best = new Vector3(proj.x, proj.y, z);
+            }
+        }
+        return best;
+    }
+
+    Vector3 WorldToParentLocal(Vector3 world)
+    {
+        Transform parent = transform.parent;
+        return (parent != null) ? parent.InverseTransformPoint(world) : world;
+    }
+
+    // -------------------- UTIL --------------------
 
     static Vector3 SlerpEuler(Vector3 aDeg, Vector3 bDeg, float t)
     {
@@ -211,7 +313,6 @@ public class CameraFlip3D2D : MonoBehaviour
 
     static float HeightToDistance(float halfHeight, float fovDeg)
     {
-        // L = H / tan(FOV/2)
         float tanHalf = Mathf.Tan(Mathf.Deg2Rad * Mathf.Max(0.001f, fovDeg) * 0.5f);
         return Mathf.Max(0.01f, halfHeight / Mathf.Max(0.0001f, tanHalf));
     }
