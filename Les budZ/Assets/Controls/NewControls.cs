@@ -102,6 +102,15 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Dpad"",
+                    ""type"": ""Value"",
+                    ""id"": ""743c1e5a-fb55-4c99-b806-25ffadaec3e4"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Aim"",
                     ""type"": ""Value"",
                     ""id"": ""ec2b934f-84fe-4cb6-a208-b347c166ab3d"",
@@ -120,45 +129,9 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Shoot"",
+                    ""name"": ""Dash"",
                     ""type"": ""Button"",
-                    ""id"": ""9a9ff782-c8dc-4d75-869c-b8a2c8256ae8"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Start"",
-                    ""type"": ""Button"",
-                    ""id"": ""783570da-b104-4da3-9351-6bed1a8194a0"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Dpad"",
-                    ""type"": ""Value"",
-                    ""id"": ""743c1e5a-fb55-4c99-b806-25ffadaec3e4"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Grap"",
-                    ""type"": ""Button"",
-                    ""id"": ""e61092dc-948c-440f-8883-55de5d95b646"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Grap2"",
-                    ""type"": ""Button"",
-                    ""id"": ""307a5bf8-1532-4964-b142-6196180e754b"",
+                    ""id"": ""02f165ac-2d4a-40c6-bcda-1938937d0ab2"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -174,18 +147,27 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump 2"",
+                    ""name"": ""Attack"",
                     ""type"": ""Button"",
-                    ""id"": ""f14940f2-2cfd-4b0d-a8e5-e64d4efa60d5"",
+                    ""id"": ""16aa00ad-93c3-45cd-a93c-6cf855288f74"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dash"",
+                    ""name"": ""Grap"",
                     ""type"": ""Button"",
-                    ""id"": ""02f165ac-2d4a-40c6-bcda-1938937d0ab2"",
+                    ""id"": ""e61092dc-948c-440f-8883-55de5d95b646"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""783570da-b104-4da3-9351-6bed1a8194a0"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -226,15 +208,6 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""16aa00ad-93c3-45cd-a93c-6cf855288f74"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -263,7 +236,7 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""097eb007-2f7b-43e4-b981-408e833c298a"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -284,22 +257,11 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7dce239b-b951-46d3-87b8-d607b4d68fbb"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""de51974d-8f08-48f0-b5ac-ae83c7f710b7"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": """",
                     ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -318,22 +280,11 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f7239cbf-589a-49f9-9749-ba24b6626f85"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": """",
                     ""action"": ""Grap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d594a0f8-f211-40d3-bcc3-129904b3d9d4"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Grap2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -350,19 +301,8 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c78c072c-8f96-461a-91c2-161b494968a2"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump 2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""b9a87170-c2b2-4f30-ac79-24e266c7cb52"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -373,7 +313,7 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ed045b8b-35d0-4f50-918f-9bbf225f75db"",
-                    ""path"": ""<Gamepad>/start"",
+                    ""path"": ""<Gamepad>/select"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -387,7 +327,7 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""SelectR"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -992,21 +932,18 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
         // CharacterControll
         m_CharacterControll = asset.FindActionMap("CharacterControll", throwIfNotFound: true);
         m_CharacterControll_Move = m_CharacterControll.FindAction("Move", throwIfNotFound: true);
+        m_CharacterControll_Dpad = m_CharacterControll.FindAction("Dpad", throwIfNotFound: true);
         m_CharacterControll_Aim = m_CharacterControll.FindAction("Aim", throwIfNotFound: true);
         m_CharacterControll_Jump = m_CharacterControll.FindAction("Jump", throwIfNotFound: true);
-        m_CharacterControll_Shoot = m_CharacterControll.FindAction("Shoot", throwIfNotFound: true);
-        m_CharacterControll_Start = m_CharacterControll.FindAction("Start", throwIfNotFound: true);
-        m_CharacterControll_Dpad = m_CharacterControll.FindAction("Dpad", throwIfNotFound: true);
-        m_CharacterControll_Grap = m_CharacterControll.FindAction("Grap", throwIfNotFound: true);
-        m_CharacterControll_Grap2 = m_CharacterControll.FindAction("Grap2", throwIfNotFound: true);
-        m_CharacterControll_Use = m_CharacterControll.FindAction("Use", throwIfNotFound: true);
-        m_CharacterControll_Jump2 = m_CharacterControll.FindAction("Jump 2", throwIfNotFound: true);
         m_CharacterControll_Dash = m_CharacterControll.FindAction("Dash", throwIfNotFound: true);
+        m_CharacterControll_Use = m_CharacterControll.FindAction("Use", throwIfNotFound: true);
+        m_CharacterControll_Attack = m_CharacterControll.FindAction("Attack", throwIfNotFound: true);
+        m_CharacterControll_Grap = m_CharacterControll.FindAction("Grap", throwIfNotFound: true);
+        m_CharacterControll_Start = m_CharacterControll.FindAction("Start", throwIfNotFound: true);
         m_CharacterControll_Pause = m_CharacterControll.FindAction("Pause", throwIfNotFound: true);
         m_CharacterControll_SelectR = m_CharacterControll.FindAction("SelectR", throwIfNotFound: true);
         m_CharacterControll_SelectL = m_CharacterControll.FindAction("SelectL", throwIfNotFound: true);
         m_CharacterControll_FlipDimension = m_CharacterControll.FindAction("FlipDimension", throwIfNotFound: true);
-        m_CharacterControll_Attack = m_CharacterControll.FindAction("Attack", throwIfNotFound: true);
         // Ui
         m_Ui = asset.FindActionMap("Ui", throwIfNotFound: true);
         m_Ui_Navigate = m_Ui.FindAction("Navigate", throwIfNotFound: true);
@@ -1102,21 +1039,18 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_CharacterControll;
     private List<ICharacterControllActions> m_CharacterControllActionsCallbackInterfaces = new List<ICharacterControllActions>();
     private readonly InputAction m_CharacterControll_Move;
+    private readonly InputAction m_CharacterControll_Dpad;
     private readonly InputAction m_CharacterControll_Aim;
     private readonly InputAction m_CharacterControll_Jump;
-    private readonly InputAction m_CharacterControll_Shoot;
-    private readonly InputAction m_CharacterControll_Start;
-    private readonly InputAction m_CharacterControll_Dpad;
-    private readonly InputAction m_CharacterControll_Grap;
-    private readonly InputAction m_CharacterControll_Grap2;
-    private readonly InputAction m_CharacterControll_Use;
-    private readonly InputAction m_CharacterControll_Jump2;
     private readonly InputAction m_CharacterControll_Dash;
+    private readonly InputAction m_CharacterControll_Use;
+    private readonly InputAction m_CharacterControll_Attack;
+    private readonly InputAction m_CharacterControll_Grap;
+    private readonly InputAction m_CharacterControll_Start;
     private readonly InputAction m_CharacterControll_Pause;
     private readonly InputAction m_CharacterControll_SelectR;
     private readonly InputAction m_CharacterControll_SelectL;
     private readonly InputAction m_CharacterControll_FlipDimension;
-    private readonly InputAction m_CharacterControll_Attack;
     /// <summary>
     /// Provides access to input actions defined in input action map "CharacterControll".
     /// </summary>
@@ -1133,6 +1067,10 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Move => m_Wrapper.m_CharacterControll_Move;
         /// <summary>
+        /// Provides access to the underlying input action "CharacterControll/Dpad".
+        /// </summary>
+        public InputAction @Dpad => m_Wrapper.m_CharacterControll_Dpad;
+        /// <summary>
         /// Provides access to the underlying input action "CharacterControll/Aim".
         /// </summary>
         public InputAction @Aim => m_Wrapper.m_CharacterControll_Aim;
@@ -1141,37 +1079,25 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_CharacterControll_Jump;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterControll/Shoot".
+        /// Provides access to the underlying input action "CharacterControll/Dash".
         /// </summary>
-        public InputAction @Shoot => m_Wrapper.m_CharacterControll_Shoot;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterControll/Start".
-        /// </summary>
-        public InputAction @Start => m_Wrapper.m_CharacterControll_Start;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterControll/Dpad".
-        /// </summary>
-        public InputAction @Dpad => m_Wrapper.m_CharacterControll_Dpad;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterControll/Grap".
-        /// </summary>
-        public InputAction @Grap => m_Wrapper.m_CharacterControll_Grap;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterControll/Grap2".
-        /// </summary>
-        public InputAction @Grap2 => m_Wrapper.m_CharacterControll_Grap2;
+        public InputAction @Dash => m_Wrapper.m_CharacterControll_Dash;
         /// <summary>
         /// Provides access to the underlying input action "CharacterControll/Use".
         /// </summary>
         public InputAction @Use => m_Wrapper.m_CharacterControll_Use;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterControll/Jump2".
+        /// Provides access to the underlying input action "CharacterControll/Attack".
         /// </summary>
-        public InputAction @Jump2 => m_Wrapper.m_CharacterControll_Jump2;
+        public InputAction @Attack => m_Wrapper.m_CharacterControll_Attack;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterControll/Dash".
+        /// Provides access to the underlying input action "CharacterControll/Grap".
         /// </summary>
-        public InputAction @Dash => m_Wrapper.m_CharacterControll_Dash;
+        public InputAction @Grap => m_Wrapper.m_CharacterControll_Grap;
+        /// <summary>
+        /// Provides access to the underlying input action "CharacterControll/Start".
+        /// </summary>
+        public InputAction @Start => m_Wrapper.m_CharacterControll_Start;
         /// <summary>
         /// Provides access to the underlying input action "CharacterControll/Pause".
         /// </summary>
@@ -1188,10 +1114,6 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "CharacterControll/FlipDimension".
         /// </summary>
         public InputAction @FlipDimension => m_Wrapper.m_CharacterControll_FlipDimension;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterControll/Attack".
-        /// </summary>
-        public InputAction @Attack => m_Wrapper.m_CharacterControll_Attack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1221,36 +1143,30 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Dpad.started += instance.OnDpad;
+            @Dpad.performed += instance.OnDpad;
+            @Dpad.canceled += instance.OnDpad;
             @Aim.started += instance.OnAim;
             @Aim.performed += instance.OnAim;
             @Aim.canceled += instance.OnAim;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @Shoot.started += instance.OnShoot;
-            @Shoot.performed += instance.OnShoot;
-            @Shoot.canceled += instance.OnShoot;
-            @Start.started += instance.OnStart;
-            @Start.performed += instance.OnStart;
-            @Start.canceled += instance.OnStart;
-            @Dpad.started += instance.OnDpad;
-            @Dpad.performed += instance.OnDpad;
-            @Dpad.canceled += instance.OnDpad;
-            @Grap.started += instance.OnGrap;
-            @Grap.performed += instance.OnGrap;
-            @Grap.canceled += instance.OnGrap;
-            @Grap2.started += instance.OnGrap2;
-            @Grap2.performed += instance.OnGrap2;
-            @Grap2.canceled += instance.OnGrap2;
-            @Use.started += instance.OnUse;
-            @Use.performed += instance.OnUse;
-            @Use.canceled += instance.OnUse;
-            @Jump2.started += instance.OnJump2;
-            @Jump2.performed += instance.OnJump2;
-            @Jump2.canceled += instance.OnJump2;
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @Use.started += instance.OnUse;
+            @Use.performed += instance.OnUse;
+            @Use.canceled += instance.OnUse;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @Grap.started += instance.OnGrap;
+            @Grap.performed += instance.OnGrap;
+            @Grap.canceled += instance.OnGrap;
+            @Start.started += instance.OnStart;
+            @Start.performed += instance.OnStart;
+            @Start.canceled += instance.OnStart;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
@@ -1263,9 +1179,6 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
             @FlipDimension.started += instance.OnFlipDimension;
             @FlipDimension.performed += instance.OnFlipDimension;
             @FlipDimension.canceled += instance.OnFlipDimension;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
         }
 
         /// <summary>
@@ -1280,36 +1193,30 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Dpad.started -= instance.OnDpad;
+            @Dpad.performed -= instance.OnDpad;
+            @Dpad.canceled -= instance.OnDpad;
             @Aim.started -= instance.OnAim;
             @Aim.performed -= instance.OnAim;
             @Aim.canceled -= instance.OnAim;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @Shoot.started -= instance.OnShoot;
-            @Shoot.performed -= instance.OnShoot;
-            @Shoot.canceled -= instance.OnShoot;
-            @Start.started -= instance.OnStart;
-            @Start.performed -= instance.OnStart;
-            @Start.canceled -= instance.OnStart;
-            @Dpad.started -= instance.OnDpad;
-            @Dpad.performed -= instance.OnDpad;
-            @Dpad.canceled -= instance.OnDpad;
-            @Grap.started -= instance.OnGrap;
-            @Grap.performed -= instance.OnGrap;
-            @Grap.canceled -= instance.OnGrap;
-            @Grap2.started -= instance.OnGrap2;
-            @Grap2.performed -= instance.OnGrap2;
-            @Grap2.canceled -= instance.OnGrap2;
-            @Use.started -= instance.OnUse;
-            @Use.performed -= instance.OnUse;
-            @Use.canceled -= instance.OnUse;
-            @Jump2.started -= instance.OnJump2;
-            @Jump2.performed -= instance.OnJump2;
-            @Jump2.canceled -= instance.OnJump2;
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @Use.started -= instance.OnUse;
+            @Use.performed -= instance.OnUse;
+            @Use.canceled -= instance.OnUse;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @Grap.started -= instance.OnGrap;
+            @Grap.performed -= instance.OnGrap;
+            @Grap.canceled -= instance.OnGrap;
+            @Start.started -= instance.OnStart;
+            @Start.performed -= instance.OnStart;
+            @Start.canceled -= instance.OnStart;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
@@ -1322,9 +1229,6 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
             @FlipDimension.started -= instance.OnFlipDimension;
             @FlipDimension.performed -= instance.OnFlipDimension;
             @FlipDimension.canceled -= instance.OnFlipDimension;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
         }
 
         /// <summary>
@@ -1592,6 +1496,13 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
         /// <summary>
+        /// Method invoked when associated input action "Dpad" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDpad(InputAction.CallbackContext context);
+        /// <summary>
         /// Method invoked when associated input action "Aim" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -1606,40 +1517,12 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Shoot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnShoot(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Start" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnStart(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Dpad" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnDpad(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Grap" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnGrap(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Grap2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnGrap2(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Use" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1648,19 +1531,26 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnUse(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Jump 2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnJump2(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Grap" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnDash(InputAction.CallbackContext context);
+        void OnGrap(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Start" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnStart(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1689,13 +1579,6 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnFlipDimension(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnAttack(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Ui" which allows adding and removing callbacks.

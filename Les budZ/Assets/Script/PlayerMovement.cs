@@ -88,8 +88,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float attackingAirCoolDown  = 0.25f;
     [SerializeField] private float attackingMoveCoolDown = 0.5f;
     [SerializeField] private float attackingIdleCoolDown = 1.0f;
-
-// Fenêtre pendant laquelle le bool d’attaque reste true (utile pour déclencher une anim)
     [SerializeField] private float attackFlagActiveWindow = 0.15f;
 
 // Timestamps (prochains moments autorisés)
@@ -199,7 +197,8 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
-    [Header("Friction Materials")] public PhysicsMaterial2D frictionMaterial;
+    [Header("Friction Materials")] 
+    public PhysicsMaterial2D frictionMaterial;
     public PhysicsMaterial2D noFrictionMaterial;
     public float maxAngleWithFriction = 30f;
 
@@ -222,6 +221,8 @@ public class PlayerMovement : MonoBehaviour
     private float initialRopeLength = 0f;
     private float originalGrappleTargetGravityScale;
     private bool grappleGravityModified = false; // Ajustez cette valeur selon le comportement souhaité 
+    private Transform grappleTarget; // Référence à l'objet touché
+    private Vector2 grappleTargetLocalPoint;
 
 
     [Header("Marker Settings")]
@@ -229,15 +230,15 @@ public class PlayerMovement : MonoBehaviour
 
     private GameObject activeGrappleAnchorMarker;
     private List<Collider2D> selfColliders;
-    private Transform grappleTarget; // Référence à l'objet touché
-    private Vector2 grappleTargetLocalPoint;
+
 
     [Header("BaseModelPrefab")] public GameObject baseModelPrefab;
 
     [Header("Moving Platforme")] private Transform currentMovingPlatform = null;
     private Vector2 lastPlatformPosition;
 
-    [Header("Gravity")] public bool isGravityOff;
+    [Header("Gravity")] 
+    public bool isGravityOff;
     private bool flipGravityState;
     public float gravityJumpForce = 45f;
     public Collider2D gravityCollider;
@@ -388,7 +389,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (GameManager.instance.isPaused) return;
         
-        GameManager.instance.FindPlayer(parentName, gameObject.transform, this);
+        //GameManager.instance.FindPlayer(parentName, gameObject.transform, this);
         GameManager.instance.CharacterCheck(parentName, Data.playerName);
 
         UIInput();
@@ -1228,7 +1229,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnDimensionInput()
     {
-        GameManager.instance.ChangeDimension();
+        //GameManager.instance.ChangeDimension();
     }
 
     #endregion

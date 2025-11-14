@@ -20,7 +20,6 @@ public class PlayerData : ScriptableObject
 	public float maxFallSpeed; 
 	[Space(5)]
 	public float fastFallGravityMult; 
-									 
 	public float maxFastFallSpeed; 
 	
 	[Space(20)]
@@ -36,6 +35,7 @@ public class PlayerData : ScriptableObject
 	[Range(0f, 1)] public float deccelInAir;
 	[Space(5)]
 	public bool doConserveMomentum = true;
+
 
 	[Space(20)]
 
@@ -64,6 +64,8 @@ public class PlayerData : ScriptableObject
 	[Header("Slide")]
 	public float slideSpeed;
 	public float slideAccel;
+	public float maxAngleWithFriction = 30f;
+	public float groundSlideDeceleration = 12f;
 
     [Header("Assists")]
 	[Range(0.01f, 0.5f)] public float coyoteTime; 

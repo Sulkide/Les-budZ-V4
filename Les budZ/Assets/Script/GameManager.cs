@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
     public bool isPlayer3present = false;
     public bool isPlayer4present = false;
 
-    public PlayerMovement[] players = new PlayerMovement[4];
+    public PlayerMovement3D[] players = new PlayerMovement3D[4];
 
     public Transform player1Location;
     public Transform player2Location;
@@ -329,20 +329,17 @@ public class GameManager : MonoBehaviour
                 currentMusicName = "EMPTY";
             }
             
-            Debug.Log("test1");
             
             
             
             newSceneLoad = false;
         }
         
-        Debug.Log(currentMusicName);
         
         ResetElementsOnLoad();
         ForcePlayerJoin();
         SpawnPlayers();
 
-        Debug.Log("test2");
         
         // À chaque rechargement de scène, détruit les collectibles dont l'ID figure dans la liste permanente
         Collectible[] collectibles = FindObjectsOfType<Collectible>();
@@ -646,7 +643,7 @@ public class GameManager : MonoBehaviour
             playerInputManager.playerPrefab = playerPrefabs[0];
 
             players[0] = Instantiate(playerInputManager.playerPrefab, respawnPoint.position, Quaternion.identity)
-                .GetComponentInChildren<PlayerMovement>();
+                .GetComponentInChildren<PlayerMovement3D>();
 
             playerInputManager.playerPrefab = playerPrefabs[1];
             nextPrefabIndex = 2;
@@ -656,7 +653,7 @@ public class GameManager : MonoBehaviour
         {
             playerInputManager.playerPrefab = playerPrefabs[1];
             players[1] = Instantiate(playerInputManager.playerPrefab, respawnPoint.position, Quaternion.identity)
-                .GetComponentInChildren<PlayerMovement>();
+                .GetComponentInChildren<PlayerMovement3D>();
             playerInputManager.playerPrefab = playerPrefabs[2];
             nextPrefabIndex = 3;
         }
@@ -665,7 +662,7 @@ public class GameManager : MonoBehaviour
         {
             playerInputManager.playerPrefab = playerPrefabs[2];
             players[2] = Instantiate(playerInputManager.playerPrefab, respawnPoint.position, Quaternion.identity)
-                .GetComponentInChildren<PlayerMovement>();
+                .GetComponentInChildren<PlayerMovement3D>();
             playerInputManager.playerPrefab = playerPrefabs[3];
             nextPrefabIndex = 4;
         }
@@ -674,7 +671,7 @@ public class GameManager : MonoBehaviour
         {
             playerInputManager.playerPrefab = playerPrefabs[3];
             players[3] = Instantiate(playerInputManager.playerPrefab, respawnPoint.position, Quaternion.identity)
-                .GetComponentInChildren<PlayerMovement>();
+                .GetComponentInChildren<PlayerMovement3D>();
             playerInputManager.playerPrefab = playerPrefabs[4];
             nextPrefabIndex = 5;
         }
@@ -771,11 +768,9 @@ public class GameManager : MonoBehaviour
     IEnumerator WaitInStart()
     {
         WaitAtStart = true;
-        Debug.Log("Waiting");
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         cameraFlip3D = mainCamera.GetComponent<CameraFlip3D2D>();
         yield return new WaitForSeconds(5);
-        Debug.Log("Waiting done");
         WaitAtStart = false;
     }
 
@@ -944,7 +939,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void FindPlayer(string parentName, Transform playerLoc, PlayerMovement playerMovement)
+    public void FindPlayer(string parentName, Transform playerLoc, PlayerMovement3D playerMovement)
     {
         if (parentName == "Player 1" || parentName == "Player 1(Clone)")
         {
@@ -1584,5 +1579,7 @@ public class GameManager : MonoBehaviour
         {
             cameraFlip3D.Flip2Dto3D();
         }
+        
+
     }
 }

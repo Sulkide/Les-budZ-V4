@@ -16,6 +16,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Dpad",
+                    "type": "Value",
+                    "id": "743c1e5a-fb55-4c99-b806-25ffadaec3e4",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Aim",
                     "type": "Value",
                     "id": "ec2b934f-84fe-4cb6-a208-b347c166ab3d",
@@ -34,45 +43,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shoot",
+                    "name": "Dash",
                     "type": "Button",
-                    "id": "9a9ff782-c8dc-4d75-869c-b8a2c8256ae8",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Start",
-                    "type": "Button",
-                    "id": "783570da-b104-4da3-9351-6bed1a8194a0",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Dpad",
-                    "type": "Value",
-                    "id": "743c1e5a-fb55-4c99-b806-25ffadaec3e4",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Grap",
-                    "type": "Button",
-                    "id": "e61092dc-948c-440f-8883-55de5d95b646",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Grap2",
-                    "type": "Button",
-                    "id": "307a5bf8-1532-4964-b142-6196180e754b",
+                    "id": "02f165ac-2d4a-40c6-bcda-1938937d0ab2",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -88,18 +61,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump 2",
+                    "name": "Attack",
                     "type": "Button",
-                    "id": "f14940f2-2cfd-4b0d-a8e5-e64d4efa60d5",
+                    "id": "16aa00ad-93c3-45cd-a93c-6cf855288f74",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dash",
+                    "name": "Grap",
                     "type": "Button",
-                    "id": "02f165ac-2d4a-40c6-bcda-1938937d0ab2",
+                    "id": "e61092dc-948c-440f-8883-55de5d95b646",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "783570da-b104-4da3-9351-6bed1a8194a0",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -140,15 +122,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "16aa00ad-93c3-45cd-a93c-6cf855288f74",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -177,7 +150,7 @@
                 {
                     "name": "",
                     "id": "097eb007-2f7b-43e4-b981-408e833c298a",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -198,22 +171,11 @@
                 },
                 {
                     "name": "",
-                    "id": "7dce239b-b951-46d3-87b8-d607b4d68fbb",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "de51974d-8f08-48f0-b5ac-ae83c7f710b7",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "",
                     "action": "Start",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -232,22 +194,11 @@
                 {
                     "name": "",
                     "id": "f7239cbf-589a-49f9-9749-ba24b6626f85",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "",
                     "action": "Grap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d594a0f8-f211-40d3-bcc3-129904b3d9d4",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Grap2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -264,19 +215,8 @@
                 },
                 {
                     "name": "",
-                    "id": "c78c072c-8f96-461a-91c2-161b494968a2",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump 2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b9a87170-c2b2-4f30-ac79-24e266c7cb52",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -287,7 +227,7 @@
                 {
                     "name": "",
                     "id": "ed045b8b-35d0-4f50-918f-9bbf225f75db",
-                    "path": "<Gamepad>/start",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -301,7 +241,7 @@
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Gamepad",
                     "action": "SelectR",
                     "isComposite": false,
                     "isPartOfComposite": false
