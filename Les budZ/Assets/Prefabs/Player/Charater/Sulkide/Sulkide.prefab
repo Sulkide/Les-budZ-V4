@@ -95,6 +95,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 922476527692534525}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4423265762299645262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4620353473600441517}
+  m_Layer: 11
+  m_Name: airAttackGround
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4620353473600441517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4423265762299645262}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.75, y: -1.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 922476527692534525}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5513448283545697344
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,6 +157,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5381023102736611218}
+  - {fileID: 4620353473600441517}
   - {fileID: 6305211883007398920}
   - {fileID: 7620733442960051092}
   - {fileID: 5108791562216073583}
@@ -328,6 +360,7 @@ MonoBehaviour:
   currentLife: 5
   gravityScale: 0
   damageCooldown: 2.5
+  defaultConstraints: 0
   moveInput: {x: 0, y: 0}
   aimInput: {x: 0, y: 0}
   dpadInput: {x: 0, y: 0}
@@ -335,7 +368,12 @@ MonoBehaviour:
   capsuleCenter: {x: 0, y: 0, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   deactivateOnOffScreen: 0
+  alignToGroundSlope: 1
   use3DMovement: 1
+  maxAngleWithFriction: 30
+  canWallJump: 1
+  canDash: 1
+  canAttack: 1
   data: {fileID: 11400000, guid: b55f98cd1c891e64da9a2992c3655998, type: 2}
   playerControls: {fileID: 0}
   baseModelPrefab: {fileID: 0}
@@ -356,6 +394,9 @@ MonoBehaviour:
   frontWallCheckPoint: {fileID: 6305211883007398920}
   backWallCheckPoint: {fileID: 7620733442960051092}
   wallCheckSize: {x: 0.54, y: 1, z: 1}
+  airAttackGroundCheckPoint: {fileID: 4620353473600441517}
+  airAttackGroundRadius: 0.4
+  airAttackGroundHeight: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -368,6 +409,7 @@ MonoBehaviour:
   cannotMove: 0
   isDead: 0
   areControllsRemoved: 0
+  wasGroundedLastFrame: 0
   actionMapName: CharacterControll
   actionMoveName: Move
   actionDpadName: Dpad

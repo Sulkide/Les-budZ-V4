@@ -46,10 +46,13 @@ MonoBehaviour:
   doTurnOnWallJump: 0
   slideSpeed: 1
   slideAccel: -3
+  maxAngleWithFriction: 30
+  groundSlideDeceleration: 12
   coyoteTime: 0.15
   jumpInputBufferTime: 0.1
   dashAmount: 1
   dashSpeed: 25
+  dashMaxSpeed: 30
   dashSleepTime: 0.1
   dashAttackTime: 0.25
   dashEndTime: 0.15
@@ -57,3 +60,22 @@ MonoBehaviour:
   dashEndRunLerp: 0.5
   dashRefillTime: 0.25
   dashInputBufferTime: 0.1
+  dashJumpMaxDistance: 0.8
+  dashJumpMaxSlopeAngle: 70
+  dashJumpForceMult: 1
+  dashJumpNormalInfluence: 0.4
+  dashJumpMaxUpSpeed: 30
+  dashJumpUpSpeed: 30
+  idleAttackTime: 1
+  movingAttackTime: 0.5
+  airAttackTime: 0.25
+  stayAirAttackAccel: 20
+  stayAirAttackOppositeDecel: 25
+  stayAirAttackMaxSpeed: 15
+  stayAirAttackBounceForce: 10
+  stayAirAttackMinSpeed: 1
+  minHeightBounce: 5
+  maxHeightBounce: 10
+  nextBounceDivision: 1.5
+  bonusBounceMarge: 0.8
+  bonusBounceMult: 1.7

@@ -76,6 +76,7 @@ public class PlayerData : ScriptableObject
 	[Header("Dash")]
 	public int dashAmount;
 	public float dashSpeed;
+	public float dashMaxSpeed = 30f;
 	public float dashSleepTime; 
 	[Space(5)]
 	public float dashAttackTime;
@@ -87,6 +88,37 @@ public class PlayerData : ScriptableObject
 	public float dashRefillTime;
 	[Space(5)]
 	[Range(0.01f, 0.5f)] public float dashInputBufferTime;
+	
+
+	[Header("Dash Jump Spécial")]
+	public float dashJumpMaxDistance = 0.8f;     
+	public float dashJumpMaxSlopeAngle = 70f;    
+	public float dashJumpForceMult = 1.0f;    
+	public float dashJumpNormalInfluence = 0.4f;
+	public float dashJumpMaxUpSpeed = 15f;
+	public float dashJumpUpSpeed = 12f;
+	
+	[Header("Ground Pound")]
+	public float groundPoundAngleTolerance = 10f; 
+	public float groundPoundSpeed = 30f;           
+	public float groundPoundFreezeTime = 0.5f; 
+	
+	[Header("Attack / Stay Air Attack Settings")]
+	public float idleAttackTime = 1f;
+	public float movingAttackTime = 0.5f;
+	public float airAttackTime = 0.25f;
+	
+	public float stayAirAttackAccel = 20f;
+	public float stayAirAttackOppositeDecel = 25f;
+	public float stayAirAttackMaxSpeed = 15f;
+	public float stayAirAttackBounceForce = 10f;
+	public float stayAirAttackMinSpeed = 1f;
+
+	public float minHeightBounce = 0.2f;
+	public float maxHeightBounce = 0.8f;
+	public float nextBounceDivision = 1.1f;
+	public float bonusBounceMarge = 0.12f;
+	public float bonusBounceMult = 1.3f;
 	
 
 	
