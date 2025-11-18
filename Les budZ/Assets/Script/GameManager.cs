@@ -287,8 +287,8 @@ public class GameManager : MonoBehaviour
         
         if (newSaveFileCreated)
         {
-            SoundManager.Instance.PlayMusic("Bourée (Steven Wilson Remix)");
-            
+            SoundManager.Instance.PlayMusic("Bourée (Steven Wilson Remix)", 120, 0.452f, 2,4, true);
+            Debug.Log("test1");
             newSaveFileCreated = false;
         }
         

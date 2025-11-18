@@ -219,6 +219,13 @@ MonoBehaviour:
   sfxSlider: {fileID: 1016387245291225052}
   musicVolume: 1
   sfxVolume: 1
+  enableBeatManager: 1
+  beatsPerBar: 4
+  beatManagerActive: 1
+  currentBPM: 120
+  currentBeatOffset: 0
+  currentBarDuration: 2
+  lastBeatBarIndex: -1
 --- !u!1 &2602989249743484161
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,9 +276,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f3b934c958e8c48a9d4b9955497d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is3d: 0
   pauseMenu: {fileID: 315890445866374970}
   fileID: 0
   mainCamera: {fileID: 0}
+  cameraFlip3D: {fileID: 0}
   gameTime: 
   gameTimeText: {fileID: 2847124474785963966}
   globalLight: {fileID: 9153690405188510733}
@@ -613,17 +622,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!114 &5873019280498161690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,15 +665,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 21a1e5ec09303d94eb6e44c27515c88c, type: 2}
   useRealTime: 0
   fixedTime: 23:00:00
-  maincamera: {fileID: 0}
-  cameraTransform: {fileID: 0}
-  captureBaselineAtStart: 1
-  cameraXBaseline: 0
-  degreesPerXUnit: 1
-  maxOffsetUp: 100
-  maxOffsetDown: 100
-  rotateAroundLocalX: 1
-  offsetDampTime: 0.15
 --- !u!1 &6671680462041747086
 GameObject:
   m_ObjectHideFlags: 0

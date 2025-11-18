@@ -16,7 +16,6 @@ public class Collectible : MonoBehaviour
     public bool isHealthBonus;
     void Awake()
     {
-        // Génération d'un identifiant unique basé sur la scène, le nom de l'objet et sa position
         if (string.IsNullOrEmpty(uniqueId))
         {
             uniqueId = SceneManager.GetActiveScene().name + "_" +
@@ -29,8 +28,8 @@ public class Collectible : MonoBehaviour
 
     private void Update()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
-        foreach (Collider2D col in colliders)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius);
+        foreach (Collider col in colliders)
         {
             if (col.gameObject == gameObject)
                 continue;
@@ -40,58 +39,35 @@ public class Collectible : MonoBehaviour
                 layer == LayerMask.NameToLayer("Projectile") ||
                 layer == LayerMask.NameToLayer("ProjectileCollision"))
             {
-                
-                
-                
-                
-                PlayerMovement pm = col.GetComponent<PlayerMovement>();
+                PlayerMovement3D pm = col.GetComponent<PlayerMovement3D>();
                 
                 if (isCollectible && pm)
                 {
-                    string playerName = pm.parentName;
+                    string playerName = pm.parent.name;
                     GameManager.instance.addXP(XP);
-                    SoundManager.Instance.PlayRandomSFX(clipsRandomSnap, 1, 1.5f);
+                    SoundManager.Instance.PlayRandomSFXOnNextBarEnd(clipsRandomSnap, 0.9f, 1.1f);
                     Collect(playerName);
-                }
-
-                if (isHealthBonus)
-                {
-                    SoundManager.Instance.PlayRandomSFX(clipsRandomSnap, 1, 1.5f);
-                    GameManager.instance.addXP(XP);
-                    AddLife(col);
                 }
                 
                 break;
             }
         }
     }
-    
+
     private void Collect(string playerID)
     {
         GameManager.instance.addScore(score, playerID);
-        // Ajoute l'ID dans la liste temporaire (et non directement dans la liste permanente)
         if (!GameManager.instance.tempCollectedCollectibles.Contains(uniqueId))
         {
             GameManager.instance.tempCollectedCollectibles.Add(uniqueId);
         }
         Destroy(gameObject);
     }
-
-    private void AddLife(Collider2D other)
-    {
-        PlayerMovement pm = other.gameObject.GetComponent<PlayerMovement>();
-        
-        if (pm)
-        {
-            pm.HasCurrentlyHealthbonus = true;
-            GameManager.instance.addOrRemovePlayerBonus(pm.parentName, true);
-        }
-        Destroy(gameObject);
-    }
+    
     
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.DrawSphere(transform.position, detectionRadius);
     }
 }
